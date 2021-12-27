@@ -973,7 +973,7 @@ span.b {
     height: auto !important;
     text-align: center;
     font-size: 18px;
-    background: #f8fafc;
+    background: #000000;
     /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1137,6 +1137,10 @@ a.image-hover:hover .middle {
 }
 
 .img-hover:hover .middle {
+    opacity: 1;
+}
+
+.item:hover .middle {
     opacity: 1;
 }
 

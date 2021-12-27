@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
 /public/storage
+/public/.index.php
+/public/.htaccess
 /storage/*.key
 /vendor
 .env
@@ -13,3 +15,4 @@ yarn-error.log
 *.zip
 .htaccess
 index.html
+index.php

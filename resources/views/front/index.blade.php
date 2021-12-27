@@ -182,8 +182,8 @@
                                             </a>
 
                                             <!-- <div class="tag">
-                                        <a href="#">Management</a>
-                                    </div> -->
+                                            <a href="#">Management</a>
+                                        </div> -->
                                         </div>
 
                                         <div class="post-content text-center">
@@ -532,52 +532,76 @@
         <div class="row">
             <div class="col-lg-4 col-md-5 col-sm-5">
                 <div class="heading-section text-md-right ftco-animate">
-                  <h2 class="mb-2">@lang('site.our_menu')</h2>
-                  <p class="mb-4">@lang('site.far')</p>
-                  <p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">@lang('site.view_menu')</a></p>
+                    <h2 class="mb-2">@lang('site.our_menu')</h2>
+                    <p class="mb-4">@lang('site.far')</p>
+                    <p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">@lang('site.view_menu')</a></p>
                 </div>
 
             </div>
             <div class="col-lg-8 col-md-7 col-sm-7">
                 <div class="owl-carousel owl-four owl-theme">
                     <div class="item">
-                        <div class="img-slider">
-                            <img src="{{url('front/img/1.jpg')}}" alt="">
+                        <div class="img-slider" style="position: relative">
+                            <img src="{{ url('front/img/1.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="img-slider">
-                            <img src="{{url('front/img/2.jpg')}}" alt="">
+                            <img src="{{ url('front/img/2.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="img-slider">
-                            <img src="{{url('front/img/3.jpg')}}" alt="">
+                            <img src="{{ url('front/img/3.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="img-slider">
-                            <img src="{{url('front/img/4.jpg')}}" alt="">
+                            <img src="{{ url('front/img/4.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="img-slider">
-                            <img src="{{url('front/img/5.jpg')}}" alt="">
+                            <img src="{{ url('front/img/5.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="img-slider">
-                            <img src="{{url('front/img/6.jpg')}}" alt="">
+                            <img src="{{ url('front/img/6.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="img-slider">
-                            <img src="{{url('front/img/7.jpg')}}" alt="">
+                            <img src="{{ url('front/img/7.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="img-slider">
-                            <img src="{{url('front/img/8.jpg')}}" alt="">
+                            <img src="{{ url('front/img/8.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
                         </div>
                     </div>
 
@@ -588,7 +612,7 @@
     </div>
 
 
-<br> <br>
+    <br> <br>
 
 
 
@@ -599,8 +623,7 @@
     <!-----start  --->
 
 
-{{--
-    <div class="country ">
+    {{-- <div class="country ">
 
         <div class="relative">
 
