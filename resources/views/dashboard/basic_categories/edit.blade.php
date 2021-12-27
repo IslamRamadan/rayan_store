@@ -35,6 +35,21 @@
                 <input value="{{ $cat->name_en }}"  type="text" name="name_en"
                        class="form-control @error('name_en') is-invalid @enderror" id="name_en">
             </div>
+            <div class="form-group">
+                <div class="col-md-12 d-flex p-0 ">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="type" value="1" id="type"
+                        @if ($cat->type == 1)
+                        {{ 'checked' }}
+                        @endif
+                        >
+
+                        <label class="form-check-label" for="type">
+                            @lang('site.has_size')
+                        </label>
+                    </div>
+                </div>
+            </div>
 
 
             <div class="form-group">

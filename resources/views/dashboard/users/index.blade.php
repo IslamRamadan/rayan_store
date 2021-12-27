@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-@section('page_title')  Users  @endsection
+@section('page_title')  @lang('site.users')  @endsection
 
 @section('style')
     <script src="https://code.jquery.com/jquery-3.6.0.js"

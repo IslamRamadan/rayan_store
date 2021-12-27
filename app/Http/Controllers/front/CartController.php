@@ -116,6 +116,7 @@ class CartController extends Controller
 
         //        Session::forget('cart');
         $product = $request->except('_token');
+        // dd($product);
 
         $cart = Session::get('cart');
 
@@ -123,7 +124,14 @@ class CartController extends Controller
 
         $current_product = Product::find($product['product_id']);
 
+        // dd($current_product->basic_category->type);
+        if($current_product->basic_category->type == 1){
+            $current_height = ProdHeight::where('product_id',$product['product_id'])->where('height_id',0)->where('size_id',0)->first();
+            // dd($current_height->quantity);
+        }else{
         $current_height = ProdHeight::find($product['product_height_id']);
+        }
+        // dd($product,$current_product,$current_height);
 
 
         if ($product['quantity'] > $current_height->quantity) {
@@ -141,7 +149,7 @@ class CartController extends Controller
         endif;
 
         Session::put('cart', $cart);
-
+        // dd(Session::get('cart') );
         $total_price = 0;
         $total_qty = 0;
 
@@ -309,7 +317,7 @@ class CartController extends Controller
         //            'success' => false,
         //            'msg' => 'Quantity Requested not Available of this item !'
         //        ]);
-
+            // dd($request->all());
         $product_id = $request->product_id;
         $product_height_id = $request->product_height_id;
         $operation = $request->operation;
@@ -328,6 +336,7 @@ class CartController extends Controller
         $product = Product::find($product_id);
 
         $price = $product->price;
+        // dd($cart,$item,$product->basic_category->type);
         $cart_details = Session::get('cart_details');
 
         $cart_details_quantity = $cart_details['totalQty'];
@@ -338,7 +347,13 @@ class CartController extends Controller
 
         if ($operation > 0) {
             //IF QUANTITY >= CURRENT PLUS ONE
-            $prod_height = ProdHeight::find($product_height_id);
+            if($product->basic_category->type ==1 ){
+                $prod_height = ProdHeight::where('product_id',$product_id)->where('height_id',0)->first();
+            }
+            else{
+                $prod_height = ProdHeight::find($product_height_id);
+            }
+            // dd($prod_height->quantity);
             if ($prod_height->quantity < ($quantity + 1)) {
                 return  response()->json([
                     'success' => false,
@@ -774,7 +789,13 @@ class CartController extends Controller
 
         foreach ($cart as $cart_item) {
             foreach ($cart_item as $item) {
-                $height = ProdHeight::find($item['product_height_id']);
+                $cat_type=(Product::find($item['product_id']))->basic_category->type;
+                if($cat_type == 1){
+                    $height = ProdHeight::where("product_id",$item['product_id'])->where('height_id',0)->first();
+                }else{
+
+                    $height = ProdHeight::find($item['product_height_id']);
+                }
                 if ($height->quantity >= $item['quantity']) {
                     $height->quantity = $height->quantity - $item['quantity'];
                     $height->save();

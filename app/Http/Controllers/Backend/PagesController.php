@@ -22,8 +22,8 @@ class PagesController extends Controller
                 ->addColumn('action', function($row){
 
                     $action = '
-                        <a class="btn btn-success"  href="'.route('pages.edit' , $row->id).'" >Edit </a>
-                        <a class="btn btn-primary"  href="'.route('pages.show' , $row->id).'" >View </a>
+                        <a class="btn btn-success"  href="'.route('pages.edit' , $row->id).'" >'.\Lang::get('site.edit').' </a>
+                        <a class="btn btn-primary"  href="'.route('pages.show' , $row->id).'" >'.\Lang::get('site.view').'</a>
                       ';
                     return $action;
 

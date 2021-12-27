@@ -34,9 +34,9 @@ class UserController extends Controller
                 ->addColumn('action', function($row){
 
                     $action = '
-                        <a class="btn btn-success"  href="'.route('users.edit' , $row->id).'" id="edit-user" >Edit </a>
+                        <a class="btn btn-success"  href="'.route('users.edit' , $row->id).'" id="edit-user" >'.\Lang::get('site.edit').' </a>
                         <meta name="csrf-token" content="{{ csrf_token() }}">
-                        <a href="'.route('users.destroy' , $row->id).'" class="btn btn-danger">Delete</a>';
+                        <a href="'.route('users.destroy' , $row->id).'" class="btn btn-danger">'.\Lang::get('site.delete').'</a>';
                     return $action;
 
                 })

@@ -38,19 +38,19 @@ class OrderController extends Controller
                     $action = '
                         <a class="btn btn-primary"
                          style="margin:5px"
-                         href="'.route('order.items.view' , $row->id).'" id="edit-user" >Order Items </a>
+                         href="'.route('order.items.view' , $row->id).'" id="edit-user" >'.\Lang::get('site.order_details').' </a>
 
                      ';
 
                     if($row->status == 1){
                     $action .='         <a class="btn btn-success"
                       style="margin:5px"
-                    href="'.route('orders.received' , $row->id).'" id="edit-user" >Switch to Recevied </a>';
+                    href="'.route('orders.received' , $row->id).'" id="edit-user" >'.\Lang::get('site.switch_received').' </a>';
                     }
                     if($row->status == 2){
                     $action .='         <a class="btn btn-dark"
                       style="margin:5px"
-                     id="edit-user" >Recevied Done </a>';
+                     id="edit-user" >'.\Lang::get('site.received_done').' </a>';
                     }
 
                     $action .='
@@ -91,7 +91,7 @@ class OrderController extends Controller
                     $action = '
                         <a class="btn btn-primary"
                          style="margin:5px"
-                         href="'.route('order.items.view' , $row->id).'" id="edit-user" >Order Items </a>
+                         href="'.route('order.items.view' , $row->id).'" id="edit-user" >'.\Lang::get('site.order_details').'  </a>
 
                      ';
 
@@ -157,6 +157,7 @@ class OrderController extends Controller
             $data = OrderItem::where('order_id' , $order_id)->latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
+
                 ->addColumn('product', function ($artist) {
                     return $artist->product->title_en?:'' . ' - ' . $artist->product->title_ar?:'' ;
                 })
@@ -175,10 +176,22 @@ class OrderController extends Controller
                     return $artist->product->price?:"";
                 })
                 ->addColumn('height', function ($artist) {
-                    return $artist->height->height->name?:"";
+                    if ($artist->product->basic_category->type == 1) {
+                        return "-";
+                    }
+                    else{
+                        return $artist->height->height->name?:"";
+
+                    }
                 })
                 ->addColumn('size', function ($artist) {
-                    return $artist->size->size->name?:"";
+                    if ($artist->product->basic_category->type == 1) {
+                        return "-";
+                    }
+                    else{
+
+                        return $artist->size->size->name?:"";
+                    }
                 })
 //                ->rawColumns(['action'])
                 ->make(true);

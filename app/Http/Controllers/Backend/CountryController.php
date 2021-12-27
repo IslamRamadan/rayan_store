@@ -40,10 +40,10 @@ class CountryController extends Controller
                 ->addColumn('action', function($row){
 
                     $action = '
-                        <a class="btn btn-primary"  href="'.route('cities.view' , $row->id).'" id="edit-user" >Cities </a>
-                        <a class="btn btn-success"  href="'.route('countries.edit' , $row->id).'" id="edit-user" >Edit </a>
+                        <a class="btn btn-primary"  href="'.route('cities.view' , $row->id).'" id="edit-user" >'.\Lang::get('site.cities').'  </a>
+                        <a class="btn btn-success"  href="'.route('countries.edit' , $row->id).'" id="edit-user" >'.\Lang::get('site.edit').' </a>
                         <meta name="csrf-token" content="{{ csrf_token() }}">
-                        <a href="'.url('countries/destroy' , $row->id).'" class="btn btn-danger">Delete</a>
+                        <a href="'.url('countries/destroy' , $row->id).'" class="btn btn-danger">'.\Lang::get('site.delete').'</a>
                         ';
 //
 
@@ -118,6 +118,7 @@ class CountryController extends Controller
             if (!Storage::exists($path)) {
                 Storage::disk('public')->makeDirectory($path);
             }
+            dd($path.$file_name);
 //
 //            if(file_exists(storage_path('app/public/'.$path.$file_name)))
 //            {

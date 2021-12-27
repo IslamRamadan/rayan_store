@@ -25,9 +25,9 @@ class HeightController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $action = '
-                        <a class="btn btn-success"  href="'.route('heights.edit' , $row->id).'" >Edit </a>
+                        <a class="btn btn-success"  href="'.route('heights.edit' , $row->id).'" >'.\Lang::get('site.edit').' </a>
                         <meta name="csrf-token" content="{{ csrf_token() }}">
-                        <a  href="'.route('heights.destroy' , $row->id).'" class="btn btn-danger">Delete</a>';
+                        <a  href="'.route('heights.destroy' , $row->id).'" class="btn btn-danger">'.\Lang::get('site.delete').'</a>';
                     return $action;
                 })
                 ->rawColumns(['action'])

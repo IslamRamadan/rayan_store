@@ -11,7 +11,9 @@
 
 @endsection
 @section('content')
+{{-- {{dd($product->basic_category->type)}} --}}
     {{-- {{dd(count($height_products_array[0]))}} --}}
+    <input hidden value="{{$product->basic_category->type}}" id="basic_cat_type">
     <form class="card col-md-12 col-12" style="margin: auto" action="{{ route('products.update.product', $product->id) }}"
         method="post" enctype="multipart/form-data">
         @csrf
@@ -155,11 +157,29 @@
                         @lang('site.description_en')
                     </label>
                     <textarea name="description_en" class="form-control @error('description_en') is-invalid @enderror"
-                        id="description_ar">{{ $product->description_ar }}</textarea>
+                        id="description_en">{{ $product->description_en }}</textarea>
 
                 </div>
+                {{-- <div class="form-group col-2">
 
-                <div class="form-group col-3">
+                    <select  multiple name="color[]">
+                        @foreach ($colors as $color)
+                        <option value="{{$color->id}}"
+
+                            @foreach ($color_products as $color_product)
+                            @if ($color_product == $color->id)  {{ 'selected' }} @endif
+                            @endforeach
+
+                            >{{$color->name_ar}}-{{$color->name_en}}</option>
+                        @endforeach
+
+                      </select>
+                      {{-- <label for="colors">
+                        @lang('site.colors')
+                    </label> --}}
+                </div> --}}
+
+                <div class="form-group col-2">
                     <label for="before_price">
 
                         @lang('site.before_price')
@@ -168,7 +188,7 @@
                     <input value="{{ $product->before_price }}" type="number" step=".01" name="before_price"
                         class="form-control @error('before_price') is-invalid @enderror" id="before_price">
                 </div>
-                <div class="form-group col-3">
+                <div class="form-group col-2">
                     <label for="price">
 
                         @lang('site.price')
@@ -177,7 +197,7 @@
                     <input value="{{ $product->price }}" type="number" step=".01" name="price"
                         class="form-control @error('price') is-invalid @enderror" id="price">
                 </div>
-                <div class="form-group col-3">
+                <div class="form-group col-3" id="size_guide_id1">
                     <label for="basic_category_id">
                         @lang('site.size_guid')
 
@@ -200,6 +220,25 @@
                     </select>
                 </div>
 
+                <div class="form-group col-3" id="qut"
+
+
+
+                >
+                    <label for="qut">
+
+                        @lang('site.quantity')
+
+
+                    </label>
+                    <input  type="text" name="qut" type="number" step=".01"
+                        class="form-control @error('qut') is-invalid @enderror"
+                        @if ($product->basic_category->type == 1)
+                        value={{$height_products}}
+                        @endif
+                        >
+                </div>
+
 
                 <div class="form-group col-3">
                     <label for="photo">
@@ -214,7 +253,7 @@
 
 
 
-            <ul class="align-content-right" style="list-style-type: none;">
+            <ul class="align-content-right" style="list-style-type: none;" id="size1">
                 @foreach ($sizes as $size)
                     <li style="margin-bottom: 15px">
 
@@ -289,7 +328,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script type="text/javascript">
-        console.log('ss');
+        console.log($("#basic_cat_type").val());
+        if ($("#basic_cat_type").val()==1) {
+            console.log("value is 1");
+            $('#size_guide_id1').hide();
+            $('#size1').hide();
+        }
+        else{
+            $('#size_guide_id1').show();
+            $('#size1').show();
+            $('#qut').hide();
+        }
+
+
         $('#basic_category_id').on('change', function(e) {
 
             console.log(e);
@@ -303,6 +354,71 @@
                         .name_en + ' - ' + subcatObj.name_ar + '</option>');
                 })
             })
+
+        $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: "{{ route('check.cat') }}",
+                method: 'post',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    cat_id: cat_id
+                },
+                success: function(result) {
+                    // console.log(result);
+
+                    if (!result.success) {
+                        console.log('no');
+                        if (result.cat_type == 1) {
+                            $('#size1').hide()
+                            $('#size_guide_id1').hide()
+                            $('#qut').show()
+
+                        }
+                        else{
+                            $('#size1').show()
+                            $('#size_guide_id1').show()
+                            $('#qut').hide()
+
+                        }
+
+                    } else {
+
+                        if (result.cat_type == 1) {
+                            $('#size1').hide()
+                            $('#size_guide_id1').hide()
+                            $('#qut').show()
+
+                                                }
+                        else{
+                            $('#size1').show()
+                            $('#size_guide_id1').show()
+                            $('#qut').hide()
+
+                                             }
+
+
+
+                        // getDelivery();
+
+                    }
+
+                },
+                error: function(error) {
+                    Swal.fire({
+                        title: 'لم تكتمل العمليه ',
+                        icon: '?',
+                        confirmButtonColor: '#d76797',
+                        position: 'bottom-start',
+                        showCloseButton: true,
+                    })
+                }
+            });
+
 
         });
 

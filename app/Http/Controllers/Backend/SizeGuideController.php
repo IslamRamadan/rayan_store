@@ -25,10 +25,10 @@ class SizeGuideController extends Controller
                 ->addColumn('action', function ($row) {
 
                     $action = '
-<a class="btn btn-success "  href="' . route('size_guides.edit', $row->id) . '" id="edit-user" >Edit </a>
+<a class="btn btn-success "  href="' . route('size_guides.edit', $row->id) . '" id="edit-user" >'.\Lang::get('site.edit').' </a>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 ';
-$action.=' <a href="' . url('size_guides/destroy', $row->id) . '" class="btn btn-danger test-form">Delete</a>';
+$action.=' <a href="' . url('size_guides/destroy', $row->id) . '" class="btn btn-danger test-form">'.\Lang::get('site.delete').'</a>';
 
 
                     return $action;

@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.app')
 
-    @section('page_title')  Products  @endsection
+    @section('page_title')  @lang('site.products')  @endsection
 
     @section('style')
         <script src="https://code.jquery.com/jquery-3.6.0.js"

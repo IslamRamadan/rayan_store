@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.app')
 
-@section('page_title')  Banners  @endsection
+@section('page_title')  @lang('site.banners')  @endsection
 
 @section('style')
     <script src="https://code.jquery.com/jquery-3.6.0.js"
@@ -34,7 +34,7 @@
             <div class="col-lg-12 margin-tb">
                 <div class="pull-right">
                     {{--                <a class="btn btn-success mb-2" id="new-user" data-toggle="modal">New User</a>--}}
-                    <a class="btn btn-success mb-2" href="{{route('sliders.create')}}">@lang('New Banner')</a>
+                    <a class="btn btn-success mb-2" href="{{route('sliders.create')}}">@lang('site.new_banner')</a>
                 </div>
             </div>
         </div>

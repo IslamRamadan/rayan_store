@@ -29,9 +29,9 @@ class CurrencyController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $action = '
-                        <a class="btn btn-success"  href="'.route('currencies.edit' , $row->id).'" >Edit </a>
+                        <a class="btn btn-success"  href="'.route('currencies.edit' , $row->id).'" >'.\Lang::get('site.edit').' </a>
                         <meta name="csrf-token" content="{{ csrf_token() }}">
-                         <a  href="'.route('currencies.destroy' , $row->id).'" class="btn btn-danger">Delete</a>
+                         <a  href="'.route('currencies.destroy' , $row->id).'" class="btn btn-danger">'.\Lang::get('site.delete').'</a>
                                           ';
 
 //

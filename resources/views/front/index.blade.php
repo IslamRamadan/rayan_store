@@ -107,17 +107,17 @@
             @foreach ($sliders as $one)
                 <div class="carousel-item  @if ($i == 0) active @endif ">
                     <img class=" w-100 h " src="{{ asset('storage/' . $one->img) }}" alt="1 slide"
-                        style="height: 70vh">
+                        style="height: 90vh">
                     @if (app()->getLocale() == 'en')
                         <div class="abs w-100">
-                            <p class="c-w mr-0">{{ $one->description_en }}</p>
-                            <h1 class=""> {{ $one->name_en }}</h1>
-                            <button class=" btn btn-danger">@lang('site.shop_now') <i class="far fa-heart"></i></button>
+                            <p class="c-w mr-0"></p>
+                            <h1 class=""> </h1>
+                            {{-- <button class=" btn btn-danger">@lang('site.shop_now') <i class="far fa-heart"></i></button> --}}
                     </div> @else
                         <div class="abs w-100">
-                            <p class="c-w mr-0">{{ $one->description_ar }}</p>
-                            <h1 class=""> {{ $one->name_ar }}</h1>
-                            <button class=" btn btn-danger">@lang('site.shop_now') <i class="far fa-heart"></i></button>
+                            <p class="c-w mr-0"></p>
+                            <h1 class=""> </h1>
+                            {{-- <button class=" btn btn-danger">@lang('site.shop_now') <i class="far fa-heart"></i></button> --}}
                         </div>
                     @endif
 
@@ -158,7 +158,7 @@
 
 
 
-            <div class="blog-slides owl-carousel test owl-theme owl-loaded owl-drag">
+            <div class="blog-slides owl-carousel owl-one owl-theme owl-loaded owl-drag">
 
 
 
@@ -322,8 +322,8 @@
                             @guest()
                                 @if (Cookie::get('name'))
                                     {{ number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                    {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
-                                    @lang('site.kwd')
+                                    {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                    {{-- @lang('site.kwd') --}}
                                 @else
                                     {{ $p->price }}
                                     @lang('site.kwd')
@@ -347,7 +347,7 @@
         <br>
         <div class="text-center m-auto gq gr gs dg ck dh di cn gt c1 gu gv cq p cr gw gx gy">
             <a href="{{ route('new') }}" class="">
-                <div class="text-center text-light">@lang('site.new_in')</div>
+                <div class="text-center text-dark">@lang('site.new_in')</div>
             </a>
         </div>
         <br><br>
@@ -356,113 +356,6 @@
         <br><br>
     </div>
 
-    <div class="container-fluid">
-        <br>
-        <h2 class="text-center  d-flex justify-content-between">
-            <b></b>
-            <span class="">@lang('site.best_selling')
-
-            </span>
-            <b></b>
-        </h2>
-        <br>
-        <br>
-        <div class="owl-carousel islam owl-theme" id="one">
-            @if ($best_sell->count()>0)
-                @foreach ($best_sell as $b)
-                <div class="item best-sell">
-                    <div class="row dir-rtl" style="height:45vh">
-                        <div class="col-6 p-0 res-wid">
-                            <a href="{{ route('product', $b->id) }}">
-                                <img src="{{ asset('/storage/' . $b->img) }}" style="width: 100%;height:100%">
-                            </a>
-                        </div>
-                        <div class=" col-6 p-2 text-dir m-auto">
-                            <h5 class="font-weight-bold">
-                                <a href="{{ route('product', $b->id) }}">
-                                    @if (Lang::locale() == 'ar')
-                                    {{ $b->title_ar }}
-
-                                @else
-                                    {{ $b->title_en }}
-
-
-                                @endif
-                                </a>
-                            </h5>
-                            <p><a href="{{ route('product', $p->id) }}">
-
-
-                                @if (Lang::locale() == 'ar')
-                                    {{-- {{$p->basic_category->name_ar}}
-                                        -
-                                        {{$p->category->name_ar}} --}}
-                                    <?php $pieces = explode(' ', $p->description_ar);
-                                    $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
-                                    {{ $first_part }}
-                                @else
-
-                                    {{-- {{$p->basic_category->name_en}}
-                                        -
-                                        {{$p->category->name_en}} --}}
-                                    <?php $pieces = explode(' ', $p->description_en);
-                                    $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
-                                    {{ $first_part }}
-                                @endif
-
-
-                            </a></p>
-                            <div class="d-flex justify-content-between">
-                                @if ($b->has_offer == 1)
-                                <h6 class="font-small" class="font-weight-bold  " style="text-decoration: line-through">
-                                        @auth()
-                                        {{ Auth::user()->getPrice($p->before_price) }}
-                                        {{ Auth::user()->country->currency->code }}
-                                    @endauth
-                                    @guest()
-                                        @if (Cookie::get('name'))
-                                            {{ number_format($p->before_price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                            {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
-                                            @lang('site.kwd')
-                                        @else
-                                            {{ $p->before_price }}
-                                            @lang('site.kwd')
-                                        @endif
-                                    @endguest
-                                </h6>
-                                @endif
-                                <h5 class="font-weight-bold  ">
-                                    @auth()
-                                    {{ Auth::user()->getPrice($b->price) }}
-                                    {{ Auth::user()->country->currency->code }}
-                                @endauth
-                                @guest()
-                                    @if (Cookie::get('name'))
-                                        {{ number_format($b->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                        {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
-                                        @lang('site.kwd')
-                                    @else
-                                        {{ $b->price }} @lang('site.kwd')
-
-                                    @endif
-                                @endguest
-                                </h5>
-
-
-                            </div>
-                            <a href="{{ route('product', $b->id) }}" class="btn btn-dark text-light font-weight-bold" style="background: #f13582;border:none">
-                            @lang('site.add_to_cart')
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-                @endforeach
-            @endif
-
-
-        </div>
-    </div>
 
 
 
@@ -567,8 +460,8 @@
                                     @guest()
                                         @if (Cookie::get('name'))
                                             {{ number_format($p->before_price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                            {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
-                                            @lang('site.kwd')
+                                            {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                            {{-- @lang('site.kwd') --}}
                                         @else
                                             {{ $p->before_price }}
                                             @lang('site.kwd')
@@ -586,8 +479,8 @@
                                     @guest()
                                         @if (Cookie::get('name'))
                                             {{ number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                            {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
-                                            @lang('site.kwd')
+                                            {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                            {{-- @lang('site.kwd') --}}
                                         @else
                                             {{ $p->price }}
                                             @lang('site.kwd')
@@ -613,7 +506,7 @@
             <br>
             <div class="text-center m-auto gq gr gs dg ck dh di cn gt c1 gu gv cq p cr gw gx gy">
                 <a href="{{ route('offer') }}" class="">
-                    <div class="text-center text-light">@lang('site.more')</div>
+                    <div class="text-center text-dark">@lang('site.more')</div>
                 </a>
             </div>
             <br><br>
@@ -625,50 +518,77 @@
     @endif
 
 
-
-    <div class="container pad-0 d-md-none">
+    <div class="container pad-0">
+        <br>
         <h2 class="text-center  d-flex justify-content-between">
             <b></b>
-            <span>@lang('site.fashion_world')
+            <span class="">@lang('site.menu')
 
             </span>
             <b></b>
         </h2>
         <br>
-    </div>
-    <div class="owl-carousel owl-theme">
-    @foreach ($posts as $post)
-    <div class="item" >
-        <div class=" dir-rtl max-width" style="max-width: 700px" >
-
-            <div class="row">
-                <div class="col-md-12 ml-auto order-md-2 align-self-center">
-                    <div class="site-block-cover-content text-center mt-2">
-                        <!-- <h2 class="sub-title">#The world talk about fasion</h2> -->
-                        <a href="{{ route('post', $post->id) }}">
-                            @if (app()->getLocale() == 'en')
-                                <h1>{{ $post->title_en }}</h1>
-                            @else
-                                <h1>{{ $post->title_ar }}</h1>
-                            @endif
-                        </a>
-
-                        <a href="{{ route('post', $post->id) }}" class="btn bg-main mt-1">@lang('site.read_more')</a>
-                    </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5">
+                <div class="heading-section text-md-right ftco-animate">
+                  <h2 class="mb-2">@lang('site.our_menu')</h2>
+                  <p class="mb-4">@lang('site.far')</p>
+                  <p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">@lang('site.view_menu')</a></p>
                 </div>
-                <div class="col-md-12 order-1 align-self-end">
-                    <a href="{{ route('post', $post->id) }}"><img src="{{ asset('/storage/' . $post->img1) }}"
-                            alt="Image" class="img-fluid" data-pagespeed-url-hash="799042288"
-                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7">
+                <div class="owl-carousel owl-four owl-theme">
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{url('front/img/1.jpg')}}" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{url('front/img/2.jpg')}}" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{url('front/img/3.jpg')}}" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{url('front/img/4.jpg')}}" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{url('front/img/5.jpg')}}" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{url('front/img/6.jpg')}}" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{url('front/img/7.jpg')}}" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{url('front/img/8.jpg')}}" alt="">
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
         </div>
     </div>
 
-        <br><br>
 
-    @endforeach
-</div>
+<br> <br>
 
 
 

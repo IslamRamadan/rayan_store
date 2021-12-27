@@ -34,7 +34,7 @@
             <div class="col-lg-12 margin-tb">
                 <div class="pull-right">
                     {{-- <a class="btn btn-success mb-2" id="new-user" data-toggle="modal">New User</a> --}}
-                    <a class="btn btn-success mb-2" href="{{ route('basic_categories.create') }}">New Basic Category</a>
+                    <a class="btn btn-success mb-2" href="{{ route('basic_categories.create') }}">@lang('site.add_basic_category')</a>
                 </div>
             </div>
         </div>

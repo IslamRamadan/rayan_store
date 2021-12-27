@@ -310,7 +310,7 @@ table {
 caption {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    color: #6c757d;
+    color: #000;
     text-align: left;
 }
 
@@ -603,7 +603,7 @@ progress {
     margin-top: -1rem;
     margin-bottom: 1rem;
     font-size: 0.875em;
-    color: #6c757d;
+    color: #000;
 }
 
 .blockquote-footer::before {
@@ -635,7 +635,7 @@ progress {
 
 .figure-caption {
     font-size: 0.875em;
-    color: #6c757d;
+    color: #000;
 }
 
 .container,
@@ -2011,7 +2011,7 @@ progress {
 .form-text {
     margin-top: 0.25rem;
     font-size: 0.875em;
-    color: #6c757d;
+    color: #000;
 }
 
 .form-control {
@@ -2236,7 +2236,7 @@ textarea.form-control-lg {
 }
 
 .form-select:disabled {
-    color: #6c757d;
+    color: #000;
     background-color: #e9ecef;
 }
 
@@ -3645,7 +3645,7 @@ fieldset:disabled .btn {
 
 .btn-link:disabled,
 .btn-link.disabled {
-    color: #6c757d;
+    color: #000;
 }
 
 .btn-lg,
@@ -4019,7 +4019,7 @@ fieldset:disabled .btn {
 
 .dropdown-item.disabled,
 .dropdown-item:disabled {
-    color: #6c757d;
+    color: #000;
     pointer-events: none;
     background-color: transparent;
 }
@@ -4033,7 +4033,7 @@ fieldset:disabled .btn {
     padding: 0.5rem 1rem;
     margin-bottom: 0;
     font-size: 0.875rem;
-    color: #6c757d;
+    color: #000;
     white-space: nowrap;
 }
 
@@ -4214,7 +4214,7 @@ fieldset:disabled .btn {
 }
 
 .nav-link.disabled {
-    color: #6c757d;
+    color: #000;
     pointer-events: none;
     cursor: default;
 }
@@ -4238,7 +4238,7 @@ fieldset:disabled .btn {
 }
 
 .nav-tabs .nav-link.disabled {
-    color: #6c757d;
+    color: #000;
     background-color: transparent;
     border-color: transparent;
 }
@@ -4962,14 +4962,14 @@ fieldset:disabled .btn {
 .breadcrumb-item+.breadcrumb-item::before {
     float: left;
     padding-right: 0.5rem;
-    color: #6c757d;
+    color: #000;
     content: var(--bs-breadcrumb-divider, "/")
     /* rtl: var(--bs-breadcrumb-divider, "/") */
     ;
 }
 
 .breadcrumb-item.active {
-    color: #6c757d;
+    color: #000;
 }
 
 .pagination {
@@ -5020,7 +5020,7 @@ fieldset:disabled .btn {
 }
 
 .page-item.disabled .page-link {
-    color: #6c757d;
+    color: #000;
     pointer-events: none;
     background-color: #fff;
     border-color: #dee2e6;
@@ -5316,7 +5316,7 @@ fieldset:disabled .btn {
 
 .list-group-item.disabled,
 .list-group-item:disabled {
-    color: #6c757d;
+    color: #000;
     pointer-events: none;
     background-color: #fff;
 }
@@ -8174,7 +8174,7 @@ fieldset:disabled .btn {
 }
 
 .text-muted {
-    color: #6c757d !important;
+    color: #000 !important;
 }
 
 .text-black-50 {
@@ -13819,7 +13819,7 @@ p,
 }
 
 .text-xxs {
-    font-size: 0.65rem !important;
+    font-size: 16px !important;
 }
 
 p {

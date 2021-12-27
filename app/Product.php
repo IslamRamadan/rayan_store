@@ -39,6 +39,9 @@ class Product extends Model
     public function product_hights(){
         return $this->hasMany('App\ProdHeight' , 'product_id'  , 'id');
     }
+    public function colors(){
+        return $this->hasMany('App\ProdColor' , 'product_id'  , 'id');
+    }
 
     public function product_sizes(){
         return $this->hasMany('App\ProdSize' , 'product_id'  , 'id');

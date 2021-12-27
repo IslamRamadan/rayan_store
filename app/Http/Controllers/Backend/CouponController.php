@@ -27,7 +27,7 @@ class CouponController extends Controller
                     $action = '
 
                                                <meta name="csrf-token" content="{{ csrf_token() }}">
-                        <a href="'.url('coupons/destroy' , $row->id).'" class="btn btn-danger">Delete</a>
+                        <a href="'.url('coupons/destroy' , $row->id).'" class="btn btn-danger">'.\Lang::get('site.delete').'</a>
                         ';
 //
 

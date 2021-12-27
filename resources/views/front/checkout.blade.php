@@ -232,8 +232,8 @@
                                                     @guest()
                                                         @if (Cookie::get('name'))
                                                             {{ number_format(\App\Product::find($cart_child['product_id'])['price'] / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                                            {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
-                                                            @lang('site.kwd')
+                                                             {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                                            <!--@lang('site.kwd')-->
                                                         @else
                                                             {{ \App\Product::find($cart_child['product_id'])['price'] }}
                                                             @lang('site.kwd')
@@ -244,10 +244,17 @@
                                                     @lang('site.quantity')
                                                     : {{ $cart_child['quantity'] }}
                                                     <br>
+                                                    <?php $id = (\App\Product::find($cart_child['product_id'])['basic_category_id']);
+                                                    $category=\App\BasicCategory::find($id)->type;
+                                             ?>
+                                             {{-- {{dd($category)}} --}}
+                                                @if ($category !=1)
+
                                                     @lang('site.size'):
                                                     {{ \App\ProdSize::find($cart_child['product_size_id'])->size['name'] }}
                                                     <br>
                                                     @lang('site.code'): {{ $cart_child['product_id'] }} <br>
+                                                @endif
                                                 </p>
                                             </div>
                                         </div>
@@ -282,8 +289,8 @@
                                                     @guest()
                                                         @if (Cookie::get('name'))
                                                             {{ number_format(Session::get('cart_details')['totalPrice'] / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                                            {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
-                                                            @lang('site.kwd')
+                                                             {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                                            <!--@lang('site.kwd')-->
                                                         @else
                                                             {{ Session::get('cart_details')['totalPrice'] }}
                                                             @lang('site.kwd')
@@ -320,8 +327,8 @@
                                                         @guest()
                                                             @if (Cookie::get('name'))
                                                                 {{ number_format(Session::get('coupon')['discount'] / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                                                {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
-                                                                @lang('site.kwd')
+                                                                 {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                                                <!--@lang('site.kwd')-->
                                                             @else
                                                                 {{ Session::get('coupon')['discount'] }} @lang('site.kwd')
                                                             @endif
@@ -401,6 +408,7 @@
 
 
                 @endif
+
 
             </div><br><br>
         </div>

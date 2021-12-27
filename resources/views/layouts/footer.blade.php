@@ -51,6 +51,11 @@
                         <li class="list-inline-item"><a href="{{ $my_setting->instagram }}" target="_blank"
                                 title="instagram"><i class="fab fa-instagram fa-3x" style="color:#fc79b5"></i></a></li>
                     @endif
+                    @if (\App\Settings::all()->first()->twitter)
+                        <li class="list-inline-item"><a href="{{ $my_setting->twitter }}" target="_blank"
+                                title="snapchat"><i class="fab fa-snapchat-ghost fa-3x" style="color:#d5d334
+                                "></i></a></li>
+                    @endif
 
                 </ul>
             </div>
@@ -87,6 +92,7 @@
 <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
 <script>
     $(document).ready(function() {
@@ -202,17 +208,42 @@
 <script src="{{asset('front/assets/js/meanmenu.min.js')}}"></script>
 <script src="{{asset('front/assets/js/main.js')}}"></script>
 <script>
-    $('.owl-carousel').owlCarousel({
+    $('.owl-one').owlCarousel({
     loop:true,
     margin:10,
     responsiveClass:true,
+    // autoplay:true,
     lazyLoad:true,
     autoWidth:true,
 
     responsive:{
         0:{
             items:1,
-            nav:true
+            nav:false
+        },
+        600:{
+            items:2,
+            nav:false
+        },
+        1080:{
+            items:6,
+            nav:true,
+            loop:true
+        }
+    }
+});
+    $('.owl-two').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    // autoplay:true,
+    lazyLoad:true,
+    // autoWidth:true,
+
+    responsive:{
+        0:{
+            items:1,
+            nav:false
         },
         600:{
             items:2,
@@ -226,6 +257,66 @@
     }
 });
 
+// $('.owl-slider').owlCarousel({
+//     loop: false,
+//         margin: 10,
+
+//         responsive: {
+//             0: {
+//                 items: 1,
+//                 nav: true
+//             },
+//             600: {
+//                 items: 1,
+//                 nav: false
+//             },
+//             1000: {
+//                 items: 3,
+//                 nav: true,
+//                 loop: false
+//             }
+//         }
+// });
+$('.owl-three').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    // autoplay:true,
+    lazyLoad:true,
+    autoWidth:true,
+
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:2,
+            nav:false
+        },
+        1080:{
+            items:1,
+            nav:true,
+            loop:true
+        }
+    }
+});
+
+$('.owl-four').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:2
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:3
+        }
+    }});
 </script>
 {{-- slider ismail end --}}
 

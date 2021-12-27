@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-@section('page_title')  Home  @endsection
+@section('page_title')  @lang('site.home')  @endsection
 
 @section('style')
 

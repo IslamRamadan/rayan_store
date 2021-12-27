@@ -8,7 +8,7 @@ class BasicCategory extends Model
 {
     protected $table = 'basic_categories';
     protected $fillable = [
-        'name_ar', 'name_en', 'image_url',
+        'name_ar', 'name_en', 'image_url','type'
     ];
 
     public function categories(){

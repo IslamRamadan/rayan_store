@@ -218,27 +218,83 @@
 
                 </li>
 
+
             </ul>
         </div>
 
         <div>
             <a class="nav-link " href="{{ route('/') }}" style="padding: 3px !important;"> <img
-                    src="{{ asset('/storage/' . $my_setting->logo) }}" width="50"></a>
+                    src="{{ asset('/storage/' . $my_setting->logo) }}" width="70"></a>
         </div>
 
         <div class="text-right align-self-center mr-4">
             <nav class="navbar navbar-expand-md pad-0 p-0 ">
                 <ul class="navbar-nav1  mr-auto ">
+                    @guest()
+                        <li class="relative ul1">
+                            <a class="nav-link" style="">
+{{--                                @if (== 'remembered') checked="checked" @endif--}}
+                                @if(Cookie::get('name') )
+                                    {{--{{Cookie::get('name') }}--}}
+                                    {{--{{App\Country::find(Cookie::get('name'))->currency->name}}--}}
+                                    {{-- @if(app()->getLocale() == 'en')
+
+                                    {{App\Country::find(Cookie::get('name'))->name_en}}
+                                    @else
+                                        {{App\Country::find(Cookie::get('name'))->name_ar}}
+                                    @endif --}}
+                                    <img src="{{ asset('storage/'.App\Country::find(Cookie::get('name'))->image_url)}}" width="20px"> <i
+                                            class="fas fa-chevron-down " style="margin-bottom: -3px"></i>
+                                @else
+
+                                    @if(app()->getLocale() == 'en')
+
+                                    Choose country
+                                    @else
+                                        اختر دوله
+
+                                    @endif
+                                @endif
+
+                            </a>
+                            <div class=" ul2  bg-w  text-center ">
+
+                                @foreach(App\Country::all() as $country )
+
+                                    <a class="dropdown-item" rel="alternate"
+                                       href="{{route('cookie.set',$country->id)}}">
+                                        @if(app()->getLocale() == 'en')
+                                            {{ $country->name_en}}
+
+                                        @else
+                                            {{ $country->name_ar}}
+
+                                        @endif
+
+
+                                        <img src="{{asset('/storage/'.$country->image_url)}}"
+                                             width="20">
+                                    </a>
+
+
+                                @endforeach
+                            </div>
+                        </li>
+                        @endguest
+
+
+
                     <li class="nav-item relative ul1 mr-3">
                         <a class="nav-link " href="">
                             <i class="fas fa-search sml-fa" style="font-size: 25px;"></i></a>
                         <div class=" ul2  bg-w  text-left "
                             style="padding: 10px;width: 200px;background: transparent !important;box-shadow: none;border: none;">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="search ">
+                                <input type="text" class="form-control" id="search-word" name="search"
+                                placeholder="search " value="islam two" >
                                 <div class="input-group-append">
                                     <button class="input-group-text bg-main"> <i
-                                            class="fas fa-search sml-fa"></i></button>
+                                            class="fas fa-search sml-fa" id="search-submit"></i></button>
                                 </div>
                             </div>
 
@@ -283,7 +339,7 @@
         <!-- </div> -->
     </div>
 
-    <div class="container-fluid pad-0 bg-b d-md-block d-none head_rtl" style="background: white !important">
+    <div class="container-fluid pad-0 bg-b d-md-block d-none head_rtl" style="background: #000 !important">
         <div class="d-flex justify-content-center  ">
             <div class="float-left">
                 <nav class="navbar navbar-expand-md pad-0 p-0">
@@ -344,18 +400,25 @@
         </div>
     </div>
 
-    <nav class="d-md-none d-block bg-b " style="position: fixed;
+    <nav class="d-md-none d-block bg-white " style="position: fixed;
     top: 0;
     z-index: 3;
     width: -webkit-fill-available;">
 
         <div class=" d-flex justify-content-between ">
             <div class="relative" style="align-self: center">
-                <div class="nav-link">
-                    <button class="navbar-toggler  btn bg-none " type="button">
-                        <i class=" fas fa-bars c-w " style="font-size: 18px"></i>
+               <div class="d-flex">
+                <div class="nav-link p-0">
+                    <button class="navbar-toggler  btn bg-none " onclick="history.back()" type="button">
+                        <i class=" fas  fa-arrow-left " style="font-size: 18px;color:#000"></i>
                     </button>
                 </div>
+                <div class="nav-link p-0">
+                    <button class="navbar-toggler  btn bg-none " type="button">
+                        <i class=" fas fa-bars " style="font-size: 18px;color:#000"></i>
+                    </button>
+                </div>
+            </div>
 
 
                 <div class="sidbar bg-light text-dir dir-rtl" style="overflow: scroll;
@@ -363,8 +426,8 @@
                     <div class="border-bottom">
                         <br>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="search-word2" name="search_3"
-                                placeholder="search ">
+                            <input type="text" class="form-control" id="search-word2" name="search"
+                                placeholder="search " value="" >
                             <div class="input-group-append">
                                 <button class="input-group-text bg-main" id="search-submit2"><i
                                         class="fas fa-search "></i>
@@ -609,12 +672,12 @@
                 @auth()
                     <li class="nav-item ">
                         <a class="nav-link " href="{{ route('myaccount') }}"> <i class="fas fa-user sml-fa"
-                                style="color:#d76797"></i> </a>
+                                style=""></i> </a>
                     </li>
                 @endauth
 
                 <li class="nav-item"><a class="nav-link " href="{{ route('cart') }}"><i
-                            class="fas fa-shopping-cart sml-fa" style="font-size: 25px;color:#d76797"></i><span
+                            class="fas fa-shopping-cart sml-fa" style="font-size: 25px"></i><span
                             class='badge badge-warning' id='lblCartCount'>
                             {{ Session::has('cart_details') ? Session::get('cart_details')['totalQty'] : '0' }}
                         </span>
@@ -625,6 +688,10 @@
 
         </div>
     </nav>
+    <a  class="whats-app" href="https://wa.me/{{ $my_setting->whatsapp }}" target="_blank"
+        title="whatsapp">
+        <i class="fab fa-whatsapp my-float"></i>
+    </a>
     <div id="content-container">
 
     </div>
@@ -632,6 +699,7 @@
     <script>
         $('#search-submit').on('click', function(e) {
             e.preventDefault();
+            console.log('xxx');
 
             //TODO :: CALL AJAX
 
@@ -663,6 +731,7 @@
 
         $('#search-submit2').on('click', function(e) {
             e.preventDefault();
+            console.log('clicked');
 
             //TODO :: CALL AJAX
 

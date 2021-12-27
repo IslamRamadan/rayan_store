@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-@section('page_title')  Posts  @endsection
+@section('page_title')  @lang('site.posts')  @endsection
 @section('style')
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />--}}

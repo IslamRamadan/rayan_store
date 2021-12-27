@@ -25,7 +25,7 @@
     </script>
 
 @endsection
-@section('page_title')  Pages  @endsection
+@section('page_title')  @lang('site.pages')  @endsection
 
 @section('style')
     <script src="https://code.jquery.com/jquery-3.6.0.js"

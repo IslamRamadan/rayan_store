@@ -310,8 +310,8 @@
                                         @guest()
                                             @if (Cookie::get('name'))
                                                 {{ number_format($b->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                                {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
-                                                @lang('site.kwd')
+                                                {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                                {{-- @lang('site.kwd') --}}
                                             @else
                                                 {{ $b->price }} @lang('site.kwd')
 
@@ -414,8 +414,8 @@
                                                 @guest()
                                                     @if (Cookie::get('name'))
                                                         {{ number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                                        {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
-                                                        @lang('site.kwd')
+                                                        {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                                        {{-- @lang('site.kwd') --}}
                                                     @else
                                                         {{ $p->price }}
                                                         @lang('site.kwd')

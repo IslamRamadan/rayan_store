@@ -27,9 +27,9 @@ class NewsController extends Controller
                 ->addColumn('action', function($row){
 
                     $action = '
-                        <a class="btn btn-success"  href="'.route('news.edit' , $row->id).'" id="edit-user" >Edit </a>
+                        <a class="btn btn-success"  href="'.route('news.edit' , $row->id).'" id="edit-user" >'.\Lang::get('site.edit').' </a>
                         <meta name="csrf-token" content="{{ csrf_token() }}">
-                        <a href="'.url('news/destroy' , $row->id).'" class="btn btn-danger">Delete</a>
+                        <a href="'.url('news/destroy' , $row->id).'" class="btn btn-danger">'.\Lang::get('site.delete').'</a>
                         ';
 //
 

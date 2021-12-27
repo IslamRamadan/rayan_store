@@ -26,9 +26,9 @@ class sliderController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $action = '
-                        <a class="btn btn-success"  href="'.route('sliders.edit' , $row->id).'" >Edit </a>
+                        <a class="btn btn-success"  href="'.route('sliders.edit' , $row->id).'" >'.\Lang::get('site.edit').' </a>
                         <meta name="csrf-token" content="{{ csrf_token() }}">
-                        <a  href="'.route('sliders.destroy' , $row->id).'" class="btn btn-danger">Delete</a>
+                        <a  href="'.route('sliders.destroy' , $row->id).'" class="btn btn-danger">'.\Lang::get('site.delete').'</a>
 
                         ';
                     return $action;
