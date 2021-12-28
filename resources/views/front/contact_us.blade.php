@@ -6,115 +6,7 @@
 @section('content')
     <!-----start  --->
 
-    <br><br>
 
-    <div class="container-fluid">
-        <br>
-        <h2 class="text-center  d-flex justify-content-between">
-            <b></b>
-            <span class="">@lang('site.best_selling')
-
-            </span>
-            <b></b>
-        </h2>
-        <br>
-        <br>
-        <div class="owl-carousel owl-two owl-theme" id="one">
-            @if ($best_sell->count()>0)
-                @foreach ($best_sell as $b)
-                <div class="item best-sell">
-                    <div class="row dir-rtl" style="height:45vh">
-                        <div class="col-6 p-0 res-wid">
-                            <a href="{{ route('product', $b->id) }}">
-                                <img src="{{ asset('/storage/' . $b->img) }}" style="width: 100%;height:100%">
-                            </a>
-                        </div>
-                        <div class=" col-6 p-2 text-dir m-auto">
-                            <h5 class="font-weight-bold">
-                                <a href="{{ route('product', $b->id) }}">
-                                    @if (Lang::locale() == 'ar')
-                                    {{ $b->title_ar }}
-
-                                @else
-                                    {{ $b->title_en }}
-
-
-                                @endif
-                                </a>
-                            </h5>
-                            <p><a href="{{ route('product', $b->id) }}">
-
-
-                                @if (Lang::locale() == 'ar')
-                                    {{-- {{$p->basic_category->name_ar}}
-                                        -
-                                        {{$p->category->name_ar}} --}}
-                                    <?php $pieces = explode(' ', $b->description_ar);
-                                    $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
-                                    {{ $first_part }}
-                                @else
-
-                                    {{-- {{$p->basic_category->name_en}}
-                                        -
-                                        {{$p->category->name_en}} --}}
-                                    <?php $pieces = explode(' ', $b->description_en);
-                                    $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
-                                    {{ $first_part }}
-                                @endif
-
-
-                            </a></p>
-                            <div class="d-flex justify-content-between">
-                                @if ($b->has_offer == 1)
-                                <h6 class="font-small" class="font-weight-bold  " style="text-decoration: line-through">
-                                        @auth()
-                                        {{ Auth::user()->getPrice($b->before_price) }}
-                                        {{ Auth::user()->country->currency->code }}
-                                    @endauth
-                                    @guest()
-                                        @if (Cookie::get('name'))
-                                            {{ number_format($b->before_price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                            {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
-                                            @lang('site.kwd')
-                                        @else
-                                            {{ $b->before_price }}
-                                            @lang('site.kwd')
-                                        @endif
-                                    @endguest
-                                </h6>
-                                @endif
-                                <h5 class="font-weight-bold  ">
-                                    @auth()
-                                    {{ Auth::user()->getPrice($b->price) }}
-                                    {{ Auth::user()->country->currency->code }}
-                                @endauth
-                                @guest()
-                                    @if (Cookie::get('name'))
-                                        {{ number_format($b->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                        {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
-                                        @lang('site.kwd')
-                                    @else
-                                        {{ $b->price }} @lang('site.kwd')
-
-                                    @endif
-                                @endguest
-                                </h5>
-
-
-                            </div>
-                            <a href="{{ route('product', $b->id) }}" class="btn btn-dark text-light font-weight-bold" style="background: #f13582;border:none">
-                            @lang('site.add_to_cart')
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-                @endforeach
-            @endif
-
-
-        </div>
-    </div>
     <br> <br>
     <div class="col-md-6 col-10 col-sm-12 col-xs-12 text-dir" style="margin: auto;">
         <h3 class="account-table-head">@lang('site.contact_us')</h3>
@@ -186,7 +78,7 @@
                 </div>
 
 
-                <button type="submit" class="btn btn-dark">
+                <button type="submit" class="btn btn-danger">
                     save
                 </button>
 

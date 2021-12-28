@@ -180,7 +180,7 @@
                                 {{-- <input value="2021-01-20 03:16:46" name="Orders[created_at]" id="Orders_created_at" --}}
                                 {{-- type="hidden"> --}}
                                 <div class="form-actions">
-                                    <button class="btn btn-third-col bg-b"
+                                    <button class="btn btn-third-col bg-b brdr "
                                         type="submit">@lang('site.complete_purshase')</button>
 
                                 </div>
@@ -396,7 +396,7 @@
                                             {{ session()->get('success_message') }}
                                         </div>
                                     @endif
-                                    <button type="submit" class="btn btn-third-col bg-b">@lang('site.apply')</button>
+                                    <button type="submit" class="btn btn-third-col bg-b brdr ">@lang('site.apply')</button>
 
                                 </form>
 

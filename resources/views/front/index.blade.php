@@ -81,16 +81,7 @@
 
     @endif
 
-    <div class="text-dir new1 " style="background-image:url({{ asset('/storage/' . $my_setting->ad_image) }})">
 
-        <h1 class="c-w">
-
-        </h1>
-        <p class="c-w ">
-
-        </p>
-
-    </div>
 
     <!-----start carousel --->
     <div id="carouselExampleIndicators" class="carousel slide relative" data-ride="carousel">
@@ -142,82 +133,101 @@
     <!--- end head --->
     <br>
 
-    <div class="container pad-0 ">
 
+    <br><br>
+    </div>
+
+    <div class="container pad-0">
         <br>
         <h2 class="text-center  d-flex justify-content-between">
             <b></b>
-            <span>
-                @lang('site.basic_categories')
+            <span class="">@lang('site.menu')
+
             </span>
             <b></b>
         </h2>
-        <br><br>
-
-        <div class="row">
-
-
-
-            <div class="blog-slides owl-carousel owl-one owl-theme owl-loaded owl-drag">
-
-
-
-
-
-
-
-
-
-                <div class="owl-stage-outer">
-                    <div class="owl-stage"
-                        style="transform: translate3d(-2280px, 0px, 0px); transition: all 0.25s ease 0s; width: 3000px;">
-                        @if ($system_basic_categories->count() > 0)
-
-                            @foreach ($system_basic_categories as $b)
-                                <div class="owl-item active" style="width:200px; margin-right: 30px;">
-                                    <div class="single-blog-post mb-30" style="width: 250px">
-                                        <div class="post-image">
-                                            <a href="{{ route('category', [1, $b->id]) }}" class="d-block">
-                                                <img src="{{ asset('/storage/' . $b->image_url) }}" alt="image">
-                                            </a>
-
-                                            <!-- <div class="tag">
-                                            <a href="#">Management</a>
-                                        </div> -->
-                                        </div>
-
-                                        <div class="post-content text-center">
-
-                                            <h3><a href="single-blog.html" class="d-inline-block">
-                                                    @if (app()->getLocale() == 'en')
-                                                        {{ $b->name_en }}
-                                                    @else
-                                                        {{ $b->name_ar }}
-                                                    @endif
-                                                </a></h3>
-                                            {{-- <h6><a href="single-blog.html" class="d-inline-block">How to enhance education </a></h6> --}}
-                                            {{-- <h3><a href="single-blog.html" class="d-inline-block">120 KWD</a></h3> --}}
-                                            <!-- <a href="single-blog.html" class="read-more-btn">Read More <i class='bx bx-right-arrow-alt'></i></a> -->
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-
-                        @endif
-
-
-                    </div>
+        <br>
+        <br>
+        <div class="row dir-rtl">
+            <div class="col-lg-4 col-md-5 col-sm-5 text-dir">
+                <div class="heading-section text-md-right ftco-animate">
+                    <h2 class="mb-2">@lang('site.our_menu')</h2>
+                    <p class="mb-4">@lang('site.far')</p>
+                    {{-- <p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">@lang('site.view_menu')</a></p> --}}
                 </div>
-                <div class="owl-nav"><button type="button" role="presentation" class="owl-prev">
-                        <span aria-label="Previous">‹</span></button><button type="button" role="presentation"
-                        class="owl-next"><span aria-label="Next">›</span></button></div>
-                <div class="owl-dots disabled"></div>
+
             </div>
+            <div class="col-lg-8 col-md-7 col-sm-7">
+                <div class="owl-carousel owl-four owl-theme">
+                    <div class="item">
+                        <div class="img-slider" style="position: relative">
+                            <img src="{{ url('front/img/1.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{ url('front/img/2.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{ url('front/img/3.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{ url('front/img/4.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{ url('front/img/5.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{ url('front/img/6.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{ url('front/img/7.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img-slider">
+                            <img src="{{ url('front/img/8.jpg') }}" alt="">
+                            <div class="middle">
+                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
-
-
-    </div>
-    <br><br>
     </div>
 
 
@@ -357,7 +367,71 @@
     </div>
 
 
+    <div class="owl-carousel owl-five owl-theme">
+        <a href="{{route('cart')}}" target="_blank">
+            <div class="item">
+                <div class="text-dir new1 "
+                    style="background-image:url({{ asset('/storage/' . $my_setting->ad_image) }})">
 
+                    <h1 class="c-w">
+
+                    </h1>
+                    <p class="c-w ">
+
+                    </p>
+
+                </div>
+            </div>
+        </a>
+        <a href="{{route('cart')}}" target="_blank">
+
+            <div class="item">
+                <div class="text-dir new1 "
+                    style="background-image:url({{ asset('/storage/' . $my_setting->ad_image) }})">
+
+                    <h1 class="c-w">
+
+                    </h1>
+                    <p class="c-w ">
+
+                    </p>
+
+                </div>
+            </div>
+        </a>
+        <a href="{{route('cart')}}" target="_blank">
+
+            <div class="item">
+                <div class="text-dir new1 "
+                    style="background-image:url({{ asset('/storage/' . $my_setting->ad_image) }})">
+
+                    <h1 class="c-w">
+
+                    </h1>
+                    <p class="c-w ">
+
+                    </p>
+
+                </div>
+            </div>
+        </a>
+        <a href="{{route('cart')}}" target="_blank">
+            <div class="item">
+                <div class="text-dir new1 "
+                    style="background-image:url({{ asset('/storage/' . $my_setting->ad_image) }})">
+
+                    <h1 class="c-w">
+
+                    </h1>
+                    <p class="c-w ">
+
+                    </p>
+
+                </div>
+            </div>
+        </a>
+
+    </div>
 
 
     @if ($offers->count() > 0)
@@ -518,98 +592,7 @@
     @endif
 
 
-    <div class="container pad-0">
-        <br>
-        <h2 class="text-center  d-flex justify-content-between">
-            <b></b>
-            <span class="">@lang('site.menu')
 
-            </span>
-            <b></b>
-        </h2>
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-lg-4 col-md-5 col-sm-5">
-                <div class="heading-section text-md-right ftco-animate">
-                    <h2 class="mb-2">@lang('site.our_menu')</h2>
-                    <p class="mb-4">@lang('site.far')</p>
-                    <p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">@lang('site.view_menu')</a></p>
-                </div>
-
-            </div>
-            <div class="col-lg-8 col-md-7 col-sm-7">
-                <div class="owl-carousel owl-four owl-theme">
-                    <div class="item">
-                        <div class="img-slider" style="position: relative">
-                            <img src="{{ url('front/img/1.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img-slider">
-                            <img src="{{ url('front/img/2.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img-slider">
-                            <img src="{{ url('front/img/3.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img-slider">
-                            <img src="{{ url('front/img/4.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img-slider">
-                            <img src="{{ url('front/img/5.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img-slider">
-                            <img src="{{ url('front/img/6.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img-slider">
-                            <img src="{{ url('front/img/7.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img-slider">
-                            <img src="{{ url('front/img/8.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
 
 
     <br> <br>

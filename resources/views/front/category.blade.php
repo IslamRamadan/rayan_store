@@ -21,7 +21,7 @@
                 <div class="carousel-item  @if ($i == 0) active @endif ">
                     <img class=" w-100 h " src="{{ asset('storage/' . $one->img) }}" alt="1 slide"
                         style="height: 70vh">
-                    @if (app()->getLocale() == 'en')
+                    {{-- @if (app()->getLocale() == 'en')
                         <div class="abs w-100">
                             <p class="c-w mr-0">{{ $one->description_en }}</p>
                             <h1 class=""> {{ $one->name_en }}</h1>
@@ -32,7 +32,7 @@
                             <h1 class=""> {{ $one->name_ar }}</h1>
                             <button class=" btn btn-danger">@lang('site.shop_now') <i class="far fa-heart"></i></button>
                         </div>
-                    @endif
+                    @endif --}}
 
 
                 </div>

@@ -100,6 +100,7 @@ a {
 .bg-b {
     background: #000!important;
     color: #fff!important;
+    /* border: 1px solid; */
 }
 
 
@@ -116,8 +117,8 @@ a {
 
 .bg-main,
 a.bg-main {
-    background-color: #c49b63!important;
-    color: #fff!important;
+    background-color: #c49b63;
+    color: rgb(0, 0, 0)!important;
 }
 
 .bg-b nav li>a {
@@ -385,7 +386,7 @@ footer {
 }
 
 .h-img {
-    height: 100vh;
+    height: 70vh;
     object-fit: cover;
 }
 
@@ -416,7 +417,9 @@ footer {
 }
 
 .color-blocks .color input:checked+label {
-    border: 2px solid #000;
+    border: 2px solid #fff;
+    background: #c49b63;
+    color: #000;
 }
 
 .color-blocks .color label,
@@ -448,10 +451,14 @@ footer {
 .product-count {
     height: 40px!important;
     border: 1px solid lightgray;
-    background: #ddd;
+    background: rgb(0, 0, 0);
     margin-bottom: 13px;
-    width: 90px;
+    width: 100px;
     white-space: nowrap;
+}
+
+.brdr {
+    border: 1px solid !important;
 }
 
 
@@ -477,7 +484,7 @@ input.form-control:disabled {
 }
 
 .product-count .btn:hover {
-    color: #212224;
+    color: #ffffff;
 }
 
 .product-count .btn:focus:not(:hover) {
@@ -486,7 +493,7 @@ input.form-control:disabled {
 }
 
 .product-count .btn {
-    color: #8a9099;
+    color: #ffffff;
 }
 
 .hide-img {
@@ -1181,7 +1188,7 @@ h6.font-small {
 }
 
 .brdr-btm {
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid #c49b63;
     padding-bottom: 10fpx;
 }
 
@@ -1205,8 +1212,8 @@ h6.font-small {
 }
 
 li.nav-item:hover {
-    border-bottom: 2px solid #000;
-    border-top: 2px solid #000;
+    border-bottom: 2px solid #c49b63;
+    border-top: 2px solid #c49b63;
 }
 
 .btn.btn-primary.btn-outline-primary {
@@ -1370,4 +1377,19 @@ li.nav-item:hover {
     height: 1px;
     background: #c49b63;
     margin: 0 auto;
+}
+
+.hv:hover {
+    background: #c29351;
+    color: #fff;
+}
+
+.bg-main,
+a.bg-main:hover {
+    background: #c29351;
+}
+
+.hv {
+    width: 100%;
+    background: #c49b63;
 }

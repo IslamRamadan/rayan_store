@@ -310,7 +310,7 @@
                             </span></p>
                         <p class="active text-dir"> @lang('site.payment_receive')</p>
                         <a  href="{{route('checkout')}}" class="btn w-100 bg-main c-w ">@lang('site.checkout')</a>  <br><br>
-                        <a  href="{{route('/')}}" class="btn w-100 bg-b c-w">@lang('site.shopping')</a> <br><br>
+                        <a  href="{{route('/')}}" class="btn w-100 bg-b c-w brdr">@lang('site.shopping')</a> <br><br>
 
                     </div>
                 </div>

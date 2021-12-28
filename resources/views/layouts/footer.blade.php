@@ -38,8 +38,7 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-6 col-sm-6 mb-lg-0">
                 <div class="text-center">
-                <img src="{{ asset('/storage/' . $my_setting->footer_logo) }}" style="mix-blend-mode: multiply;
-                    " alt="" width="100" class="mb-3">
+                <img src="{{ asset('/storage/' . $my_setting->footer_logo) }}"  alt="" width="140" class="mb-3">
                     </div>
                 {{-- <p class="font-italic text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p> --}}
                 <ul class="list-inline mt-4 text-center" style="direction: ltr">
@@ -305,6 +304,7 @@ $('.owl-three').owlCarousel({
 $('.owl-four').owlCarousel({
     loop:true,
     margin:10,
+    rtl:true,
     nav:true,
     responsive:{
         0:{
@@ -315,6 +315,22 @@ $('.owl-four').owlCarousel({
         },
         1000:{
             items:3
+        }
+    }});
+
+$('.owl-five').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:1
+        },
+        1000:{
+            items:1
         }
     }});
 </script>

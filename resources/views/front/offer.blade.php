@@ -82,7 +82,7 @@
     </div>
 
     <div class="container">
-        <div class="row dir-rtl">
+        <div class=" dir-rtl">
 
 
 

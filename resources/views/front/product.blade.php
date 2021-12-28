@@ -239,7 +239,7 @@
                         <span>@lang('site.size') :</span>
 
                         @if ($product->product_sizes->count() > 0)
-                            <div class="d-flex rtl-margin">
+                            <div class="d-flex rtl-margin flex-wrap">
                                 @foreach ($product->product_sizes as $size)
 
                                     <div class="radio-inline color">
@@ -280,13 +280,13 @@
                 </form>
                 @if ($product->basic_category->type!= 1 &&$product->size_guide_id !=null )
 
-                <a class="btn bg-main " data-toggle="modal" data-target="#exampleModalCenter"
-                    style="width: 100%;background: #d76797 !important;">@lang('site.size_guide')</a>
+                <a class="btn bg-main hv" data-toggle="modal" data-target="#exampleModalCenter"
+                    style="">@lang('site.size_guide')</a>
                     @endif
-                <a id="add_cart" class="btn bg-main "
-                    style="width: 100%;background: #000000 !important;margin-top:10px">@lang('site.add_to_cart')</a>
-                <a class="btn bg-main addToWishList" data-product-id="{{ $product->id }}"
-                    style="margin:10px 0px;width: 100%;background: #d76797 !important;">@lang('site.add_to_wishlist')</a>
+                <a id="add_cart" class="btn hv "
+                    style="margin-top:10px;border:1px solid;">@lang('site.add_to_cart')</a>
+                <a class="btn bg-main hv addToWishList" data-product-id="{{ $product->id }}"
+                    style="margin:10px 0px;">@lang('site.add_to_wishlist')</a>
 
 
             </div>
@@ -327,7 +327,7 @@
         </h3>
         <br>
 
-        <div class="row text-dir">
+        <div class="row text-dir dir-rtl">
 
             <div class="col-12">
                 <ul class="tablinks  row MyServices mr-0 pad-0 text-center justify-content-center">
@@ -346,7 +346,7 @@
 
                                                 </div> --}}
                                                 <div style="flex-direction: column;display: flex">
-                                                    <div>
+                                                    <div class="position-relative">
                                                         <a href="{{ route('product', $p->id) }}"
                                                             class="test image-hover">
 

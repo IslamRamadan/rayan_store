@@ -1611,7 +1611,7 @@ pre code {
 .table {
     width: 100%;
     margin-bottom: 1rem;
-    color: #212529;
+    color: #ffffff;
 }
 
 .table th,
@@ -2460,7 +2460,7 @@ textarea.form-control.is-invalid {
 .btn {
     display: inline-block;
     font-weight: 400;
-    color: #212529;
+    color: #fff;
     text-align: center;
     vertical-align: middle;
     -webkit-user-select: none;
@@ -2483,7 +2483,7 @@ textarea.form-control.is-invalid {
 }
 
 .btn:hover {
-    color: #212529;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -2713,14 +2713,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-danger {
-    color: #fff;
+    color: rgb(0, 0, 0);
     background-color: #c49b63;
     border-color: #c49b63;
 }
 
 .btn-danger:hover {
     color: #fff;
-    background-color: #c49b63;
+    background-color: #000000;
     border-color: #c49b63;
 }
 
@@ -2833,6 +2833,14 @@ fieldset:disabled a.btn {
 .btn-dark:not(:disabled):not(.disabled).active:focus,
 .show>.btn-dark.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.2rem rgba(82, 88, 93, 0.5);
+}
+
+.btn-danger:not(:disabled):not(.disabled).active,
+.btn-danger:not(:disabled):not(.disabled):active,
+.show>.btn-danger.dropdown-toggle {
+    color: #fff;
+    background-color: #000000;
+    border-color: #ffffff;
 }
 
 .btn-outline-primary {

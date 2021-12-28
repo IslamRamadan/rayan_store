@@ -37,7 +37,7 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
                             </div>
                             <div class="col-xs-12 col-sm-12 view-cart">
                                 <br><br>
-                                <a href="{{route('cart')}}" class="btn-dark btn">@lang('site.cart_details') <i
+                                <a href="{{route('cart')}}" class="vh brdr btn">@lang('site.cart_details') <i
                                         class="fas fa-shopping-bag" style="font-size: 20px"></i></a>
                             </div>
                         </div>
@@ -189,7 +189,7 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
 
                     <div class="row">
                         <div class="col-xs-12" style="margin: 13px">
-                            <button class="btn btn-dark" type="submit">@lang('site.save')</button>
+                            <button class="btn btn-danger" type="submit">@lang('site.save')</button>
                         </div>
                     </div>
                 </form>

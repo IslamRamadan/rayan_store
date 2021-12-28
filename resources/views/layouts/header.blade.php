@@ -230,57 +230,6 @@
         <div class="text-right align-self-center mr-4">
             <nav class="navbar navbar-expand-md pad-0 p-0 ">
                 <ul class="navbar-nav1  mr-auto ">
-                    @guest()
-                        <li class="relative ul1">
-                            <a class="nav-link" style="">
-{{--                                @if (== 'remembered') checked="checked" @endif--}}
-                                @if(Cookie::get('name') )
-                                    {{--{{Cookie::get('name') }}--}}
-                                    {{--{{App\Country::find(Cookie::get('name'))->currency->name}}--}}
-                                    {{-- @if(app()->getLocale() == 'en')
-
-                                    {{App\Country::find(Cookie::get('name'))->name_en}}
-                                    @else
-                                        {{App\Country::find(Cookie::get('name'))->name_ar}}
-                                    @endif --}}
-                                    <img src="{{ asset('storage/'.App\Country::find(Cookie::get('name'))->image_url)}}" width="20px"> <i
-                                            class="fas fa-chevron-down " style="margin-bottom: -3px"></i>
-                                @else
-
-                                    @if(app()->getLocale() == 'en')
-
-                                    Choose country
-                                    @else
-                                        اختر دوله
-
-                                    @endif
-                                @endif
-
-                            </a>
-                            <div class=" ul2  bg-w  text-center ">
-
-                                @foreach(App\Country::all() as $country )
-
-                                    <a class="dropdown-item" rel="alternate"
-                                       href="{{route('cookie.set',$country->id)}}">
-                                        @if(app()->getLocale() == 'en')
-                                            {{ $country->name_en}}
-
-                                        @else
-                                            {{ $country->name_ar}}
-
-                                        @endif
-
-
-                                        <img src="{{asset('/storage/'.$country->image_url)}}"
-                                             width="20">
-                                    </a>
-
-
-                                @endforeach
-                            </div>
-                        </li>
-                        @endguest
 
 
 
