@@ -73,7 +73,7 @@
             <img src="{{asset('/storage/'.$my_setting->logo)}}"
                  onerror="this.onerror=null;this.src='{{asset('front/img/logo1.PNG')}}'"
 
-                 class="navbar-brand-img h-100 w-50" alt="...">
+                 class="navbar-brand-img " alt="...">
             <p>
             <span class="ms-1 font-weight-bold">
                 {{$my_setting->site_name_en}}
@@ -831,7 +831,7 @@
                         @endforeach
 
                     <li class="nav-item">
-                        <a  class="nav-link  btn btn-primary "  style="color:white" href="{{ route('logout') }}"
+                        <a  class="nav-link  btn btn-primary "   href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                                  document.getElementById('logout-form').submit();">
                             @lang('site.logout')

@@ -13,7 +13,7 @@
         <div class="  col-md-5 d-md-block" style="margin: 20px auto !important">
             <div class="table_block table-responsive dir-rtl">
                 <table class="table table-bordered">
-                    <thead class="btn-dark">
+                    <thead class="gq text-dark">
 
                         <tr>
                             <th colspan="2" class="text-center">@lang('site.order_summary')</th>
@@ -22,42 +22,42 @@
                     <tbody>
                         <tr>
                         <tr>
-                            <th scope="row" class="btn-dark">@lang('site.invoice_id')</th>
+                            <th scope="row" class="gq text-dark">@lang('site.invoice_id')</th>
                             <td>{{ $invoice->invoice_id }}</td>
 
                         </tr>
                         <tr>
-                            <th scope="row" class="btn-dark">@lang('site.total_price')</th>
+                            <th scope="row" class="gq text-dark">@lang('site.total_price')</th>
                             <td>{{ $invoice->total_price }} @lang('site.kwd')</td>
 
                         </tr>
-                        <th scope="row" class="btn-dark">@lang('site.email')</th>
+                        <th scope="row" class="gq text-dark">@lang('site.email')</th>
                         <td>{{ $invoice->email }}</td>
 
                         </tr>
                         <tr>
-                            <th scope="row" class="btn-dark">@lang('site.phone')</th>
+                            <th scope="row" class="gq text-dark">@lang('site.phone')</th>
                             <td>{{ $invoice->phone }}</td>
 
                         </tr>
                         <tr>
-                            <th scope="row" class="btn-dark">@lang('site.address1')</th>
+                            <th scope="row" class="gq text-dark">@lang('site.address1')</th>
                             <td>{{ $invoice->address1 }}</td>
 
                         </tr>
 
                         <tr>
-                            <th scope="row" class="btn-dark">@lang('site.name')</th>
+                            <th scope="row" class="gq text-dark">@lang('site.name')</th>
                             <td>{{ $invoice->name }}</td>
 
                         </tr>
                         <tr>
-                            <th scope="row" class="btn-dark">@lang('site.total_quantity')</th>
+                            <th scope="row" class="gq text-dark">@lang('site.total_quantity')</th>
                             <td>{{ $invoice->total_quantity }}</td>
 
                         </tr>
                         <tr>
-                            <th scope="row" class="btn-dark">@lang('site.date_of_order')</th>
+                            <th scope="row" class="gq text-dark">@lang('site.date_of_order')</th>
                             <td>{{ $invoice->created_at }}</td>
 
                         </tr>
@@ -141,7 +141,7 @@
         <br>
         <h2 class="text-center  d-flex justify-content-between">
             <b></b>
-            <span class="">@lang('site.menu')
+            <span class="">@lang('site.our_menu')
 
             </span>
             <b></b>
@@ -159,71 +159,22 @@
             </div>
             <div class="col-lg-8 col-md-7 col-sm-7">
                 <div class="owl-carousel owl-four owl-theme">
+                    @foreach (App\BasicCategory::all() as $item)
+                   <a href="{{ route('category', [1, $item->id]) }}">
                     <div class="item">
                         <div class="img-slider" style="position: relative">
-                            <img src="{{ url('front/img/1.jpg') }}" alt="">
+                            <img src="{{ asset('/storage/' . $item->image_url) }}" alt="">
                             <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                @if (Lang::locale() == 'en')
+                                <div class="btn btn-danger">{{$item->name_en}}</div>
+                                @else
+                                <div class="btn btn-danger">{{$item->name_ar}}</div>
+                                @endif
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="img-slider">
-                            <img src="{{ url('front/img/2.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img-slider">
-                            <img src="{{ url('front/img/3.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img-slider">
-                            <img src="{{ url('front/img/4.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img-slider">
-                            <img src="{{ url('front/img/5.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img-slider">
-                            <img src="{{ url('front/img/6.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img-slider">
-                            <img src="{{ url('front/img/7.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img-slider">
-                            <img src="{{ url('front/img/8.jpg') }}" alt="">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
-                        </div>
-                    </div>
-
+                  </a>
+                    @endforeach
                 </div>
             </div>
 
@@ -367,11 +318,12 @@
     </div>
 
 
-    <div class="owl-carousel owl-five owl-theme">
+    <div class="owl-carousel owl-five owl-theme p-3">
+        @foreach (App\Post::all() as $post)
         <a href="{{route('cart')}}" target="_blank">
             <div class="item">
                 <div class="text-dir new1 "
-                    style="background-image:url({{ asset('/storage/' . $my_setting->ad_image) }})">
+                    style="background-image:url({{ asset('/storage/' . $post->img1) }})">
 
                     <h1 class="c-w">
 
@@ -383,53 +335,9 @@
                 </div>
             </div>
         </a>
-        <a href="{{route('cart')}}" target="_blank">
+        @endforeach
 
-            <div class="item">
-                <div class="text-dir new1 "
-                    style="background-image:url({{ asset('/storage/' . $my_setting->ad_image) }})">
 
-                    <h1 class="c-w">
-
-                    </h1>
-                    <p class="c-w ">
-
-                    </p>
-
-                </div>
-            </div>
-        </a>
-        <a href="{{route('cart')}}" target="_blank">
-
-            <div class="item">
-                <div class="text-dir new1 "
-                    style="background-image:url({{ asset('/storage/' . $my_setting->ad_image) }})">
-
-                    <h1 class="c-w">
-
-                    </h1>
-                    <p class="c-w ">
-
-                    </p>
-
-                </div>
-            </div>
-        </a>
-        <a href="{{route('cart')}}" target="_blank">
-            <div class="item">
-                <div class="text-dir new1 "
-                    style="background-image:url({{ asset('/storage/' . $my_setting->ad_image) }})">
-
-                    <h1 class="c-w">
-
-                    </h1>
-                    <p class="c-w ">
-
-                    </p>
-
-                </div>
-            </div>
-        </a>
 
     </div>
 

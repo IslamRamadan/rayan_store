@@ -108,6 +108,8 @@ Route::group(
     Route::group(['middleware' => ['adminAuth' ,  'role:admin']], function () {
         Route::resource('users','Backend\UserController');
         Route::get('users/destroy/{id}','Backend\UserController@destroy')->name('users.destroy');
+        Route::get('visitors','Backend\UserController@visitor')->name('visitors');
+
         Route::get('admins/destroy/{id}','Backend\AdminController@destroy');
 //        Route::get('users/destroy/{id}','Backend\UserController@destroy')->name('users.destroy');
         Route::get('basic_categories/destroy/{id}','Backend\BasicCategoryController@destroy');
@@ -133,6 +135,8 @@ Route::group(
         Route::resource('contact_us','Backend\ContactUsController');
         Route::resource('orders','Backend\OrderController');
         Route::get('/order/notpaid','Backend\OrderController@not_paid')->name('noorders');
+        Route::get('orders_today' , 'Backend\OrderController@today')->name('orders.today');
+
         Route::resource('posts','Backend\PostController');
         Route::resource('news','Backend\NewsController');
         Route::resource('coupons','Backend\CouponController');

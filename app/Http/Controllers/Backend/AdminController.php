@@ -250,6 +250,13 @@ class AdminController extends Controller
     }
 
     public function admin(){
+                // $orders=Order::where('status','!=',0)->get();
+        // // dd($orders);
+        // foreach ($orders as  $order) {
+        //     $country=Country::find($order->country_id);
+        //     $country->num_order+=1 ;
+        //     $country->save();
+        // }
         return view('dashboard.home');
     }
 

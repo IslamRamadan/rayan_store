@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-@section('page_title')  @lang('site.users')  @endsection
+@section('page_title')  Users  @endsection
 
 @section('style')
     <script src="https://code.jquery.com/jquery-3.6.0.js"
@@ -27,6 +27,7 @@
 
 @endsection
 @section('content')
+
     <div class="container">
         <br>
         <div class="row">
@@ -34,6 +35,52 @@
                 <div class="pull-right">
                     {{--                <a class="btn btn-success mb-2" id="new-user" data-toggle="modal">New User</a>--}}
                     <a class="btn btn-success mb-2" href="{{route('users.create')}}">@lang('site.new_user')</a>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2 justify-content-center">
+            <div class="col-xl-3 col-sm-6  mb-4">
+
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers dir-rtl ">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">@lang('site.num_users')</p>
+                                    <h5 class="font-weight-bolder mb-0">
+                                        {{App\User::where('job_id',0)->count()}}
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6  mb-4">
+
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers dir-rtl ">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">@lang('site.today_users')</p>
+                                    <h5 class="font-weight-bolder mb-0">
+                                        {{$today}}
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,7 +100,8 @@
                     <th width="10%">@lang('site.email')</th>
                     <th width="10%">@lang('site.password')</th>
                     <th width="10%">@lang('site.country')</th>
-                    <th width="10%">@lang('site.phone')</th>
+                    <th width="10%">@lang('site.order_cost')</th>
+{{--                    <th width="10%">@lang('site.phone')</th>--}}
                     <th width="20%">@lang('site.created_at')</th>
                     <th width="10%">@lang('site.action')</th>
                 </tr>
@@ -164,7 +212,8 @@
                     {data: 'email', name: 'email'},
                     {data: 'password_view', name: 'password_view'},
                     {data: 'country', name: 'country'},
-                    {data: 'phone', name: 'phone'},
+                    {data: 'order_cost', name: 'order_cost'},
+                    // {data: 'phone', name: 'phone'},
                     {data: 'created_at', name: 'created_at'},
 
 

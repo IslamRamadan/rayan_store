@@ -1641,7 +1641,7 @@ pre code {
 
 .table-bordered th,
 .table-bordered td {
-    border: 1px solid #dee2e6;
+    border: 1px solid #000000;
 }
 
 .table-bordered thead th,
@@ -10018,7 +10018,7 @@ a.text-light:focus {
 }
 
 .text-dark {
-    color: #343a40 !important;
+    color: #000 !important;
 }
 
 a.text-dark:hover,
@@ -10133,7 +10133,7 @@ a.text-dark:focus {
     }
     .table-bordered th,
     .table-bordered td {
-        border: 1px solid #dee2e6 !important;
+        border: 1px solid #000 !important;
     }
     .table-dark {
         color: inherit;

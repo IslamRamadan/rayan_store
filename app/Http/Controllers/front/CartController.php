@@ -9,6 +9,8 @@ use App\Height;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\OrderItem;
+use App\Visitor;
+
 use App\ProdHeight;
 use App\ProdSize;
 use App\Product;
@@ -980,11 +982,11 @@ class CartController extends Controller
         //Test
 
 
-        // $apiURL = 'https://apitest.myfatoorah.com';
-        // $apiKey = 'rLtt6JWvbUHDDhsZnfpAhpYk4dxYDQkbcPTyGaKp2TYqQgG7FGZ5Th_WD53Oq8Ebz6A53njUoo1w3pjU1D4vs_ZMqFiz_j0urb_BH9Oq9VZoKFoJEDAbRZepGcQanImyYrry7Kt6MnMdgfG5jn4HngWoRdKduNNyP4kzcp3mRv7x00ahkm9LAK7ZRieg7k1PDAnBIOG3EyVSJ5kK4WLMvYr7sCwHbHcu4A5WwelxYK0GMJy37bNAarSJDFQsJ2ZvJjvMDmfWwDVFEVe_5tOomfVNt6bOg9mexbGjMrnHBnKnZR1vQbBtQieDlQepzTZMuQrSuKn-t5XZM7V6fCW7oP-uXGX-sMOajeX65JOf6XVpk29DP6ro8WTAflCDANC193yof8-f5_EYY-3hXhJj7RBXmizDpneEQDSaSz5sFk0sV5qPcARJ9zGG73vuGFyenjPPmtDtXtpx35A-BVcOSBYVIWe9kndG3nclfefjKEuZ3m4jL9Gg1h2JBvmXSMYiZtp9MR5I6pvbvylU_PP5xJFSjVTIz7IQSjcVGO41npnwIxRXNRxFOdIUHn0tjQ-7LwvEcTXyPsHXcMD8WtgBh-wxR8aKX7WPSsT1O8d8reb2aR7K3rkV3K82K_0OgawImEpwSvp9MNKynEAJQS6ZHe_J_l77652xwPNxMRTMASk1ZsJL';
+        $apiURL = 'https://apitest.myfatoorah.com';
+        $apiKey = 'rLtt6JWvbUHDDhsZnfpAhpYk4dxYDQkbcPTyGaKp2TYqQgG7FGZ5Th_WD53Oq8Ebz6A53njUoo1w3pjU1D4vs_ZMqFiz_j0urb_BH9Oq9VZoKFoJEDAbRZepGcQanImyYrry7Kt6MnMdgfG5jn4HngWoRdKduNNyP4kzcp3mRv7x00ahkm9LAK7ZRieg7k1PDAnBIOG3EyVSJ5kK4WLMvYr7sCwHbHcu4A5WwelxYK0GMJy37bNAarSJDFQsJ2ZvJjvMDmfWwDVFEVe_5tOomfVNt6bOg9mexbGjMrnHBnKnZR1vQbBtQieDlQepzTZMuQrSuKn-t5XZM7V6fCW7oP-uXGX-sMOajeX65JOf6XVpk29DP6ro8WTAflCDANC193yof8-f5_EYY-3hXhJj7RBXmizDpneEQDSaSz5sFk0sV5qPcARJ9zGG73vuGFyenjPPmtDtXtpx35A-BVcOSBYVIWe9kndG3nclfefjKEuZ3m4jL9Gg1h2JBvmXSMYiZtp9MR5I6pvbvylU_PP5xJFSjVTIz7IQSjcVGO41npnwIxRXNRxFOdIUHn0tjQ-7LwvEcTXyPsHXcMD8WtgBh-wxR8aKX7WPSsT1O8d8reb2aR7K3rkV3K82K_0OgawImEpwSvp9MNKynEAJQS6ZHe_J_l77652xwPNxMRTMASk1ZsJL';
         //Live
-        $apiURL = 'https://api.myfatoorah.com';
-        $apiKey = 'bOP13e6rFDKxF8Q1GSGwrj327hMz4Pp7FEipItzvOVvmayOCblo1FDh2UV5uHGvgQatGWtPJGl68PQQJ4a3X3Xfp8VvSISvECda7uFZrJoo-JRBWbuGa4VLuKCTSaa1unjBoW8ywv1BL-dBPo3gMdjHovkbyDj8q2YRu_sH_IEMpKMeTUPkdeJI0l0DfDNTjqfj8iojDTZkfvOizJ4nGq2MOhBNHNsMdDcSX5yxfLv8ZJwqv_DVrZbfUxoVXX6kgHKMQcu7HBhqiO60K6Riujviasephrsa8k7qnylOZbLbEaSIXRuc7C_nRvvmUwqbw9HHG00gWAePF5KHsuuIquufKqfBZbIdbMWrM6bAzZkKSxCMIvM0adIJjzMWkI5SJc82ujVo76VRMpNvL-hx9cobZSN5AU1GklZXDCiTsITAo-AD60R3Q9M98YDYZVdihDc5lfGarVnEIMfqoz5qWI7m8te7Lj-V8oyFCpxZlTVa3SET7htHL9FvA_iQ1rivns7JnKwezb7l6jPi6uihYJmdQBbfqCJ27gkOanKQ7mBGPFscfyFX0e0dL5Cp7vhi3akde0GCtz9IBUkmXHU6bGVroP08agaxH92Y8Oxs_uTaAj87dNW4INKfwLur6Oepcy9egvLG0IYovcPhvXzw1fPEeXqDvL1vzmWNSycuMNdSyfBvz'; //Live token value to be placed here: https://myfatoorah.readme.io/docs/live-token
+        // $apiURL = 'https://api.myfatoorah.com';
+        // $apiKey = 'bOP13e6rFDKxF8Q1GSGwrj327hMz4Pp7FEipItzvOVvmayOCblo1FDh2UV5uHGvgQatGWtPJGl68PQQJ4a3X3Xfp8VvSISvECda7uFZrJoo-JRBWbuGa4VLuKCTSaa1unjBoW8ywv1BL-dBPo3gMdjHovkbyDj8q2YRu_sH_IEMpKMeTUPkdeJI0l0DfDNTjqfj8iojDTZkfvOizJ4nGq2MOhBNHNsMdDcSX5yxfLv8ZJwqv_DVrZbfUxoVXX6kgHKMQcu7HBhqiO60K6Riujviasephrsa8k7qnylOZbLbEaSIXRuc7C_nRvvmUwqbw9HHG00gWAePF5KHsuuIquufKqfBZbIdbMWrM6bAzZkKSxCMIvM0adIJjzMWkI5SJc82ujVo76VRMpNvL-hx9cobZSN5AU1GklZXDCiTsITAo-AD60R3Q9M98YDYZVdihDc5lfGarVnEIMfqoz5qWI7m8te7Lj-V8oyFCpxZlTVa3SET7htHL9FvA_iQ1rivns7JnKwezb7l6jPi6uihYJmdQBbfqCJ27gkOanKQ7mBGPFscfyFX0e0dL5Cp7vhi3akde0GCtz9IBUkmXHU6bGVroP08agaxH92Y8Oxs_uTaAj87dNW4INKfwLur6Oepcy9egvLG0IYovcPhvXzw1fPEeXqDvL1vzmWNSycuMNdSyfBvz'; //Live token value to be placed here: https://myfatoorah.readme.io/docs/live-token
 
 
         /* ------------------------ Call SendPayment Endpoint ----------------------- */
@@ -1172,12 +1174,12 @@ class CartController extends Controller
         /* ------------------------ Configurations ---------------------------------- */
 
         //Test
-        // $apiURL = 'https://apitest.myfatoorah.com';
-        // $apiKey = 'rLtt6JWvbUHDDhsZnfpAhpYk4dxYDQkbcPTyGaKp2TYqQgG7FGZ5Th_WD53Oq8Ebz6A53njUoo1w3pjU1D4vs_ZMqFiz_j0urb_BH9Oq9VZoKFoJEDAbRZepGcQanImyYrry7Kt6MnMdgfG5jn4HngWoRdKduNNyP4kzcp3mRv7x00ahkm9LAK7ZRieg7k1PDAnBIOG3EyVSJ5kK4WLMvYr7sCwHbHcu4A5WwelxYK0GMJy37bNAarSJDFQsJ2ZvJjvMDmfWwDVFEVe_5tOomfVNt6bOg9mexbGjMrnHBnKnZR1vQbBtQieDlQepzTZMuQrSuKn-t5XZM7V6fCW7oP-uXGX-sMOajeX65JOf6XVpk29DP6ro8WTAflCDANC193yof8-f5_EYY-3hXhJj7RBXmizDpneEQDSaSz5sFk0sV5qPcARJ9zGG73vuGFyenjPPmtDtXtpx35A-BVcOSBYVIWe9kndG3nclfefjKEuZ3m4jL9Gg1h2JBvmXSMYiZtp9MR5I6pvbvylU_PP5xJFSjVTIz7IQSjcVGO41npnwIxRXNRxFOdIUHn0tjQ-7LwvEcTXyPsHXcMD8WtgBh-wxR8aKX7WPSsT1O8d8reb2aR7K3rkV3K82K_0OgawImEpwSvp9MNKynEAJQS6ZHe_J_l77652xwPNxMRTMASk1ZsJL';
+        $apiURL = 'https://apitest.myfatoorah.com';
+        $apiKey = 'rLtt6JWvbUHDDhsZnfpAhpYk4dxYDQkbcPTyGaKp2TYqQgG7FGZ5Th_WD53Oq8Ebz6A53njUoo1w3pjU1D4vs_ZMqFiz_j0urb_BH9Oq9VZoKFoJEDAbRZepGcQanImyYrry7Kt6MnMdgfG5jn4HngWoRdKduNNyP4kzcp3mRv7x00ahkm9LAK7ZRieg7k1PDAnBIOG3EyVSJ5kK4WLMvYr7sCwHbHcu4A5WwelxYK0GMJy37bNAarSJDFQsJ2ZvJjvMDmfWwDVFEVe_5tOomfVNt6bOg9mexbGjMrnHBnKnZR1vQbBtQieDlQepzTZMuQrSuKn-t5XZM7V6fCW7oP-uXGX-sMOajeX65JOf6XVpk29DP6ro8WTAflCDANC193yof8-f5_EYY-3hXhJj7RBXmizDpneEQDSaSz5sFk0sV5qPcARJ9zGG73vuGFyenjPPmtDtXtpx35A-BVcOSBYVIWe9kndG3nclfefjKEuZ3m4jL9Gg1h2JBvmXSMYiZtp9MR5I6pvbvylU_PP5xJFSjVTIz7IQSjcVGO41npnwIxRXNRxFOdIUHn0tjQ-7LwvEcTXyPsHXcMD8WtgBh-wxR8aKX7WPSsT1O8d8reb2aR7K3rkV3K82K_0OgawImEpwSvp9MNKynEAJQS6ZHe_J_l77652xwPNxMRTMASk1ZsJL';
 
         //Live
-        $apiURL = 'https://api.myfatoorah.com';
-        $apiKey = 'bOP13e6rFDKxF8Q1GSGwrj327hMz4Pp7FEipItzvOVvmayOCblo1FDh2UV5uHGvgQatGWtPJGl68PQQJ4a3X3Xfp8VvSISvECda7uFZrJoo-JRBWbuGa4VLuKCTSaa1unjBoW8ywv1BL-dBPo3gMdjHovkbyDj8q2YRu_sH_IEMpKMeTUPkdeJI0l0DfDNTjqfj8iojDTZkfvOizJ4nGq2MOhBNHNsMdDcSX5yxfLv8ZJwqv_DVrZbfUxoVXX6kgHKMQcu7HBhqiO60K6Riujviasephrsa8k7qnylOZbLbEaSIXRuc7C_nRvvmUwqbw9HHG00gWAePF5KHsuuIquufKqfBZbIdbMWrM6bAzZkKSxCMIvM0adIJjzMWkI5SJc82ujVo76VRMpNvL-hx9cobZSN5AU1GklZXDCiTsITAo-AD60R3Q9M98YDYZVdihDc5lfGarVnEIMfqoz5qWI7m8te7Lj-V8oyFCpxZlTVa3SET7htHL9FvA_iQ1rivns7JnKwezb7l6jPi6uihYJmdQBbfqCJ27gkOanKQ7mBGPFscfyFX0e0dL5Cp7vhi3akde0GCtz9IBUkmXHU6bGVroP08agaxH92Y8Oxs_uTaAj87dNW4INKfwLur6Oepcy9egvLG0IYovcPhvXzw1fPEeXqDvL1vzmWNSycuMNdSyfBvz'; //Live token value to be placed here: https://myfatoorah.readme.io/docs/live-token
+        // $apiURL = 'https://api.myfatoorah.com';
+        // $apiKey = 'bOP13e6rFDKxF8Q1GSGwrj327hMz4Pp7FEipItzvOVvmayOCblo1FDh2UV5uHGvgQatGWtPJGl68PQQJ4a3X3Xfp8VvSISvECda7uFZrJoo-JRBWbuGa4VLuKCTSaa1unjBoW8ywv1BL-dBPo3gMdjHovkbyDj8q2YRu_sH_IEMpKMeTUPkdeJI0l0DfDNTjqfj8iojDTZkfvOizJ4nGq2MOhBNHNsMdDcSX5yxfLv8ZJwqv_DVrZbfUxoVXX6kgHKMQcu7HBhqiO60K6Riujviasephrsa8k7qnylOZbLbEaSIXRuc7C_nRvvmUwqbw9HHG00gWAePF5KHsuuIquufKqfBZbIdbMWrM6bAzZkKSxCMIvM0adIJjzMWkI5SJc82ujVo76VRMpNvL-hx9cobZSN5AU1GklZXDCiTsITAo-AD60R3Q9M98YDYZVdihDc5lfGarVnEIMfqoz5qWI7m8te7Lj-V8oyFCpxZlTVa3SET7htHL9FvA_iQ1rivns7JnKwezb7l6jPi6uihYJmdQBbfqCJ27gkOanKQ7mBGPFscfyFX0e0dL5Cp7vhi3akde0GCtz9IBUkmXHU6bGVroP08agaxH92Y8Oxs_uTaAj87dNW4INKfwLur6Oepcy9egvLG0IYovcPhvXzw1fPEeXqDvL1vzmWNSycuMNdSyfBvz'; //Live token value to be placed here: https://myfatoorah.readme.io/docs/live-token
 
 
         /* ------------------------ Call getPaymentStatus Endpoint ------------------ */
@@ -1227,6 +1229,37 @@ class CartController extends Controller
 
         $order->status = 1;
         $order->save();
+
+        if (!Auth::check()) {   // Check is user logged in
+            $visitor=Visitor::where('phone',$order->phone)->first();
+        // dd($visitor);
+
+        if($visitor){
+        // dd($visitor);
+
+            $visitor->num_order+=1;
+            $visitor->sum_order+= $order->total_price;
+            $visitor->save();
+        }
+        else{
+            Visitor::create([
+               'name'=>$order->name,
+               'email'=>$order->email,
+               'phone'=> $order->phone,
+               'region'=> $order->city->name_ar,
+               'num_order'=>1,
+               'sum_order'=> $order->total_price
+            ]);
+        }
+        }
+
+        $country=Country::find($order->country_id);
+
+        $country->num_order+=1;
+        $country->save();
+
+
+
         /*
              * order with order_id and price is price paid successfully and delivery is happening
              *

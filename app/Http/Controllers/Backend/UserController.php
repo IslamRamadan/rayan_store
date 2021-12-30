@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Order;
+use App\Visitor;
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -20,8 +24,17 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $ids=User::select('id','order_cost')->get();
+        foreach ($ids as $id ) {
+            $orders = Order::where('status','!=',0)->where('user_id',$id->id)->sum('total_price');
+            $id->order_cost = $orders;
+            $id->save();
+            // dd($orders);
+        }
+        $today=User::where('job_id' , 0)->where('created_at','>=',  Carbon::today())->count();
+
         if ($request->ajax()) {
-            $data = User::where('job_id' , 0)->latest()->get();
+            $data = User::where('job_id' , 0)->orderBy("order_cost","desc")->latest()->get();
             return Datatables::of($data)
                 ->addColumn('created_at', function ($artist) {
                     $date = date_create($artist->created_at);
@@ -44,8 +57,50 @@ class UserController extends Controller
                 ->make(true);
         }
 
-        return view('dashboard.users.index');
+        return view('dashboard.users.index',compact('today'));
     }
+
+    public function visitor(Request $request){
+
+        // $orders=Order::where('status','!=',0)->get();
+        // // dd($orders);
+        // foreach ($orders as $order ) {
+        //     $visitor=Visitor::where('phone',$order->phone)->first();
+        //     // dd($visitor);
+
+        //     if($visitor){
+        //     // dd($visitor);
+
+        //         $visitor->num_order+=1;
+        //         $visitor->sum_order+= $order->total_price;
+        //         $visitor->save();
+        //     }
+        //     else{
+        //         Visitor::create([
+        //            'name'=>$order->name,
+        //            'email'=>$order->email,
+        //            'phone'=> $order->phone,
+        //            'region'=> $order->city->name_ar,
+        //            'num_order'=>1,
+        //            'sum_order'=> $order->total_price
+        //         ]);
+        //     }
+        // }
+        if ($request->ajax()) {
+            $data = Visitor::orderBy("sum_order","desc")->latest()->get();
+            return Datatables::of($data)
+
+
+                ->addIndexColumn()
+
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('dashboard.users.visitors');
+
+    }
+
 
     public function create(){
         return view('dashboard.users.create');
