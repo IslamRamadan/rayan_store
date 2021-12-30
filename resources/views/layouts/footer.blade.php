@@ -66,7 +66,7 @@
 <div class="container-fluid pad-0 bg-dark  text-center">
     <div class="container  ">
         <br>
-        <p class="c-w mr-0">Copyright 2021 © RAYAN STORE
+        <p class="c-w mr-0">Copyright 2021 © MASAHA 13
             Design by <a target="_blank" href="https://bluezonekw.com/">bluezone</a>
         </p>
         <br>
