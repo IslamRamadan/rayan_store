@@ -1,5 +1,11 @@
 @extends('dashboard.layouts.app')
-@section('page_title')  Users  @endsection
+@section('page_title')
+
+
+@lang('site.users')
+
+
+@endsection
 
 @section('style')
     <script src="https://code.jquery.com/jquery-3.6.0.js"
@@ -86,7 +92,7 @@
         </div>
         <div class="card-header pb-0">
             <h6>
-            Users
+                @lang('site.users')
             </h6>
         </div>
         <div class="card-body px-0 pt-0 pb-2">

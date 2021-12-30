@@ -35,6 +35,113 @@
                 @lang('site.paid_orders')
             </h6>
         </div>
+        <div class="row mt-2">
+            <div class="col-xl-3 col-sm-6  mb-4">
+                <a href="{{route('orders.index')}}">
+
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers dir-rtl">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">@lang('site.num_paid_orders')</p>
+                                    <h5 class="font-weight-bolder mb-0">
+                                        {{$number}}
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+
+            <div class="col-xl-3 col-sm-6  mb-4">
+                <a href="{{route('orders.index')}}">
+
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers dir-rtl">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">@lang('site.total_orders')</p>
+                                    <h5 class="font-weight-bolder mb-0">
+                                        {{$total_price}} <span>@lang('site.kwd')</span>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+
+            <div class="col-xl-3 col-sm-6  mb-4">
+                <a href="{{route('orders.today')}}">
+
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers dir-rtl">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">@lang('site.today_orders')</p>
+                                    <h5 class="font-weight-bolder mb-0">
+                                        {{$today}}
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+
+                                        <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+
+            <div class="col-xl-3 col-sm-6  mb-4">
+                <a href="{{route('orders.today')}}">
+
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers dir-rtl">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">@lang('site.total_today')</p>
+                                    <h5 class="font-weight-bolder mb-0">
+                                        {{$today_price}} <span>@lang('site.kwd')</span>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+
+
+
+
+
+        </div>
         <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive p-0">
                 <table class="table align-items-center justify-content-center mb-0 data-table  text-secondary text-xs ">

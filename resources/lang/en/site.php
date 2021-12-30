@@ -321,6 +321,8 @@ return [
     'today_users'=>'Today\'s Users',
     'top_countries'=>'Orders by countries',
     'order_cost'=>'Order cost',
+    'visitors'=>'Visitors',
+
     // 'content_ar'=>'KWD',
     // 'content_ar'=>'KWD',
     // 'content_ar'=>'KWD',

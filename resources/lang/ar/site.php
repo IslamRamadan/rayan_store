@@ -319,7 +319,7 @@ return [
          'top_countries'=>'الطلبات حسب الدول',
     'order_cost'=>'اجمالى المدفوعات',
 
-   //    'edit_page'=>'',
+      'visitors'=>'الزائرين',
    //    'edit_page'=>'',
    //    'edit_page'=>'',
    //    'edit_page'=>'',
