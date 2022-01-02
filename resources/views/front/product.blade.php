@@ -199,73 +199,48 @@
 
                 <br>
 
-                <div id="colors" class="mb-2">
-                    <div id="s" class="color-blocks" style="">
-                        <span>@lang('site.color') :</span>
+                @if ($product->basic_category->type!= 1)
 
-                        @if ($product->colors->count() > 0)
-                            <div class="d-flex rtl-margin">
-                                {{-- @foreach ($product->colors as $color)
+<div id="colors" class="mb-2">
+    <div id="s" class="color-blocks" style="">
+        <span>@lang('site.color') :</span>
 
-                                    <div class="radio-inline color">
-                                        <input type="radio" name="color" value="{{ $color->id }}"
-                                            >
-                                            {{$color->name_en}}
-                                        <label for="color-{{ $color->id }}">{{ $color->color->name_en }}</label>
+        @if ($product->product_sizes->count()  > 0)
+            <div class="d-flex rtl-margin">
+                {{-- @foreach ($product->colors as $color)
 
-                                    </div>
+                    <div class="radio-inline color">
+                        <input type="radio" name="color" value="{{ $color->id }}"
+                            >
+                            {{$color->name_en}}
+                        <label for="color-{{ $color->id }}">{{ $color->color->name_en }}</label>
 
-
-                                @endforeach --}}
-                                <select class="form-control" id="exampleFormControlSelect1" name="color">
-                                    @foreach ($product->colors as $color)
-                                    <option value="{{ $color->id }}">{{$color->color->name_en}}</option>
-                                    @endforeach
-                                  </select>
-                            </div>
-                        @else
-                            المنتج غير متوفر
-                        @endif
                     </div>
-                </div>
+
+
+                @endforeach --}}
+                <select class="form-control" id="size_val" name="color">
+
+                    @foreach ($product->product_sizes as $size)
+                    <option value="{{ $size->id }}" id="size-{{ $size->id }}">{{$size->size->name}}</option>
+
+                    @endforeach
+                </select>
+            </div>
+        @else
+            المنتج غير متوفر
+        @endif
+    </div>
+</div>
+@endif
+
                 <br>
                 @if (Lang::locale() == 'ar')
                 <br>
                 @endif
-                @if ($product->basic_category->type!= 1)
-
-                <div id="colors" class="mb-2">
-                    <div id="s" class="color-blocks" style="">
-                        <span>@lang('site.size') :</span>
-
-                        @if ($product->product_sizes->count() > 0)
-                            <div class="d-flex rtl-margin flex-wrap">
-                                @foreach ($product->product_sizes as $size)
-
-                                    <div class="radio-inline color">
-                                        <input type="radio" name="size" value="{{ $size->id }}"
-                                            id="size-{{ $size->id }}">
-                                        <label for="size-{{ $size->id }}">{{ $size->size->name }}</label>
-                                    </div>
-
-
-                                @endforeach
-                            </div>
-                        @else
-                            المنتج غير متوفر
-                        @endif
-                    </div>
-                </div>
-                <br>
-                <br>
-                @endif
 
 
 
-
-                <div id="heights">
-
-                </div>
 
                 {{-- <br>
                 <h6 style="font-weight:600 " class="textarea-dir" >@lang('site.note')</h6>
@@ -278,11 +253,7 @@
                         class="cart_quantity_input form-control grey count" value="1" name="quantity">
                     <a rel="nofollow" class="btn btn-default btn-plus" href="#" title="Add" style="margin: -9px;">+</a>
                 </form>
-                @if ($product->basic_category->type!= 1 &&$product->size_guide_id !=null )
 
-                <a class="btn bg-main hv" data-toggle="modal" data-target="#exampleModalCenter"
-                    style="">@lang('site.size_guide')</a>
-                    @endif
                 <a id="add_cart" class="btn hv "
                     style="margin-top:10px;border:1px solid;">@lang('site.add_to_cart')</a>
                 <a class="btn bg-main hv addToWishList" data-product-id="{{ $product->id }}"
@@ -500,7 +471,7 @@
                 //GET HEIGHT ID
 
 
-                let size = 0;
+                let size = $('#size_val').find(":selected").val();
                 let height = 0;
                 let product = '{{ $product->id }}';
                 let quantity = $("input[name=quantity]").val();
@@ -508,16 +479,18 @@
 
 
                 //TODO :: IF NOT SELECTED HEIGHT OR SIZE ASK TO CHOOSE
-
-                if ($('input[name=size]').is(':checked')) {
-                    size = $("input[name=size]:checked").val();
+                if(basic_type==1){
+                    size = 0;
                 }
+                // if ($('input[name=size]').is(':checked')) {
+                //     size = $("input[name=size]:checked").val();
+                // }
 
-                if ($('input[name=height]').is(':checked')) {
-                    height = $("input[name=height]:checked").val();
-                }
+                // if ($('input[name=height]').is(':checked')) {
+                //     height = $("input[name=height]:checked").val();
+                // }
 
-                if ((basic_type !=1 && size == 0) || ( basic_type!=1 && height == 0)) {
+                if ((basic_type !=1 && size == 0) ) {
                     Swal.fire({
                         icon: '?',
                         title: 'يرجي تحديد الخيارات ',
@@ -568,7 +541,7 @@
                         });
                         // console.log(result);
 
-                        location.reload();
+                        // location.reload();
 
 
                     },

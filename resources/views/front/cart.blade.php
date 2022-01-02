@@ -6,6 +6,7 @@
 @section('content')
     <!-----start  --->
     <!-----  ----->
+    {{-- @dd(Session::get('cart'))) --}}
     <div class="container " > <br><br>
         <h3 class="text-dir">@lang('site.shopping_cart')
         </h3>
@@ -29,7 +30,7 @@
                             <th >@lang('site.product_image')</th>
                             <th >@lang('site.product_name')</th>
                             <th >@lang('site.size')</th>
-                            <th >@lang('site.height')</th>
+                            {{-- <th >@lang('site.height')</th> --}}
                             <th >@lang('site.price')</th>
                             <th >@lang('site.quantity')</th>
                             <th ></th>
@@ -85,7 +86,7 @@
 
 
                                 </td>
-                                <td >
+                                {{-- <td >
                                     @if ($category !=1)
 
                                     <p class="">
@@ -103,7 +104,7 @@
 
 
 
-                                </td>
+                                </td> --}}
                             <td >
                                 <br>
                                 <span class="font-weight-bold">
@@ -146,10 +147,10 @@
                                  <div class="form-group"
                                       style="display: flex;align-items: center;justify-content: center"
                                  >
-                                     <a rel="nofollow" class="btn btn-default btn-minus" href="#" onclick="changeProduct(-1 ,{{$cart_child['product_id']}},{{$cart_child['product_height_id']}})" >&ndash;</a>
+                                     <a rel="nofollow" class="btn btn-default btn-minus" href="#" onclick="changeProduct(-1 ,{{$cart_child['product_id']}},{{$cart_child['product_size_id']}})" >&ndash;</a>
                                      <input type="number" style="width: 40px; border: 0;border-radius: 10px ; text-align:center"  class="count"
                                             value="{{$cart_child['quantity']}}" name="quantity">
-                                     <a rel="nofollow" class="btn btn-default btn-plus" href="#" onclick="changeProduct(1 ,{{$cart_child['product_id']}},{{$cart_child['product_height_id']}})" >+</a>
+                                     <a rel="nofollow" class="btn btn-default btn-plus" href="#" onclick="changeProduct(1 ,{{$cart_child['product_id']}},{{$cart_child['product_size_id']}})" >+</a>
                                  </div>
 {{--                                    <button class="col-12 text-center"--}}
 {{--                                            type="submit"--}}
@@ -353,7 +354,7 @@
                 data:{
                     operation:operation,
                     product_id:productId,
-                    product_height_id: productHeightId,
+                    product_size_id: productHeightId,
                     _token:"{{csrf_token()}}",
                 },
                 success: function (result) {

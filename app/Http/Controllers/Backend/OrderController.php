@@ -244,15 +244,7 @@ class OrderController extends Controller
                 ->addColumn('price', function ($artist) {
                     return $artist->product->price?:"";
                 })
-                ->addColumn('height', function ($artist) {
-                    if ($artist->product->basic_category->type == 1) {
-                        return "-";
-                    }
-                    else{
-                        return $artist->height->height->name?:"";
 
-                    }
-                })
                 ->addColumn('size', function ($artist) {
                     if ($artist->product->basic_category->type == 1) {
                         return "-";

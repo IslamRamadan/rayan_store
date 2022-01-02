@@ -200,17 +200,23 @@ class ProductController extends Controller
                             "product_id" => $product->id,
                             "size_id" => $size,
                         ]);
+                        ProdHeight::create([
+                            "product_id" => $product->id,
+                            "size_id" => $size,
+                            'height_id' => 1000,
+                            'quantity' => $request[$size . 'quantity'] ?: 0,
+                        ]);
 
-                        for ($i = 0; $i <= count($request[$size . 'height']); $i++) {
-                            if (!empty($request[$size . 'height'][$i])) {
-                                ProdHeight::create([
-                                    "product_id" => $product->id,
-                                    "size_id" => $size,
-                                    'height_id' => $request[$size . 'height'][$i],
-                                    'quantity' => $request[$size . $request[$size . 'height'][$i] . 'quantity'] ?: 0,
-                                ]);
-                            }
-                        }
+                        // for ($i = 0; $i <= count($request[$size . 'height']); $i++) {
+                        //     if (!empty($request[$size . 'height'][$i])) {
+                        //         ProdHeight::create([
+                        //             "product_id" => $product->id,
+                        //             "size_id" => $size,
+                        //             'height_id' => $request[$size . 'height'][$i],
+                        //             'quantity' => $request[$size . $request[$size . 'height'][$i] . 'quantity'] ?: 0,
+                        //         ]);
+                        //     }
+                        // }
                     }
                 }
             }
@@ -545,17 +551,23 @@ class ProductController extends Controller
                             "product_id" => $id,
                             "size_id" => $size,
                         ]);
+                        ProdHeight::create([
+                            "product_id" => $id,
+                            "size_id" => $size,
+                            'height_id' => 1000,
+                            'quantity' => $request[$size . 'quantity'] ?: 0,
+                        ]);
 
-                        for ($i = 0; $i <= count($request[$size . 'height']); $i++) {
-                            if (!empty($request[$size . 'height'][$i])) {
-                                ProdHeight::create([
-                                    "product_id" => $id,
-                                    "size_id" => $size,
-                                    'height_id' => $request[$size . 'height'][$i],
-                                    'quantity' => $request[$size . '-' . $request[$size . 'height'][$i] . '-' . 'quantity'] ?: 0,
-                                ]);
-                            }
-                        }
+                        // for ($i = 0; $i <= count($request[$size . 'height']); $i++) {
+                        //     if (!empty($request[$size . 'height'][$i])) {
+                        //         ProdHeight::create([
+                        //             "product_id" => $id,
+                        //             "size_id" => $size,
+                        //             'height_id' => $request[$size . 'height'][$i],
+                        //             'quantity' => $request[$size . '-' . $request[$size . 'height'][$i] . '-' . 'quantity'] ?: 0,
+                        //         ]);
+                        //     }
+                        // }
                     }
                 }
             }

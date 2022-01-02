@@ -270,39 +270,16 @@
                                     @if ($size_product == $size->id)  {{ 'checked' }} @endif
                 @endforeach
                 >
+                <input type="number"
+                                    style="border: 1px solid rgba(0,0,0,0.1) ; border-radius: 10px;padding: 5px;width: 70px"
+                                    placeholder="الكميه" name="{{ $size->id }}quantity"
+                                    value="">
         </div>
         </div>
         </div>
 
 
-        <div class="d-flex justify-content-left" style="flex-wrap: wrap;margin: 5px">
-            @foreach ($heights as $height)
 
-                <div class="form-check" style="margin: 5px">
-                    <input class="form-check-input" type="checkbox" name="{{ $size->id }}height[]" id="height"
-                        value="{{ $height->id }}" @for ($i = 0; $i < count($height_products_array); $i++)
-                    @for ($j = 0; $j < count($height_products_array[$i]); $j++)
-                        {{-- {{dd($height_product->size_id)}} --}}
-                        @if ($height_products_array[$i][$j]->size_id == $size->id && $height_products_array[$i][$j]->height_id == $height->id)  {{ 'checked' }} @endif
-                    @endfor
-            @endfor
-
-            >
-            <label class="form-check-label" for="height">{{ $height->name }}
-            </label>
-
-
-            <input type="number" style="border: 1px solid grey ; border-radius: 10px;padding: 5px;width: 70px"
-                placeholder="الكميه" name="{{ $size->id }}-{{ $height->id }}-quantity" <?php for($i =0;$i<count($height_products_array );$i++){
-                            for($j=0;$j<count($height_products_array[$i]);$j++){
-                                if (($height_products_array[$i][$j]->size_id == $size->id ) && ($height_products_array[$i][$j]->height_id == $height->id)){
-                                ?>
-                value="{{ trim($height_products_array[$i][$j]->quantity) }}" <?php     }}}
-                            ?>>
-        </div>
-        @endforeach
-
-        </div>
 
         </li>
         @endforeach

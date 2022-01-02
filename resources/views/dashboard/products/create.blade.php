@@ -262,12 +262,16 @@
                                     </label>
                                     <input class="form-check-input" type="checkbox" value="{{ $size->id }}"
                                         style="margin-left: 15px" name="size[]" {{-- {{ old('size',$size->id) ? 'checked' : '' }} --}}>
+                                    <input type="number"
+                                    style="border: 1px solid rgba(0,0,0,0.1) ; border-radius: 10px;padding: 5px;width: 70px"
+                                    placeholder="الكميه" name="{{ $size->id }}quantity"
+                                    value="">
                                 </div>
                             </div>
                         </div>
 
 
-                        <div class="d-flex justify-content-left" style="flex-wrap: wrap;margin: 5px">
+                        {{-- <div class="d-flex justify-content-left" style="flex-wrap: wrap;margin: 5px">
                             @foreach ($heights as $height)
 
                                 <div class="form-check" style="margin: 10px">
@@ -284,7 +288,7 @@
                                 </div>
                             @endforeach
 
-                        </div>
+                        </div> --}}
 
                     </li>
                 @endforeach

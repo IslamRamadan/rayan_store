@@ -211,7 +211,6 @@
                         <th width="5%">Id</th>
                         <th width="10%">@lang('site.product_name')</th>
                         <th width="10%">@lang('site.cat_name')</th>
-                        <th width="10%">@lang('site.height')</th>
                         <th width="10%">@lang('site.size')</th>
                         <th width="10%">@lang('site.quantity')</th>
                         <th width="10%">@lang('site.item_price')</th>
@@ -253,10 +252,7 @@
                         data: 'category',
                         name: 'category'
                     },
-                    {
-                        data: 'height',
-                        name: 'height'
-                    },
+
                     {
                         data: 'size',
                         name: 'size'

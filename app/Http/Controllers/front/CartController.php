@@ -131,23 +131,24 @@ class CartController extends Controller
             $current_height = ProdHeight::where('product_id',$product['product_id'])->where('height_id',0)->where('size_id',0)->first();
             // dd($current_height->quantity);
         }else{
-        $current_height = ProdHeight::find($product['product_height_id']);
-        }
+            $size=ProdSize::find($product['product_size_id'])->size_id;
+            $current_height = ProdHeight::where('size_id',$size)->where('product_id',$product['product_id'])->first();
+              }
         // dd($product,$current_product,$current_height);
 
 
         if ($product['quantity'] > $current_height->quantity) {
-
+            dd('no');
             Alert::error('الكميه الموجوده حاليا لهذا المقاس اقل من الكميه المطلوبه !');
 
             return back();
         }
 
-        if (isset($cart[$product['product_id']][$product['product_height_id']])) :
-            $cart[$product['product_id']][$product['product_height_id']]['quantity'] += $product['quantity'];
+        if (isset($cart[$product['product_id']][$product['product_size_id']])) :
+            $cart[$product['product_id']][$product['product_size_id']]['quantity'] += $product['quantity'];
         else :
-            $cart[$product['product_id']][$product['product_height_id']] = $product;
-            $cart[$product['product_id']][$product['product_height_id']]['quantity'] = $product['quantity']; // Dynamically add initial qty
+            $cart[$product['product_id']][$product['product_size_id']] = $product;
+            $cart[$product['product_id']][$product['product_size_id']]['quantity'] = $product['quantity']; // Dynamically add initial qty
         endif;
 
         Session::put('cart', $cart);
@@ -321,21 +322,23 @@ class CartController extends Controller
         //        ]);
             // dd($request->all());
         $product_id = $request->product_id;
-        $product_height_id = $request->product_height_id;
+        $product_height_id = 0;
+        $product_size_id = $request->product_size_id;
         $operation = $request->operation;
 
         //        Session::forget('cart_details');
 
         $cart = Session::get('cart');
-
+        // dd(Session::get('cart'));
         //        foreach ($cart as $cart_item){
         //            if($cart_item == $cart[$product_id]){
         //                foreach ($cart_item as $key => $value)
         //            }
         //        }
-        $item = $cart[$product_id][$product_height_id];
+        $item = $cart[$product_id][$product_size_id];
         $quantity = $item['quantity'];
         $product = Product::find($product_id);
+        // dd($quantity);
 
         $price = $product->price;
         // dd($cart,$item,$product->basic_category->type);
@@ -353,9 +356,13 @@ class CartController extends Controller
                 $prod_height = ProdHeight::where('product_id',$product_id)->where('height_id',0)->first();
             }
             else{
-                $prod_height = ProdHeight::find($product_height_id);
+                $size=ProdSize::find($product_size_id)->size_id;
+                // dd($size);
+                $prod_height = ProdHeight::where('size_id',$size)->where('product_id',$product_id)->first();
+                // dd($prod_height);
+
             }
-            // dd($prod_height->quantity);
+            // dd($prod_height,$prod_height->quantity);
             if ($prod_height->quantity < ($quantity + 1)) {
                 return  response()->json([
                     'success' => false,
@@ -363,19 +370,19 @@ class CartController extends Controller
                 ]);
             }
 
-            $cart[$product_id][$product_height_id]['quantity'] = $cart[$product_id][$product_height_id]['quantity']  + 1;
+            $cart[$product_id][$product_size_id]['quantity'] = $cart[$product_id][$product_size_id]['quantity']  + 1;
             $cart_details['totalQty'] = $cart_details['totalQty'] + 1;
             $cart_details['totalPrice'] = $cart_details['totalPrice'] + $price;
         } elseif ($operation < 0) {
             //TODO :: IF OPERATION -1 GET QUANTITY SUB FROM QUANTITY OR REMOVE
 
             if ($quantity > 1) {
-                $cart[$product_id][$product_height_id]['quantity'] =  $cart[$product_id][$product_height_id]['quantity'] - 1;
+                $cart[$product_id][$product_size_id]['quantity'] =  $cart[$product_id][$product_size_id]['quantity'] - 1;
 
                 $cart_details['totalQty'] = $cart_details['totalQty'] - 1;
                 $cart_details['totalPrice'] = $cart_details['totalPrice'] -  $price;
             } else {
-                unset($cart[$product_id][$product_height_id]);
+                unset($cart[$product_id][$product_size_id]);
 
                 $cart_details['totalQty'] = $cart_details['totalQty'] - $quantity;
                 $cart_details['totalPrice'] = $cart_details['totalPrice'] - ($quantity * $price);
@@ -795,8 +802,9 @@ class CartController extends Controller
                 if($cat_type == 1){
                     $height = ProdHeight::where("product_id",$item['product_id'])->where('height_id',0)->first();
                 }else{
-
-                    $height = ProdHeight::find($item['product_height_id']);
+                    $size = ProdSize::find($item['product_size_id'])->size_id;
+                    $height = ProdHeight::where('size_id',$size)->where('product_id',$item['product_id'])->first();
+                    // dd($size,$height);
                 }
                 if ($height->quantity >= $item['quantity']) {
                     $height->quantity = $height->quantity - $item['quantity'];
@@ -839,8 +847,8 @@ class CartController extends Controller
             }
         }
 
-        // Session::forget('cart');
-        // Session::forget('cart_details');
+        Session::forget('cart');
+        Session::forget('cart_details');
 
 
         $data = $this->makePayment(\Illuminate\Support\Facades\Request::merge(['order_id' => $order->id]));

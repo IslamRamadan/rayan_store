@@ -1959,8 +1959,8 @@ pre code {
     font-size: 0.9rem;
     font-weight: 400;
     line-height: 1.6;
-    color: #495057;
-    background-color: #fff;
+    color: #ffffff;
+    background-color: #000;
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
@@ -1984,8 +1984,8 @@ pre code {
 }
 
 .form-control:focus {
-    color: #495057;
-    background-color: #fff;
+    color: #000;
+    background-color: #c49b63;
     border-color: #a1cbef;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
