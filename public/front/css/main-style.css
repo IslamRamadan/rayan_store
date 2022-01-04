@@ -1393,3 +1393,40 @@ a.bg-main:hover {
     width: 100%;
     background: #c49b63;
 }
+
+.menu-requirements {
+    padding-top: 20px;
+    cursor: default!important;
+}
+
+h3.section-title {
+    line-height: 24px;
+    font-size: 18px;
+    text-align: center;
+    margin: 0 0 20px 0;
+    /* color: #484848; */
+    font-weight: 600;
+}
+
+.item-group {
+    margin-bottom: 30px;
+}
+
+.header {
+    border-bottom: 2px solid rgba(216, 216, 216, .35);
+    padding-bottom: 5px;
+    line-height: 24px;
+}
+
+.pull-left {
+    float: right!important;
+}
+
+.item-section {
+    margin-top: 10px !important;
+}
+
+.h1-img {
+    height: 100vh;
+    object-fit: cover;
+}

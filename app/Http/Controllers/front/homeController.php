@@ -8,6 +8,7 @@ use App\Post;
 use App\Category;
 use App\ContactUs;
 use App\Country;
+use App\Hall;
 use App\Http\Controllers\Controller;
 use App\Pages;
 use App\ProdImg;
@@ -222,6 +223,17 @@ class homeController extends Controller
         ])->touch();
 
         return view('front.product', compact('product'));
+    }
+    public function hall($id)
+    {
+
+        $hall = Hall::findOrFail($id);
+        if (!$hall) {
+            abort(404);
+        }
+        // dd($hall->images);
+
+        return view('front.hall', compact('hall'));
     }
 
     public function wishlist()

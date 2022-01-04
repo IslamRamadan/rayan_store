@@ -452,7 +452,7 @@ class ProductController extends Controller
             if (file_exists(storage_path('app/public/' . $product->img))) {
                 unlink(storage_path('app/public/' . $product->img));
             }
-            $img = \Image::make($image)->resize(255,200);
+            $img = \Image::make($image)->resize(480,320);
             $img->save(public_path('storage/' . $path . $file_name), 80);
 
 
@@ -479,42 +479,6 @@ class ProductController extends Controller
 
 
 
-        //
-        //        elseif ($request->hasFile('size_photo')) {
-        //            $image2 = $request->file('size_photo');
-        //            $original_name2 = strtolower(trim($image2->getClientOriginalName()));
-        //            $file_name2 = time() . rand(100, 999) . $original_name2;
-        //            $path2 = 'uploads/products/images/';
-        //
-        //            if (!Storage::exists($path2)) {
-        //                Storage::disk('public')->makeDirectory($path2);
-        //            }
-        //
-        //            if (file_exists(storage_path('app/public/' . $product->height_img))) {
-        //                unlink(storage_path('app/public/' . $product->height_img));
-        //            }
-        //
-        //
-        //
-        //            $product = $product->update([
-        //                'new' => $request['new'],
-        //                'appearance' => $request['appearance'],
-        //                'featured' => $request['featured'],
-        //                'basic_category_id' => $request['basic_category_id'],
-        //                'category_id' => $request['category_id'],
-        //                'title_ar' => $request['title_ar'],
-        //                'title_en' => $request['title_en'],
-        //                'description_en' => $request['description_en'],
-        //                'description_ar' => $request['description_ar'],
-        //                'price' => $request['price'],
-        //                'delivery_period' => $request['delivery_period'],
-        //                'height_img' => $image2->storeAs($path2, $file_name2, 'public'),
-        //
-        //            ]);
-        //
-        //
-        //
-        //        }
         else {
             $product = $product->update([
                 'new' => $request['new'] ?: 0,
@@ -572,20 +536,7 @@ class ProductController extends Controller
                 }
             }
         }
-        // if ($request->has('color') ) {
-        //     // dd('color');
-        //     if (count($request->color) > 0) {
-        //         foreach ($request->color as $color) {
 
-        //             if ($color) {
-        //                 ProdColor::create([
-        //                     "product_id" => $id,
-        //                     "color_id" => $color,
-        //                 ]);
-        //             }
-        //         }
-        //     }
-        // }
         if ($cat_type == 1) {
             $quantity = $request->qut;
             ProdHeight::create([
@@ -598,187 +549,6 @@ class ProductController extends Controller
 
 
 
-
-        //        $new_sizes = [];
-        //        $removed_sizes = [];
-        //        $request_sizes = [];
-        //        $prod = Product::findOrFail($id);
-        //        $sizes_exist = [];
-        //
-        //        $height_req = [];
-        //        foreach ($prod->product_sizes as $p_s) {
-        //            array_push($sizes_exist, $p_s->size_id);
-        //        }
-        //
-        //        foreach ($request->only('size') as $s) {
-        //            foreach ($s as $size) {
-        //                if (!in_array($size, $request_sizes)) {
-        //                    array_push($request_sizes, $size);
-        //                }
-        //
-        //
-        //            }
-        //        }
-        //
-        //        foreach ($sizes_exist as $ex_size) {
-        //            if (!in_array($ex_size, $request_sizes)) {
-        //                array_push($removed_sizes, $ex_size);
-        //            }
-        //        }
-        //
-        //        if (count($sizes_exist) > 0) {
-        //            foreach ($request_sizes as $n_s) {
-        //                if (!in_array($n_s, $sizes_exist)) {
-        //                    array_push($new_sizes, $n_s);
-        //                }
-        //            }
-        //        }
-        //
-        //
-        //        $remain_sizes = [];
-        //        foreach ($sizes_exist as $ex_size) {
-        //            if (!in_array($ex_size, $removed_sizes)) {
-        //                array_push($remain_sizes, $ex_size);
-        //            }
-        //        }
-        //
-        //
-        //        //TODO :: TO BE UNCOMMENTED
-        //
-        //        foreach ($removed_sizes as $s) {
-        //            ProdHeight::where([
-        //                'product_id' => $prod->id,
-        //                'size_id' => $s
-        //            ])->delete();
-        //
-        //            ProdSize::where([
-        //                'product_id' => $prod->id,
-        //                'size_id' => $s
-        //            ])->delete();
-        //        }
-        //
-        //
-        //
-        //        //GET ADDED HEIGHTS AND QUANTITY AND REMOVED ONES
-        //
-        //        //GET HEIGHTS AND QUANTITY FOR IT AND SAVE IN DATABASE
-        //
-        ////        ProdHeight::where('product_id', $prod->id)->delete();
-        //
-        //        //REPEAT WITH REMAINED HEIGHTS
-        //        if (count($new_sizes) > 0) {
-        //
-        //            foreach ($new_sizes as $size) {
-        //
-        //                ProdSize::create([
-        //                    'product_id' =>$prod->id,
-        //                    'size_id' =>$size
-        //                ]);
-        //
-        //                //GET NEW ONE
-        //                //GET REMOVED ONE
-        //
-        //                for ($i = 0; $i <= count($request[$size . 'height']); $i++) {
-        //                    if (!empty($request[$size . 'height'][$i])) {
-        //                        ProdHeight::create([
-        //                            "product_id" => $id,
-        //                            "size_id" => $size,
-        //                            'height_id' => $request[$size . 'height'][$i],
-        //                            'quantity' => $request[$size .'-'. $request[$size . 'height'][$i] .'-'. 'quantity'] ?: 0,
-        //                        ]);
-        //                    }
-        //                }
-        //            }
-        //
-        //        }
-        //
-
-        //        if (count($remain_sizes) > 0) {
-        //
-        //            foreach ($remain_sizes as $r_s) {
-        //
-        //                //GET NEW ONE
-        //                //GET REMOVED ONE
-        //
-        ////                $vv = $request[$r_s . 'height'];
-        //
-        //                if($request[$r_s . 'height']){
-        //                    for ($i = 0; $i <= count($request[$r_s . 'height']); $i++) {
-        //                        if (!empty($request[$r_s . 'height'][$i])) {
-        //                            ProdHeight::create([
-        //                                "product_id" => $id,
-        //                                "size_id" => $r_s,
-        //                                "height_id" => $request[$r_s . 'height'][$i],
-        //                                "quantity" => $request[$r_s .'-'. $request[$r_s . 'height'][$i] .'-'. 'quantity'] ?: 0,
-        //                            ]);
-        //                        }
-        //                    }
-        //                }
-        //
-        //            }
-        //
-        //        }
-
-
-        //        if (count($remain_sizes) > 0) {
-        //
-        //            foreach ($remain_sizes as $size) {
-        //
-        //                //GET NEW ONE
-        //                //GET REMOVED ONE
-        //
-        //
-        //                $request_heights[$size]  = $request->only($size.'height');
-        //
-        //
-        //                if($request_heights[$size]){
-        //                    foreach ($request_heights[$size] as $h_r){
-        //
-        ////                        foreach ($h_r as $i){
-        ////
-        //////                            if (!empty($request[$size . 'height'][$i])) {
-        //////                                ProdHeight::create([
-        //////                                    "product_id" => $id,
-        //////                                    "size_id" => $size,
-        //////                                    'height_id' => $request[$size . 'height'][$i],
-        //////                                    'quantity' => $request[$size .'-'. $request[$size . 'height'][$i] .'-'. 'quantity'] ?: 0,
-        //////                                ]);
-        //////                            }
-        ////                        }
-        ////                        foreach ($h_r as $h){
-        ////
-        ////                                ProdHeight::create([
-        ////                                    "product_id" => $prod->id,
-        ////                                    "size_id" => $size,
-        ////                                    'height_id' => $h,
-        ////                                    'quantity' => $request[$size . $h. 'quantity'] ?: 0,
-        ////                                ]);
-        ////
-        ////                        }
-        //
-        //                    }
-        //                }
-        //
-        ////                $request_heights = [];
-        ////
-        ////
-        ////
-        ////                            if($request[$size . 'height']){
-        ////                                if (!empty($request[$size . 'height'][$i])) {
-        ////                                    ProdHeight::create([
-        ////                                        "product_id" => $id,
-        ////                                        "size_id" => $size,
-        ////                                        'height_id' => $request[$size . 'height'][$i],
-        ////                                        'quantity' => $request[$size . $request[$size . 'height'][$i] . 'quantity'] ?: 0,
-        ////                                    ]);
-        ////                                }
-        ////                            }
-        ////
-        //
-        //
-        //            }
-        //
-        //        }
 
         //TODO :: -----------------------------//
 

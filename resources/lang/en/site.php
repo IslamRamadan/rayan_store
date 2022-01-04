@@ -322,9 +322,14 @@ return [
     'top_countries'=>'Orders by countries',
     'order_cost'=>'Order cost',
     'visitors'=>'Visitors',
+    'reserve_hall'=>'Reserve a hall',
+    'hall'=>'Reserve a hall reserve a hall',
 
-    // 'content_ar'=>'KWD',
-    // 'content_ar'=>'KWD',
+
+    'halls'=>'Halls',
+    'over_price'=>'Over price',
+    'add_hall'=>'Add Hall',
+    'reserve_now'=>'Reserve now',
     // 'content_ar'=>'KWD',
     // 'content_ar'=>'KWD',
     // 'content_ar'=>'KWD',

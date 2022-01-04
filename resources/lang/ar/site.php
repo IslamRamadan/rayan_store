@@ -320,7 +320,13 @@ return [
     'order_cost'=>'اجمالى المدفوعات',
 
       'visitors'=>'الزائرين',
-   //    'edit_page'=>'',
+      'reserve_hall'=>'حجز قاعه',
+      'hall'=>'حجز قاعه بأفضل الاسعار و مناظر طبيعيه',
+      'halls'=>'القاعات',
+      'over_price'=>'سعر اليوم الاضافي',
+      'add_hall'=>'اضف قاعه',
+    'reserve_now'=>'احجز الان',
+
    //    'edit_page'=>'',
    //    'edit_page'=>'',
    //    'edit_page'=>'',

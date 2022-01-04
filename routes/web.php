@@ -56,6 +56,7 @@ Route::group(
     Route::get('/payment','front\homeController@payment')->name('payment');
     Route::get('/policy','front\homeController@policy')->name('policy');
     Route::get('/product/{id}','front\homeController@product')->name('product');
+    Route::get('/hall/{id}','front\homeController@hall')->name('hall');
 //    Route::get('/index','front\homeController@home')->name('index');
 
 //    Route::get('/forget-password', 'ForgotPasswordController@getEmail');
@@ -132,6 +133,7 @@ Route::group(
         Route::resource('sizes','Backend\SizeController');
         Route::resource('heights','Backend\HeightController');
         Route::resource('products','Backend\ProductController');
+        Route::resource('halls','Backend\HallController');
         Route::resource('contact_us','Backend\ContactUsController');
         Route::resource('orders','Backend\OrderController');
         Route::get('/order/notpaid','Backend\OrderController@not_paid')->name('noorders');
@@ -147,6 +149,10 @@ Route::group(
         Route::get('/product_galaries/{id}', 'Backend\productGalaryController@index')->name("product_galaries.index");
         Route::post('/product_galaries/store/{id}', 'Backend\productGalaryController@store')->name("product_galaries.store");
         Route::delete('/product_galaries/destroy/{id}', 'Backend\productGalaryController@destroy')->name("product_galaries.destroy");
+        Route::get('/news/destroy/{id}', 'Backend\NewsController@destroy')->name("news.destroy");
+        Route::get('/hall_galaries/{id}', 'Backend\hallGalaryController@index')->name("hall_galaries.index");
+        Route::post('/hall_galaries/store/{id}', 'Backend\hallGalaryController@store')->name("hall_galaries.store");
+        Route::delete('/hall_galaries/destroy/{id}', 'Backend\hallGalaryController@destroy')->name("hall_galaries.destroy");
         Route::get('/news/destroy/{id}', 'Backend\NewsController@destroy')->name("news.destroy");
         Route::get('/coupons/destroy/{id}', 'Backend\CouponController@destroy')->name("coupons.destroy");
         Route::get('/posts/destroy/{id}', 'Backend\PostController@destroy')->name("posts.destroy");
@@ -173,6 +179,7 @@ Route::group(
         Route::post('custom_sizes/update/{id}','Backend\SizeController@updateSize')->name('sizes.update.size');
         Route::post('custom_heights/update/{id}','Backend\HeightController@updateHeight')->name('heights.update.height');
         Route::post('custom_products/update/{id}','Backend\ProductController@updateProduct')->name('products.update.product');
+        Route::post('custom_halls/update/{id}','Backend\HallController@updateHall')->name('halls.update.hall');
         Route::post('custom_posts/update/{id}','Backend\PostController@updatePost')->name('posts.update.post');
         Route::post('custom_news/update/{id}','Backend\NewsController@updateNews')->name('news.update.news');
 //=======

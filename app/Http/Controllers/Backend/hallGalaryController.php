@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\ProdImg;
+use App\HallImg;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class productGalaryController extends Controller
+class hallGalaryController extends Controller
 {
     public function index(Request $request,$id)
     {
-        $posts = ProdImg::where("product_id",$id)->get();
+        $posts = HallImg::where("hall_id",$id)->get();
         // flash('Welcome Aboard!');
 
 
 
-        return view("/dashboard/product_galary/index",["posts"=>  $posts,"id"=>$id ]);
+        return view("/dashboard/hall_galary/index",["posts"=>  $posts,"id"=>$id ]);
     }
 
     public function store(Request $request,$id)
@@ -80,9 +80,9 @@ class productGalaryController extends Controller
             $img1->save(public_path('upload/advertising/'.$new_name_img),80);
             // $img->move(public_path("upload/advertising"), $new_name_img);
 
-            $post= ProdImg::create([
+            $post= HallImg::create([
                 "img"=>  "upload/advertising/".$new_name_img ,
-                "product_id"=>$id
+                "hall_id"=>$id
 
             ]);
 //            dd($post);
@@ -103,7 +103,7 @@ class productGalaryController extends Controller
                 Alert::success('Success Title', 'Success Message');
             }
 
-            return redirect()->route('product_galaries.index',$id);
+            return redirect()->route('hall_galaries.index',$id);
 
         }else{
 
@@ -123,7 +123,7 @@ class productGalaryController extends Controller
     public function destroy( $id)
     {
 
-        $post= ProdImg::findOrFail($id);
+        $post= HallImg::findOrFail($id);
         if(file_exists(public_path( $post->img))){
             unlink(public_path($post->img));
         }
@@ -133,7 +133,7 @@ class productGalaryController extends Controller
         if(session()->has("success")){
             Alert::success('Success Title', 'Success Message');
         }
-        return redirect()->route('product_galaries.index',$post->product_id);
+        return redirect()->route('hall_galaries.index',$post->hall_id);
 
     }
 
