@@ -160,26 +160,9 @@
                         id="description_en">{{ $product->description_en }}</textarea>
 
                 </div>
-                {{-- <div class="form-group col-2">
 
-                    <select  multiple name="color[]">
-                        @foreach ($colors as $color)
-                        <option value="{{$color->id}}"
 
-                            @foreach ($color_products as $color_product)
-                            @if ($color_product == $color->id)  {{ 'selected' }} @endif
-                            @endforeach
-
-                            >{{$color->name_ar}}-{{$color->name_en}}</option>
-                        @endforeach
-
-                      </select>
-                      {{-- <label for="colors">
-                        @lang('site.colors')
-                    </label> --}}
-                </div> --}}
-
-                <div class="form-group col-2">
+                <div class="form-group col-3">
                     <label for="before_price">
 
                         @lang('site.before_price')
@@ -188,7 +171,7 @@
                     <input value="{{ $product->before_price }}" type="number" step=".01" name="before_price"
                         class="form-control @error('before_price') is-invalid @enderror" id="before_price">
                 </div>
-                <div class="form-group col-2">
+                <div class="form-group col-3">
                     <label for="price">
 
                         @lang('site.price')
@@ -253,7 +236,7 @@
 
 
 
-            <ul class="align-content-right" style="list-style-type: none;" id="size1">
+            <ul class="align-content-right d-flex justify-content-center" style="list-style-type: none;" id="size1">
                 @foreach ($sizes as $size)
                     <li style="margin-bottom: 15px">
 
@@ -273,7 +256,13 @@
                 <input type="number"
                                     style="border: 1px solid rgba(0,0,0,0.1) ; border-radius: 10px;padding: 5px;width: 70px"
                                     placeholder="الكميه" name="{{ $size->id }}quantity"
-                                    value="">
+
+                                    {{-- @foreach ($size_products as $size_product ) --}}
+                                     @for ($i=0;$i<count($height_products_array) ; $i++ )
+                                     @if ($size->id == $height_products_array[$i][0]->size_id) value="{{$height_products_array[$i][0]->quantity}}" @endif
+                                     @endfor
+                                    {{-- @endforeach --}}
+                                    >
         </div>
         </div>
         </div>

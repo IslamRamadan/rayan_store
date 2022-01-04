@@ -342,6 +342,14 @@ class ProductController extends Controller
 
 
         }
+            // dd($size_products,$height_products,$height_products_array[3][0]['size_id'],$height_products_array[3][0]->quantity);
+    //         foreach ($size_products as $size_product ){
+    //         foreach ($height_products_array as $qut ){
+    //         if ($size_product == $qut[0]->size_id){
+    //          dd($qut[0]->quantity);
+    //         }
+    //     }
+    // }
 
         if (empty($height_products)) {
 
