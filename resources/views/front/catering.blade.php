@@ -8,8 +8,8 @@
     <br><br>
 
     <div class="container">
-        <div class="row dir-rtl">
-            <div class="col-md-6 product pad-0">
+        <div class="row dir-rtl justify-content-center">
+            <div class="col-md-12 product pad-0">
                 {{-- <div class="  heart "> --}}
                 {{-- <i class="far fa-heart "></i></div> --}}
 
@@ -26,11 +26,11 @@
                             {{-- <div class="  zoom "><a href="" data-toggle="modal" data-target="#zoom"><i
                                         class="fas fa-expand-alt"></i></a></div> --}}
 
-                            <img data-enlargeable src="{{ asset('/storage/' . $product->img) }}" class="d-block w-100 h-img" alt="..."
-                                data-toggle="modal" data-target="#staticBackdrop">
+                            <img data-enlargeable src="{{ asset('/storage/' . $product->img) }}"
+                                class="d-block w-100 h1-img" alt="..." data-toggle="modal" data-target="#staticBackdrop">
                         </div>
                         {{-- <div class="carousel-item"> --}}
-                        {{-- <img src="{{asset('/storage/'.$product->height_img)}}" class="d-block w-100 h-img" alt="..." data-toggle="modal" data-target="#staticBackdrop"> --}}
+                        {{-- <img src="{{asset('/storage/'.$product->height_img)}}" class="d-block w-100 h1-img" alt="..." data-toggle="modal" data-target="#staticBackdrop"> --}}
                         {{-- <div class="  zoom "><a href=""  data-toggle="modal" data-target="#zoom2"><i class="fas fa-expand-alt"></i></a></div> --}}
 
                         {{-- </div> --}}
@@ -38,8 +38,8 @@
                         @if ($product->images->count() > 0)
                             @foreach ($product->images as $img)
                                 <div class="carousel-item">
-                                    <img data-enlargeable src="{{ asset($img->img) }}" class="d-block w-100 h-img" alt="..."
-                                        data-toggle="modal" data-target="#staticBackdrop">
+                                    <img data-enlargeable src="{{ asset($img->img) }}" class="d-block w-100 h1-img"
+                                        alt="..." data-toggle="modal" data-target="#staticBackdrop">
                                     {{-- <div class="  zoom "><a href="" data-toggle="modal" data-target="#zoom3"><i
                                                 class="fas fa-expand-alt"></i></a></div> --}}
 
@@ -103,55 +103,8 @@
 
             </div>
 
-            <div class="col-sm-5 ml-auto product-dir">
-                {{-- <nav class="navbar navbar-expand pad-0 " > --}}
-                {{-- <ul class="navbar-nav"> --}}
-                {{-- <li class="nav-item "><a class="nav-link "style="margin-left: -7px" href="{{route('/')}}">HOME  /</a></li> --}}
-                {{-- <li class="nav-item "><a class="nav-link " href="{{route('category' , [1 , $product->basic_category->id])}}"> --}}
-                {{-- @if (Lang::locale() == 'ar') --}}
-                {{-- {{ $product->basic_category->name_ar}}  / --}}
+            <div class="col-sm-12  product-dir">
 
-                {{-- @else --}}
-                {{-- {{ $product->basic_category->name_en}}  / --}}
-
-
-                {{-- @endif --}}
-
-                {{-- </a></li> --}}
-                {{-- <li class="nav-item "><a class="nav-link " href="{{route('category' , [2 , $product->category->id])}}"> --}}
-
-                {{-- @if (Lang::locale() == 'ar') --}}
-                {{-- {{ $product->category->name_ar}} --}}
-
-                {{-- @else --}}
-                {{-- {{ $product->category->name_en}} --}}
-
-
-                {{-- @endif --}}
-
-                {{-- </a></li> --}}
-                {{-- </ul> --}}
-                {{-- </nav> --}}
-                <h2 class="text-dir"><a href="" class="cursor-no">
-
-                        @if (Lang::locale() == 'ar')
-                            {{ $product->basic_category->name_ar }}
-                            @if ($product->category_id != 0)
-                                -
-                                {{ $product->category->name_ar }}
-                            @endif
-                        @else
-
-                            {{ $product->basic_category->name_en }}
-
-                            @if ($product->category_id != 0)
-                                -
-                                {{ $product->category->name_en }}
-                            @endif
-                        @endif
-
-                    </a></h2>
-                {{-- <div class="is-divider"></div> --}}
                 <br>
                 <h6 class="text-dir  h6-product">
                     @if (Lang::locale() == 'ar')
@@ -172,11 +125,8 @@
                     @endif
 
                 </h6>
-                {{-- <div class="is-divider"></div> --}}
                 <br>
-                {{-- <a href="{{asset('front/img/size.jpeg')}}"> <img src="{{asset('front/img/size.jpeg')}}" --}}
-                {{-- onerror="this.onerror=null;this.src='{{asset('front/img/5.jpg')}}'" --}}
-                {{-- class="w-100">  </a> --}}
+
                 <h6 class="text-dir h6-product">
 
                     @guest()
@@ -199,53 +149,149 @@
 
                 <br>
 
-                @if ($product->basic_category->type!= 1)
-
-<div id="colors" class="mb-2">
-    <div id="s" class="color-blocks" style="">
-        <span>@lang('site.color') :</span>
-
-        @if ($product->product_sizes->count()  > 0)
-            <div class="d-flex rtl-margin">
-                {{-- @foreach ($product->colors as $color)
-
-                    <div class="radio-inline color">
-                        <input type="radio" name="color" value="{{ $color->id }}"
-                            >
-                            {{$color->name_en}}
-                        <label for="color-{{ $color->id }}">{{ $color->color->name_en }}</label>
-
-                    </div>
-
-
-                @endforeach --}}
-                <select class="form-control" id="size_val" name="color">
-
-                    @foreach ($product->product_sizes as $size)
-                    <option value="{{ $size->id }}" id="size-{{ $size->id }}">{{$size->size->name}}</option>
-
-                    @endforeach
-                </select>
-            </div>
-        @else
-            المنتج غير متوفر
-        @endif
-    </div>
-</div>
-@endif
 
                 <br>
                 @if (Lang::locale() == 'ar')
-                <br>
+                    <br>
                 @endif
 
+                <div class="panel-body text-dir">
+                    <div>
+                        <p><strong>يكفي: </strong>١٠٠ شخص مع إمكانية إضافة العدد</p>
+                        <p><strong>المشروبات:</strong> (لكل شخص: ١ مشروب)</p>
+                        <ul>
+                            <li>قهوة ساخنة وباردة: لاتيه إسباني ولاتيه الفانيلا ولاتيه الكراميل المملح وأمريكانو ولاتيه
+                                وكورتادو وإسبريسو</li>
+                            <li>مشروبات ساخنة: شوكولاتة ساخنة مملحة وشوكولاتة ساخنة وشوكولاتة ساخنة مبشورة وكرك وشاي أخضر
+                            </li>
+                        </ul>
+                        <p><strong>الخدمة وطريقة التقديم:</strong> ١ باريستا وأكوب استهلاكية مع غلاف للأكواب</p>
+                        <p><strong>ملاحظة: </strong>الستيشن غير متوفر للسرداب والطوابق العلوية إلا في حالة وجود مصعد</p>
+                    </div>
+                    <div class="row menu-requirements text-center justify-content-around">
+                        <div class="col-xs-4"><i class="fas fa-tachometer-alt fa-3x"></i>
+                            <p class="item-title">وقت التجهيز</p>
+                            <p class="item-text"> 30 دقيقة</p>
+                        </div>
+                        <div class="col-xs-4"><i class="fas fa-cog fa-3x"></i>
+                            <p class="item-title">المتطلبات</p>
+                            <div>
+                                <p dir="ltr" class="item-text">توصيلات كهربائية</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-4"><i class="fas fa-clock fa-3x"></i>
+                            <p class="item-title">الحد الأقصى</p>
+                            <p class="item-text">3 ساعة </p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="panel-body">
+                    <div class="text-center">
+                        <h3 class="section-title">
+                            الإضافات
+                            <span class="tip uppercase text-grey">(اختياري)</span>
+                        </h3>
+                    </div>
+                    <div class="item-group">
+                        <div class="row header">
+                            <div class="pull-left">
+                                <h3>ساعات إضافية</h3>
+                            </div>
+                            <!---->
+                        </div>
+                        <div class="row item-section">
+                            <div class="col-xs-6 col-sm-8 d-flex">
+                                <p class="name">١ ساعة</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-4">
+                                <div class="no-padding row justify-content-between">
+                                    <div class="col-xs-7 no-padding">
+                                        <p class="price hidden-xs">+ 15.000 د.ك</p>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <form class=" product-count " method="post"
+                                            style="display: flex;flex-direction: column;align-items: center">
+                                            @csrf
+                                            <div class="form-group"
+                                                style="display: flex;align-items: center;justify-content: center">
+                                                <a rel="nofollow" class="btn btn-default btn-minus" href="#"
+                                                    onclick="">&ndash;</a>
+                                                <input type="number"
+                                                    style="width: 40px; border: 0;border-radius: 10px ; text-align:center"
+                                                    class="count" value="1" name="quantity">
+                                                <a rel="nofollow" class="btn btn-default btn-plus" href="#" onclick="">+</a>
+                                            </div>
 
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-group">
+                        <div class="row header">
+                            <div class="pull-left">
+                                <h3>خدمات إضافية</h3>
+                            </div>
+                            <!---->
+                        </div>
+                        <div class="row item-section">
+                            <div class="col-xs-6 col-sm-8 d-flex">
+                                <p class="name">١ باريستا</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-4">
+                                <div class="no-padding row justify-content-between">
+                                    <div class="col-xs-7 no-padding">
+                                        <p class="price hidden-xs">+ 20.000 د.ك</p>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <form class=" product-count " method="post"
+                                            style="display: flex;flex-direction: column;align-items: center">
+                                            @csrf
+                                            <div class="form-group"
+                                                style="display: flex;align-items: center;justify-content: center">
+                                                <a rel="nofollow" class="btn btn-default btn-minus" href="#"
+                                                    onclick="">&ndash;</a>
+                                                <input type="number"
+                                                    style="width: 40px; border: 0;border-radius: 10px ; text-align:center"
+                                                    class="count" value="1" name="quantity">
+                                                <a rel="nofollow" class="btn btn-default btn-plus" href="#" onclick="">+</a>
+                                            </div>
+                                            {{-- <button class="col-12 text-center" --}}
+                                            {{-- type="submit" --}}
+                                            {{-- style="background-color: transparent;border: 0;"> --}}
+                                            {{-- <a   class=""><i class="fas fa-archive active"  ></i></a> --}}
+                                            {{-- </button> --}}
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="panel-body">
+                    <div>
+                        <div class="text-center">
+                            <h3 class="section-title"><span>طلبات خاصة</span></h3>
+                        </div>
+                        <div class="form-group"><textarea placeholder="طلبات إضافية اختيارية" aria-label="طلبات خاصة"
+                                class="form-control"></textarea></div>
+                    </div>
+                    <div class="row text-dir">
+                        <div class="col-xs-12 col-sm-8"><label for="chkFemaleService" class="checkbox-inline"><input
+                                    id="chkFemaleService" type="checkbox" class="checkbox-round"> <span
+                                    class="checkbox-text">طلب الخدمة النسائية (على حسب التوفر)</span></label>
+                            <!---->
+                        </div>
+                        <div class="col-xs-12 col-sm-4 checkbox-price">
+                            <!---->
+                        </div>
+                    </div>
+                </div>
 
-                {{-- <br>
-                <h6 style="font-weight:600 " class="textarea-dir" >@lang('site.note')</h6>
-
-                <textarea  class="w-100  " rows="5"></textarea> --}}
                 <br><br>
                 <form class=" product-count float-right d-none">
                     <a rel="nofollow" class="btn btn-default btn-minus" href="#" title="Subtract">&ndash;</a>
@@ -254,10 +300,9 @@
                     <a rel="nofollow" class="btn btn-default btn-plus" href="#" title="Add" style="margin: -9px;">+</a>
                 </form>
 
-                <a id="add_cart" class="btn hv "
-                    style="margin-top:10px;border:1px solid;">@lang('site.add_to_cart')</a>
-                <a class="btn bg-main hv addToWishList" data-product-id="{{ $product->id }}"
-                    style="margin:10px 0px;">@lang('site.add_to_wishlist')</a>
+                <a id="add_cart" class="btn bg-main hv "
+                    style="margin:10px 0px;">@lang('site.add_to_cart')</a>
+
 
 
             </div>
@@ -265,182 +310,11 @@
 
     </div>
     <!--- end  ---><br>
-    <div class="container ">
-        {{-- <hr> --}}
-        {{-- @if ($product->product_hights->count() > 0) --}}
-        {{-- <div class="row"> --}}
-        {{-- <h5 class="col-md-2">@lang('site.height')</h5> --}}
-        {{-- <p class="col-md-10"> --}}
-        {{-- @foreach ($product->product_hights as $height) --}}
-        {{-- @if ($height->quantity > 0) --}}
-        {{-- {{$height->height->name}}, --}}
-        {{-- @endif --}}
-        {{-- @endforeach --}}
-        {{-- </p> --}}
-        {{-- </div> --}}
-        {{-- <hr> --}}
-        {{-- @endif --}}
-        {{-- @if ($product->product_sizes->count() > 0) --}}
-        {{-- <div class="row"> --}}
-        {{-- <h5 class="col-md-2 " >@lang('site.size')</h5> --}}
-        {{-- <p class="col-md-10"> --}}
-        {{-- @foreach ($product->product_sizes as $height) --}}
-        {{-- {{$height->size->name}}, --}}
-        {{-- @endforeach --}}
 
-        {{-- </p> --}}
-        {{-- </div> --}}
-
-        {{-- @endif --}}
-
-        {{-- <hr> --}}
-        <h3 class="text-center ">@lang('site.related_products')
-        </h3>
-        <br>
-
-        <div class="row text-dir dir-rtl">
-
-            <div class="col-12">
-                <ul class="tablinks  row MyServices mr-0 pad-0 text-center justify-content-center">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            @if (\App\BasicCategory::find($product->basic_category_id)->products->count() > 0)
-                                @foreach (\App\BasicCategory::find($product->basic_category_id)->products as $p)
-                                    @if ($p->id != $product->id && $p->appearance == 1)
-                                        <div class="swiper-slide" data-swiper-autoplay="2000">
-                                            <div class=" product relative">
-                                                {{-- <div class="  heart ">
-                                                    <a href="#" class="addToWishList text-white"
-                                                        data-product-id="{{ $p->id }}">
-                                                        <i class="far fa-heart "></i>
-                                                    </a>
-
-                                                </div> --}}
-                                                <div style="flex-direction: column;display: flex">
-                                                    <div class="position-relative">
-                                                        <a href="{{ route('product', $p->id) }}"
-                                                            class="test image-hover">
-
-                                                            <img src="{{ asset('/storage/' . $p->img) }}"
-                                                                onerror="this.onerror=null;this.src='{{ asset('front/img/3.jpg') }}'"
-                                                                width="100%" class="show-img ">
-
-                                                            @if ($img = App\ProdImg::where('product_id', $p->id)->first())
-                                                                <img src="{{ asset($img->img) }}" width="100%"
-                                                                    class="hide-img">
-                                                                <div class="middle">
-                                                                    <div class="btn btn-danger">@lang('site.add_to_cart')
-                                                                    </div>
-                                                                </div>
-                                                            @else
-                                                                <img src="{{ asset('/storage/' . $p->img) }}"
-                                                                    width="100%" class="hide-img">
-                                                                <div class="middle">
-                                                                    <div class="btn btn-danger">@lang('site.add_to_cart')
-                                                                    </div>
-                                                                </div>
-                                                            @endif
-                                                        </a>
-                                                    </div>
-
-                                                    <div class="text-dir">
-                                                        <p class="mr-0">
-                                                            <a href="{{ route('product', $p->id) }}">
-                                                                @if (Lang::locale() == 'ar')
-                                                                    {{ $p->title_ar }}
-
-                                                                @else
-
-                                                                    {{ $p->title_en }}
-
-                                                                @endif
-
-
-                                                            </a>
-                                                        </p>
-                                                        <h6><a href="{{ route('product', $p->id) }}">
-
-
-                                                                @if (Lang::locale() == 'ar')
-                                                                    {{-- {{$p->basic_category->name_ar}}
-                                                -
-                                                {{$p->category->name_ar}} --}}
-                                                                    <?php $pieces = explode(' ', $p->description_ar);
-                                                                    $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
-                                                                    {{ $first_part }}
-                                                                @else
-
-                                                                    {{-- {{$p->basic_category->name_en}}
-                                                -
-                                                {{$p->category->name_en}} --}}
-                                                                    <?php $pieces = explode(' ', $p->description_en);
-                                                                    $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
-                                                                    {{ $first_part }}
-                                                                @endif
-
-
-                                                            </a></h6>
-                                                        <h5>
-
-
-                                                            @auth()
-                                                                {{ Auth::user()->getPrice($p->price) }}
-                                                                {{ Auth::user()->country->currency->code }}
-                                                            @endauth
-                                                            @guest()
-                                                                @if (Cookie::get('name'))
-                                                                    {{ number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                                                    {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
-                                                                    @lang('site.kwd')
-
-                                                                @else
-                                                                    {{ $p->price }}
-                                                                    @lang('site.kwd')
-                                                                @endif
-                                                            @endguest
-
-                                                        </h5>
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    @endif
-                                @endforeach
-                        </div>
-
-                    </div>
-                @else
-                    لا يوجد
-                    @endif
-
-                </ul>
-            </div>
-        </div>
-        <br><br>
-    </div>
 
     <!-- Button trigger modal -->
 
-    @if ($product->basic_category->type!= 1 && $product->size_guide_id !=null)
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-
-                <div class="modal-body">
-                    <img src="{{ asset('/storage/' . $product->size_guide->image_url) }}" class="d-block w-100 h-img"
-                        style="object-fit: contain" alt="..." data-toggle="modal" data-target="#staticBackdrop">
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!--- end  --->
-    @endif
 
 @endsection
 @section('script')
@@ -479,7 +353,7 @@
 
 
                 //TODO :: IF NOT SELECTED HEIGHT OR SIZE ASK TO CHOOSE
-                if(basic_type==1){
+                if (basic_type == 1) {
                     size = 0;
                 }
                 // if ($('input[name=size]').is(':checked')) {
@@ -490,7 +364,7 @@
                 //     height = $("input[name=height]:checked").val();
                 // }
 
-                if ((basic_type !=1 && size == 0) ) {
+                if ((basic_type != 1 && size == 0)) {
                     Swal.fire({
                         icon: '?',
                         title: 'يرجي تحديد الخيارات ',
