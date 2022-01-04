@@ -203,7 +203,7 @@ class ProductController extends Controller
                         ProdHeight::create([
                             "product_id" => $product->id,
                             "size_id" => $size,
-                            'height_id' => 1000,
+                            'height_id' => 0,
                             'quantity' => $request[$size . 'quantity'] ?: 0,
                         ]);
 
@@ -518,7 +518,7 @@ class ProductController extends Controller
                         ProdHeight::create([
                             "product_id" => $id,
                             "size_id" => $size,
-                            'height_id' => 1000,
+                            'height_id' => 0,
                             'quantity' => $request[$size . 'quantity'] ?: 0,
                         ]);
 
