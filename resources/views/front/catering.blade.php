@@ -169,7 +169,7 @@
                                                  style="display: flex;align-items: center;justify-content: center">
                                                 <a rel="nofollow" class="btn btn-default btn-minus1" href="#"
                                                    onclick="">&ndash;</a>
-                                                <input type="number"
+                                                <input type="number" disabled
                                                        style="width: 40px; border: 0;border-radius: 10px ; text-align:center"
                                                        class="count1" value="{{$catering->persons_no}}" name="persons_no">
                                                 <a rel="nofollow" class="btn btn-default btn-plus1" href="#"
@@ -202,7 +202,7 @@
                                                  style="display: flex;align-items: center;justify-content: center">
                                                 <a rel="nofollow" class="btn btn-default btn-minus" href="#"
                                                    onclick="">&ndash;</a>
-                                                <input type="number"
+                                                <input type="number" disabled
                                                        style="width: 40px; border: 0;border-radius: 10px ; text-align:center"
                                                        class="count" value="0" name="ad_hours">
                                                 <a rel="nofollow" class="btn btn-default btn-plus" href="#"
@@ -235,7 +235,7 @@
                                                  style="display: flex;align-items: center;justify-content: center">
                                                 <a rel="nofollow" class="btn btn-default btn-minus" href="#"
                                                    onclick="">&ndash;</a>
-                                                <input type="number"
+                                                <input type="number" disabled
                                                        style="width: 40px; border: 0;border-radius: 10px ; text-align:center"
                                                        class="count" value="0" name="ad_service">
                                                 <a rel="nofollow" class="btn btn-default btn-plus" href="#"
