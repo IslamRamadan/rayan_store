@@ -40,22 +40,27 @@
                             <td>{{ $invoice->phone }}</td>
 
                         </tr>
+                        @if ($invoice->address1)
                         <tr>
                             <th scope="row" class="gq text-dark">@lang('site.address1')</th>
                             <td>{{ $invoice->address1 }}</td>
 
                         </tr>
+                        @endif
 
                         <tr>
                             <th scope="row" class="gq text-dark">@lang('site.name')</th>
                             <td>{{ $invoice->name }}</td>
 
                         </tr>
+                        @if ($invoice->address1)
                         <tr>
                             <th scope="row" class="gq text-dark">@lang('site.total_quantity')</th>
                             <td>{{ $invoice->total_quantity }}</td>
 
                         </tr>
+                        @endif
+
                         <tr>
                             <th scope="row" class="gq text-dark">@lang('site.date_of_order')</th>
                             <td>{{ $invoice->created_at }}</td>

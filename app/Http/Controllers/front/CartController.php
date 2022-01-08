@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\front;
 
 use App\BestSeller;
+use App\CateringOrder;
 use App\City;
 use App\Country;
 use App\Height;
@@ -1220,9 +1221,12 @@ class CartController extends Controller
         $order = Order::where('invoice_id', $invoice_id)->first();
 
         if (!$order) {
+        $order = CateringOrder::where('invoice_id', $invoice_id)->first();
+        }
+        if (!$order) {
             //                    dd($request->all());
 
-            Alert::error('Order is not Exist !');
+            Alert::error('Order is not Exist 4!');
             return redirect()->route('/');
         }
         session()->forget('coupon');
@@ -1323,7 +1327,7 @@ class CartController extends Controller
         $order = Order::find($order_id);
 
         if (!$order) {
-            Alert::error('Order is not Exist', '');
+            Alert::error('Order is not Exist 3', '');
 
             return back();
         }

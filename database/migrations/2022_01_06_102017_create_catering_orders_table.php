@@ -29,6 +29,9 @@ class CreateCateringOrdersTable extends Migration
             $table->integer('ad_hours')->default(0);
             $table->integer('ad_hours_price')->default(0);
             $table->integer('ad_service')->default(0);
+            $table->longText('invoice_id')->nullable();
+            $table->longText('invoice_link')->nullable();
+            $table->integer('status')->default(0);
             $table->integer('ad_service_price')->default(0);
             $table->integer('total_price')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
