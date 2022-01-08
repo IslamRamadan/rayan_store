@@ -27,7 +27,8 @@
                                         class="fas fa-expand-alt"></i></a></div> --}}
 
                             <img data-enlargeable src="{{ asset('/storage/' . $hall->img) }}"
-                                class="d-block w-100 h-img" alt="..." data-toggle="modal" data-target="#staticBackdrop">
+                                 class="d-block w-100 h-img" alt="..." data-toggle="modal"
+                                 data-target="#staticBackdrop">
                         </div>
                         {{-- <div class="carousel-item"> --}}
                         {{-- <img src="{{asset('/storage/'.$hall->height_img)}}" class="d-block w-100 h-img" alt="..." data-toggle="modal" data-target="#staticBackdrop"> --}}
@@ -39,7 +40,7 @@
                             @foreach ($hall->images as $img)
                                 <div class="carousel-item">
                                     <img data-enlargeable src="{{ asset($img->img) }}" class="d-block w-100 h-img"
-                                        alt="..." data-toggle="modal" data-target="#staticBackdrop">
+                                         alt="..." data-toggle="modal" data-target="#staticBackdrop">
                                     {{-- <div class="  zoom "><a href="" data-toggle="modal" data-target="#zoom3"><i
                                                 class="fas fa-expand-alt"></i></a></div> --}}
 
@@ -52,12 +53,12 @@
 
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev"
-                        style="bottom: 25%!important">
+                       style="bottom: 25%!important">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">@lang('site.previous')</span>
                     </a>
                     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next"
-                        style="bottom: 25%!important">
+                       style="bottom: 25%!important">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">@lang('site.next')</span>
                     </a>
@@ -68,10 +69,10 @@
                     <br>
 
 
-
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="">
                         <img src=" {{ asset('/storage/' . $hall->img) }}" class="img">
-                    </li><br>
+                    </li>
+                    <br>
 
                     @if ($hall->images->count() > 0)
                         @foreach ($hall->images as $img)
@@ -84,7 +85,6 @@
                         @endforeach
                     @endif
                 </ol>
-
 
 
             </div>
@@ -134,60 +134,38 @@
                     @endguest
                 </h6>
 
-
                 <br>
 
-
-
-
-                <div class="input-group date justify-content-between" data-provide="datepicker" style="
+                <form method="post" action="{{ route('hall.order', $hall->id) }}">
+                    @csrf
+                    <div class="input-group date justify-content-between" data-provide="datepicker" style="
         border-bottom-width: 5px;
         padding-bottom: 10px;
     ">
-                    <span>بدايه الحجز</span>
-                    <div style="
+                        <span>بدايه الحجز</span>
+                        <div style="
         padding-left: 5px;
         padding-right: 5px;
-    "> <input type="date" class="form-control" id="start_date" name="start_date" style="
+    "><input type="date" class="form-control" id="start_date" name="start_date" style="
         /* width: 5px; */
-    "></div>
-                </div>
+    " required></div>
+                    </div>
 
-                <div class="input-group date justify-content-between" data-provide="datepicker" style="
+                    <div class="input-group date justify-content-between" data-provide="datepicker" style="
         border-bottom-width: 5px;
         padding-bottom: 10px;
     ">
-                    <span>نهايه الحجز</span>
-                    <div style="
+                        <span>نهايه الحجز</span>
+                        <div style="
         padding-left: 5px;
         padding-right: 5px;
-    "> <input type="date" class="form-control" id="end_date" name="end_date" style="
+    "><input type="date" class="form-control" id="end_date" name="end_date" style="
         /* width: 5px; */
-    "></div>
-                </div>
+    " required></div>
+                    </div>
 
-
-
-
-
-
-                <br>
-                @if (Lang::locale() == 'ar')
-                    <br>
-                @endif
-
-                <br><br>
-                <form class=" product-count float-right d-none">
-                    <a rel="nofollow" class="btn btn-default btn-minus" href="#" title="Subtract">&ndash;</a>
-                    <input type="text" disabled="" size="2" autocomplete="off"
-                        class="cart_quantity_input form-control grey count" value="1" name="quantity">
-                    <a rel="nofollow" class="btn btn-default btn-plus" href="#" title="Add" style="margin: -9px;">+</a>
+                    <button type="submit" id="add_cart" class="btn bg-main hv" style="margin:10px 0px;background-color: #c49b63;">@lang('site.book_now')</button>
                 </form>
-
-                <a id="add_cart" class="btn bg-main hv" style="margin:10px 0px;">@lang('site.add_to_cart')</a>
-
-
-
             </div>
         </div>
 
@@ -207,12 +185,11 @@
         });
 
 
-        $(document).ready(function() {
-
+        $(document).ready(function () {
 
 
             //TODO :: GET #S ->CONTENT
-            $('#add_cart').on('click', function() {
+            $('#add_cart').on('click', function () {
 
 
                 //GET PRODUCT ID
@@ -263,7 +240,7 @@
                         product_size_id: sizeId,
                         product_height_id: heightId,
                     },
-                    success: function(result) {
+                    success: function (result) {
                         //CHECK SIZE VALUES
                         //CHECK HEIGHTS VALUE
                         Swal.fire({
@@ -286,7 +263,7 @@
 
 
                     },
-                    error: function(error) {
+                    error: function (error) {
 
 
                         console.log(error);
@@ -322,7 +299,7 @@
                     data: {
                         size_id: sizeId
                     },
-                    success: function(result) {
+                    success: function (result) {
                         //CHECK SIZE VALUES
                         //CHECK HEIGHTS VALUE
                         // console.log(result);
@@ -331,78 +308,78 @@
                     }
                 });
             }
+
             //TODO :: WHEN CHOOSE SIZE SHOW HEIGHT
             //TODO :: REFRESH CHECKOUT CART
             //TODO :: ADD & REMOVE FROM CART
         })
 
-        $(document).on('click', '.addToWishList', function(e) {
+        $(document).on('click', '.addToWishList', function (e) {
 
             e.preventDefault();
             @guest()
-                // $('.not-loggedin-modal').css('display','block');
-                // console.log('You are guest'
+            // $('.not-loggedin-modal').css('display','block');
+            // console.log('You are guest'
 
-                {{-- {{\RealRashid\SweetAlert\Facades\Alert::error('error', 'Please Login first!')}} --}}
-                Swal.fire({
+            {{-- {{\RealRashid\SweetAlert\Facades\Alert::error('error', 'Please Login first!')}} --}}
+            Swal.fire({
                 icon: '?',
-                title:'Login first!',
+                title: 'Login first!',
                 confirmButtonColor: '#d76797',
-                position:'bottom-start',
+                position: 'bottom-start',
                 showCloseButton: true,
-                })
+            })
             @endguest
             @auth
-                $.ajax({
+            $.ajax({
                 type: 'get',
-                url:"{{ route('wishlist.store') }}",
-                data:{
-                'productId':$(this).attr('data-product-id'),
+                url: "{{ route('wishlist.store') }}",
+                data: {
+                    'productId': $(this).attr('data-product-id'),
                 },
-                success:function (data) {
-                if (data.message){
-                Swal.fire({
-                icon: '?',
-                title: 'Added successfully!',
-                confirmButtonColor: '#d76797',
-                position:'bottom-start',
-                showCloseButton: true,
-                showConfirmButton: false,
-                timer: 1500
-                })
-                $(".heart").click(function() {
-                $(this).toggleClass("heart-hover");
+                success: function (data) {
+                    if (data.message) {
+                        Swal.fire({
+                            icon: '?',
+                            title: 'Added successfully!',
+                            confirmButtonColor: '#d76797',
+                            position: 'bottom-start',
+                            showCloseButton: true,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        $(".heart").click(function () {
+                            $(this).toggleClass("heart-hover");
 
-                });
+                        });
 
+                    } else {
+                        // alert('This product already in you wishlist');
+                        Swal.fire({
+                            title: 'This product already in you wishlist',
+                            icon: '?',
+                            confirmButtonColor: '#d76797',
+                            position: 'bottom-start',
+                            showCloseButton: true,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        $(".heart").click(function () {
+                            $(this).toggleClass("heart-hover");
+
+                        });
+
+
+                    }
                 }
-                else {
-                // alert('This product already in you wishlist');
-                Swal.fire({
-                title: 'This product already in you wishlist',
-                icon: '?',
-                confirmButtonColor: '#d76797',
-                position:'bottom-start',
-                showCloseButton: true,
-                showConfirmButton: false,
-                timer: 1500
-                });
-                $(".heart").click(function() {
-                $(this).toggleClass("heart-hover");
-
-                });
-
-
-                }
-                }
-                });
+            });
             @endauth
 
 
         });
     </script>
     <script>
-        $('img[data-enlargeable]').addClass('img-enlargeable').click(function() {
+        $('img[data-enlargeable]').addClass('img-enlargeable').click(function () {
             var src = $(this).attr('src');
             var modal;
 
@@ -410,6 +387,7 @@
                 modal.remove();
                 $('body').off('keyup.modal-close');
             }
+
             modal = $('<div>').css({
                 background: 'RGBA(0,0,0,.5) url(' + src + ') no-repeat center',
                 backgroundSize: 'contain',
@@ -420,11 +398,11 @@
                 top: '0',
                 left: '0',
                 cursor: 'zoom-out'
-            }).click(function() {
+            }).click(function () {
                 removeModal();
             }).appendTo('body');
             //handling ESC
-            $('body').on('keyup.modal-close', function(e) {
+            $('body').on('keyup.modal-close', function (e) {
                 if (e.key === 'Escape') {
                     removeModal();
                 }

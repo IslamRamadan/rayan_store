@@ -40,7 +40,6 @@ class CartController extends Controller
         //
     }
 
-
     public function getHeights(Request $request)
     {
 
@@ -311,7 +310,6 @@ class CartController extends Controller
         }
     }
 
-
     public function reduceFromCart(Request $request)
     {
         //        Session::forget('cart');
@@ -423,7 +421,6 @@ class CartController extends Controller
         //        Alert::success('Removed Successfully !!', '');
         //        return redirect()->back();
     }
-
 
     public function removeFromShoppingCart($product_id, $product_height_id)
     {
@@ -933,7 +930,6 @@ class CartController extends Controller
         //
     }
 
-
     public function makePayment(Request $request): \Illuminate\Http\JsonResponse
     {
 
@@ -1110,13 +1106,11 @@ class CartController extends Controller
         );
     }
 
-
     public function sendPayment($apiURL, $apiKey, $postFields)
     {
         $json = $this->callAPI("$apiURL/v2/SendPayment", $apiKey, $postFields);
         return $json->Data;
     }
-
 
     public  function handleError($response)
     {
@@ -1174,7 +1168,6 @@ class CartController extends Controller
         return json_decode($response);
     }
 
-
     public function getPaymentStatus($payment_id): \Illuminate\Http\JsonResponse
     {
 
@@ -1211,7 +1204,6 @@ class CartController extends Controller
         return response()->json($json->Data);
     }
 
-    //////
     public function callBackUrl(Request $request)
     {
         //        dd($request->all());
@@ -1324,7 +1316,6 @@ class CartController extends Controller
 
         return redirect()->route('/')->with(['order' => $order]);;
     }
-
 
     public function payNow($order_id)
     {

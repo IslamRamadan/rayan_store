@@ -6,6 +6,7 @@ use App\BasicCategory;
 use App\Cart;
 use App\Post;
 use App\Category;
+use App\Catering;
 use App\ContactUs;
 use App\Country;
 use App\Hall;
@@ -234,6 +235,11 @@ class homeController extends Controller
         // dd($hall->images);
 
         return view('front.hall', compact('hall'));
+    }
+    public function catering($id){
+        $catering = Catering::findOrFail($id);
+        return view('front.catering', compact('catering'));
+
     }
 
     public function wishlist()

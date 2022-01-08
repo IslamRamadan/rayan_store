@@ -1,10 +1,7 @@
 <?php
 
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use Illuminate\Support\Facades\Response;
+use App\Http\Controllers\Backend\HallOrderController;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\Console\Input\Input;
-use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +37,7 @@ Route::group(
 //    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/','front\homeController@home')->name('/');
 //    Route::get('/account','front\homeController@account')->name('account');
+    Route::get('/catering/{id}','front\homeController@catering')->name('catering');
     Route::get('/cart','front\homeController@cart')->name('cart');
     Route::get('/post/{id}','front\homeController@post')->name('post');
     Route::get('/category/{type}/{id}','front\homeController@category')->name('category');
@@ -99,6 +97,9 @@ Route::group(
     Route::post('/getDelivery','front\CartController@getDelivery')->name('get.delivery');
     Route::post('/checkCategory','front\homeController@checkCat')->name('check.cat');
 
+    Route::post('hallOrder/{id}','front\orderController@hallOrder')->name('hall.order');
+    Route::post('cateringOrder/{id}','front\orderController@cateringOrder')->name('catering.order');
+
     Route::post('/order/store','front\CartController@store')->name('order.store');
     Route::get('payment_callback' , 'front\CartController@callBackUrl');
     Route::get('payment_error' , 'front\CartController@errorUrl');
@@ -134,6 +135,7 @@ Route::group(
         Route::resource('heights','Backend\HeightController');
         Route::resource('products','Backend\ProductController');
         Route::resource('halls','Backend\HallController');
+        Route::resource('caterings','Backend\CateringController');
         Route::resource('contact_us','Backend\ContactUsController');
         Route::resource('orders','Backend\OrderController');
         Route::get('/order/notpaid','Backend\OrderController@not_paid')->name('noorders');
@@ -153,6 +155,9 @@ Route::group(
         Route::get('/hall_galaries/{id}', 'Backend\hallGalaryController@index')->name("hall_galaries.index");
         Route::post('/hall_galaries/store/{id}', 'Backend\hallGalaryController@store')->name("hall_galaries.store");
         Route::delete('/hall_galaries/destroy/{id}', 'Backend\hallGalaryController@destroy')->name("hall_galaries.destroy");
+        Route::get('/catering_galaries/{id}', 'Backend\CateringGalaryController@index')->name("catering_galaries.index");
+        Route::post('/catering_galaries/store/{id}', 'Backend\CateringGalaryController@store')->name("catering_galaries.store");
+        Route::delete('/catering_galaries/destroy/{id}', 'Backend\CateringGalaryController@destroy')->name("catering_galaries.destroy");
         Route::get('/news/destroy/{id}', 'Backend\NewsController@destroy')->name("news.destroy");
         Route::get('/coupons/destroy/{id}', 'Backend\CouponController@destroy')->name("coupons.destroy");
         Route::get('/posts/destroy/{id}', 'Backend\PostController@destroy')->name("posts.destroy");
@@ -182,10 +187,13 @@ Route::group(
         Route::post('custom_halls/update/{id}','Backend\HallController@updateHall')->name('halls.update.hall');
         Route::post('custom_posts/update/{id}','Backend\PostController@updatePost')->name('posts.update.post');
         Route::post('custom_news/update/{id}','Backend\NewsController@updateNews')->name('news.update.news');
+        Route::get('custom_caterings/delete/{id}','Backend\CateringController@destroy')->name('caterings.delete');
 //=======
         Route::post('currencies_users/update','Backend\CurrencyController@updateCurrency')->name('currencies.update.currency');
 //>>>>>>> Stashed changes
         Route::get('admin' , 'Backend\AdminController@admin')->name('admin');
+
+        Route::resource('hallOrders','Backend\HallOrderController')->only(['index', 'show']);
     });
 
     Route::get('admin/login' , 'HomeController@adminLogin');
