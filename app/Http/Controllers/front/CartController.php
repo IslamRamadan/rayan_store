@@ -6,6 +6,7 @@ use App\BestSeller;
 use App\CateringOrder;
 use App\City;
 use App\Country;
+use App\HallOrder;
 use App\Height;
 use App\Http\Controllers\Controller;
 use App\Order;
@@ -1222,6 +1223,9 @@ class CartController extends Controller
 
         if (!$order) {
         $order = CateringOrder::where('invoice_id', $invoice_id)->first();
+        }
+        if (!$order) {
+        $order = HallOrder::where('invoice_id', $invoice_id)->first();
         }
         if (!$order) {
             //                    dd($request->all());

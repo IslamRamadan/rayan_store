@@ -14,15 +14,14 @@
         <br><br>
         <div class="row dir-rtl">
             <div class=" text-center border col-md-2 col-sm-4">
-                <div class="img-cover m-2"><img src="{{asset('upload/avatar.png')}}"
-                                                     alt="" class="w-100"></div>
-                <h6 class="name">  {{Auth::user()->name}}</h6>
+                <div class="img-cover m-2"><img src="{{ asset('upload/avatar.png') }}" alt="" class="w-100"></div>
+                <h6 class="name"> {{ Auth::user()->name }}</h6>
             </div>
             <div class="border col-sm-8 col-md-10 text-dir">
                 <div class="row wellcome pad-top-25 p-4">
                     <div class="col-xs-12 col-sm-6 ">
                         <h4> @lang('site.hello') <span>
-                                {{Auth::user()->name}}
+                                {{ Auth::user()->name }}
                             </span></h4>
                         <p>
                             @lang('site.welcome')
@@ -32,12 +31,13 @@
                         <div class="row text-dir">
                             <div class="col-xs-12 col-sm-12">
                                 <p class="my-orders">@lang('site.my_order') :</p>
-                                <p> @lang('site.you_have') {{Session::has('cart_details')?
-Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
+                                <p> @lang('site.you_have')
+                                    {{                                     Session::has('cart_details') ? Session::get('cart_details')['totalQty'] . ' items' : '' }}
+                                    @lang('site.cc')</p>
                             </div>
                             <div class="col-xs-12 col-sm-12 view-cart">
                                 <br><br>
-                                <a href="{{route('cart')}}" class="vh brdr btn">@lang('site.cart_details') <i
+                                <a href="{{ route('cart') }}" class="vh brdr btn">@lang('site.cart_details') <i
                                         class="fas fa-shopping-bag" style="font-size: 20px"></i></a>
                             </div>
                         </div>
@@ -49,31 +49,31 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
         </div>
 
 
-        {{--<div class="row">--}}
-        {{--<div class="cus text-center border col-md-3 col-sm-3" style="width: 25%">--}}
-        {{--<div class="img-cover "><br><br><img src="https://www.shantongulf.com/uploads/clients/avatar2.png" alt="" class="w-50"></div>--}}
-        {{--<h6 class="name">  {{Auth::user()->name}}</h6>--}}
-        {{--</div>--}}
+        {{-- <div class="row"> --}}
+        {{-- <div class="cus text-center border col-md-3 col-sm-3" style="width: 25%"> --}}
+        {{-- <div class="img-cover "><br><br><img src="https://www.shantongulf.com/uploads/clients/avatar2.png" alt="" class="w-50"></div> --}}
+        {{-- <h6 class="name">  {{Auth::user()->name}}</h6> --}}
+        {{-- </div> --}}
 
-        {{--<div class="cus text-center border col-md-3 col-sm-3" style="width: 25%">--}}
-        {{--<div class="img-cover "><br><br><img src="https://www.shantongulf.com/uploads/clients/avatar2.png" alt="" class="w-50"></div>--}}
-        {{--<h6 class="name">  {{Auth::user()->name}}</h6>--}}
-        {{--</div>--}}
+        {{-- <div class="cus text-center border col-md-3 col-sm-3" style="width: 25%"> --}}
+        {{-- <div class="img-cover "><br><br><img src="https://www.shantongulf.com/uploads/clients/avatar2.png" alt="" class="w-50"></div> --}}
+        {{-- <h6 class="name">  {{Auth::user()->name}}</h6> --}}
+        {{-- </div> --}}
 
-        {{--<div class="cus text-center border col-md-3 col-sm-3" style="width: 25%">--}}
-        {{--<div class="img-cover "><br><br><img src="https://www.shantongulf.com/uploads/clients/avatar2.png" alt="" class="w-50"></div>--}}
-        {{--<h6 class="name">  {{Auth::user()->name}}</h6>--}}
-        {{--</div>--}}
+        {{-- <div class="cus text-center border col-md-3 col-sm-3" style="width: 25%"> --}}
+        {{-- <div class="img-cover "><br><br><img src="https://www.shantongulf.com/uploads/clients/avatar2.png" alt="" class="w-50"></div> --}}
+        {{-- <h6 class="name">  {{Auth::user()->name}}</h6> --}}
+        {{-- </div> --}}
 
 
 
-        {{--<div class="cus text-center border col-md-3 col-sm-3" style="width: 25%">--}}
-        {{--<div class="img-cover "><br><br><img src="https://www.shantongulf.com/uploads/clients/avatar2.png" alt="" class="w-50"></div>--}}
-        {{--<h6 class="name">  {{Auth::user()->name}}</h6>--}}
-        {{--</div>--}}
+        {{-- <div class="cus text-center border col-md-3 col-sm-3" style="width: 25%"> --}}
+        {{-- <div class="img-cover "><br><br><img src="https://www.shantongulf.com/uploads/clients/avatar2.png" alt="" class="w-50"></div> --}}
+        {{-- <h6 class="name">  {{Auth::user()->name}}</h6> --}}
+        {{-- </div> --}}
 
-        {{--<br><br>--}}
-        {{--</div>--}}
+        {{-- <br><br> --}}
+        {{-- </div> --}}
 
 
     </div>
@@ -87,18 +87,29 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
             <div class="col-xs-4 col-4 col-md-2  left-menu row-dir" style="float:right">
 
 
-                <a href="{{route('myaccount')}}" class="icon-container">
-                    <div class="bg-b"><i class="fas fa-user"></i><br><span class="title-span">@lang('site.my_account') </span></div>
+                <a href="{{ route('myaccount') }}" class="icon-container">
+                    <div class="bg-b"><i class="fas fa-user"></i><br><span
+                            class="title-span">@lang('site.my_account') </span></div>
                 </a>
-                <a href="{{route('wishlist.view')}}" class="icon-container">
-                    <div class=""><i class=" far fa-heart"></i><br><span class="title-span">@lang('site.wishlist')</span></div>
+                <a href="{{ route('wishlist.view') }}" class="icon-container">
+                    <div class=""><i class=" far fa-heart"></i><br><span
+                            class="title-span">@lang('site.wishlist')</span></div>
                 </a>
-                <a href="{{route('myorder')}}" class="icon-container">
-                    <div class=""><i class="fas fa-clock"></i><br><span class="title-span"> @lang('site.myorder')</span></div>
+                <a href="{{ route('myorder') }}" class="icon-container">
+                    <div class=""><i class="fas fa-clock"></i><br><span class="title-span">
+                            @lang('site.myorder')</span></div>
                 </a>
-                <a href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" class="icon-container">
+                <a href="{{ route('my.halls') }}" class="icon-container">
+                    <div class=""><i class="fas fa-clock"></i><br><span
+                            class="title-span">@lang('site.my_halls')</span></div>
+                </a>
+                <a href="{{ route('my.caterings') }}" class="icon-container">
+                    <div class=""><i class="fas fa-clock"></i><br><span
+                            class="title-span">@lang('site.my_caterings')</span></div>
+                </a>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();"
+                    class="icon-container">
                     <div><i class="fas fa-lock"></i><br><span class="title-span"> @lang('site.logout')</span></div>
                 </a>
 
@@ -115,7 +126,7 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
 
 
                 <form enctype="multipart/form-data" class="personal-detail form-vertical" id="loginform"
-                      action="{{route('update.user' , Auth::id())}}" method="post">
+                    action="{{ route('update.user', Auth::id()) }}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-sm-12 col-md-6 col-xs-12" style="float:right">
@@ -124,23 +135,23 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
 
                                 <label class="type-text w-100">@lang('site.username') *
                                     <input class="form-control placeholder-fix" placeholder="   " required="required"
-                                           name="name" id="Clients_username" type="text" maxlength="200"
-                                           value="{{Auth::user()->name}}">
+                                        name="name" id="Clients_username" type="text" maxlength="200"
+                                        value="{{ Auth::user()->name }}">
                                 </label>
                             </div>
 
                             <div class="form-group">
 
                                 <label class="type-text w-100">@lang('site.password') *
-                                    <input class="form-control placeholder-fix" placeholder="   "
-                                           name="password" id="Clients_password" type="password" maxlength="20"
-                                           value="{{Auth::user()->password_view}}" required>
+                                    <input class="form-control placeholder-fix" placeholder="   " name="password"
+                                        id="Clients_password" type="password" maxlength="20"
+                                        value="{{ Auth::user()->password_view }}" required>
                                 </label>
                             </div>
                             <div class="form-group ">
                                 <label class="type-text w-100">@lang('site.email') *
-                                    <input class="form-control placeholder-fix" placeholder="   "
-                                           name="email" id="Clients_email" type="email" value="{{Auth::user()->email}}">
+                                    <input class="form-control placeholder-fix" placeholder="   " name="email"
+                                        id="Clients_email" type="email" value="{{ Auth::user()->email }}">
                                 </label>
                             </div>
                             <div class="form-group ">
@@ -149,17 +160,17 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
                                 <select
                                     class="form-control s-styled hasCustomSelect  @error('country') is-invalid @enderror"
                                     name="country" id="country">
-                                    @foreach(\App\Country::all() as $c)
+                                    @foreach (\App\Country::all() as $c)
 
 
-                                        @if(Auth::user()->country_id == $c->id)
+                                        @if (Auth::user()->country_id == $c->id)
 
-                                            <option value="{{$c->id}}" selected>
-                                                {{$c->name_ar}} - {{$c->name_en}}
+                                            <option value="{{ $c->id }}" selected>
+                                                {{ $c->name_ar }} - {{ $c->name_en }}
                                             </option>
                                         @else
-                                            <option value="{{$c->id}}">
-                                                {{$c->name_ar}} - {{$c->name_en}}
+                                            <option value="{{ $c->id }}">
+                                                {{ $c->name_ar }} - {{ $c->name_en }}
                                             </option>
 
                                         @endif
@@ -173,16 +184,16 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
                             <div class="form-group">
                                 <label class="type-text w-100"> @lang('site.phone')
                                     <input type="text" class="form-control placeholder-fix"
-                                           value="{{Auth::user()->phone}}" name="phone" required>
+                                        value="{{ Auth::user()->phone }}" name="phone" required>
                                 </label>
                             </div>
-                            {{--                            <div class="form-group">--}}
+                            {{-- <div class="form-group"> --}}
 
-                            {{--                                <label class="type-text">picture--}}
-                            {{--                                    <input id="ytClients_image" type="hidden" value="" name="Clients[image]"><input class="form-control placeholder-fix" maxlength="255" style="" name="Clients[image]" id="Clients_image" type="file">--}}
+                            {{-- <label class="type-text">picture --}}
+                            {{-- <input id="ytClients_image" type="hidden" value="" name="Clients[image]"><input class="form-control placeholder-fix" maxlength="255" style="" name="Clients[image]" id="Clients_image" type="file"> --}}
 
-                            {{--                                </label>--}}
-                            {{--                            </div>--}}
+                            {{-- </label> --}}
+                            {{-- </div> --}}
 
                         </div>
                     </div>

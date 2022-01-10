@@ -9,7 +9,7 @@
 
     <div class="container">
         <div class="row dir-rtl">
-            <div class="col-md-6 product pad-0">
+            <div class="col-md-12 product pad-0">
                 {{-- <div class="  heart "> --}}
                 {{-- <i class="far fa-heart "></i></div> --}}
 
@@ -26,9 +26,8 @@
                             {{-- <div class="  zoom "><a href="" data-toggle="modal" data-target="#zoom"><i
                                         class="fas fa-expand-alt"></i></a></div> --}}
 
-                            <img data-enlargeable src="{{ asset('/storage/' . $hall->img) }}"
-                                 class="d-block w-100 h-img" alt="..." data-toggle="modal"
-                                 data-target="#staticBackdrop">
+                            <img data-enlargeable src="{{ asset('/storage/' . $hall->img) }}" class="d-block w-100 h-img"
+                                alt="..." data-toggle="modal" data-target="#staticBackdrop">
                         </div>
                         {{-- <div class="carousel-item"> --}}
                         {{-- <img src="{{asset('/storage/'.$hall->height_img)}}" class="d-block w-100 h-img" alt="..." data-toggle="modal" data-target="#staticBackdrop"> --}}
@@ -40,7 +39,7 @@
                             @foreach ($hall->images as $img)
                                 <div class="carousel-item">
                                     <img data-enlargeable src="{{ asset($img->img) }}" class="d-block w-100 h-img"
-                                         alt="..." data-toggle="modal" data-target="#staticBackdrop">
+                                        alt="..." data-toggle="modal" data-target="#staticBackdrop">
                                     {{-- <div class="  zoom "><a href="" data-toggle="modal" data-target="#zoom3"><i
                                                 class="fas fa-expand-alt"></i></a></div> --}}
 
@@ -53,12 +52,12 @@
 
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev"
-                       style="bottom: 25%!important">
+                        style="bottom: 25%!important">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">@lang('site.previous')</span>
                     </a>
                     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next"
-                       style="bottom: 25%!important">
+                        style="bottom: 25%!important">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">@lang('site.next')</span>
                     </a>
@@ -89,7 +88,7 @@
 
             </div>
 
-            <div class="col-sm-5 ml-auto product-dir"> {{-- <div class="is-divider"></div> --}}
+            <div class="col-sm-12 ml-auto product-dir"> {{-- <div class="is-divider"></div> --}}
                 <br>
                 <h6 class="text-dir  h6-product">
                     @if (Lang::locale() == 'ar')
@@ -138,33 +137,131 @@
 
                 <form method="post" action="{{ route('hall.order', $hall->id) }}">
                     @csrf
-                    <div class="input-group date justify-content-between" data-provide="datepicker" style="
-        border-bottom-width: 5px;
-        padding-bottom: 10px;
-    ">
+                    <div class="input-group date " data-provide="datepicker" style="
+            border-bottom-width: 5px;
+            padding-bottom: 10px;
+            gap:20%
+        ">
                         <span>بدايه الحجز</span>
                         <div style="
-        padding-left: 5px;
-        padding-right: 5px;
-    "><input type="date" class="form-control" id="start_date" name="start_date" style="
-        /* width: 5px; */
-    " required></div>
+            padding-left: 5px;
+            padding-right: 5px;
+        "><input type="date" class="form-control" id="start_date" name="start_date" style="
+            /* width: 5px; */
+        " required value="{{ old('start_date') }}"></div>
                     </div>
 
-                    <div class="input-group date justify-content-between" data-provide="datepicker" style="
-        border-bottom-width: 5px;
-        padding-bottom: 10px;
-    ">
+                    <div class="input-group date " data-provide="datepicker" style="
+            border-bottom-width: 5px;
+            padding-bottom: 10px;
+            gap:20%
+        ">
                         <span>نهايه الحجز</span>
                         <div style="
-        padding-left: 5px;
-        padding-right: 5px;
-    "><input type="date" class="form-control" id="end_date" name="end_date" style="
-        /* width: 5px; */
-    " required></div>
+            padding-left: 5px;
+            padding-right: 5px;
+        "><input type="date" class="form-control" id="end_date" name="end_date" style="
+            /* width: 5px; */
+        " required value="{{ old('end_date') }}"></div>
                     </div>
+                    <button type="button" id="checkout_now" class="btn bg-main hv "
+                        style="margin:10px 0px;background-color: #c49b63;">@lang('site.checkout_now')</button>
+                    <div id="checkout" style="display: none">
+                        <div class="row checkout text-dir mt-5">
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="Orders_address_line1" class="required font-weight-bold" style="color:red">
+                                    @lang('site.full_name')
+                                    <span class="required">*</span></label>
+                                <input class="form-control" placeholder="User Name" name="name" id="Orders_full_name"
+                                    value="{{ old('name') }}" type="text">
+                            </div>
 
-                    <button type="submit" id="add_cart" class="btn bg-main hv" style="margin:10px 0px;background-color: #c49b63;">@lang('site.book_now')</button>
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="Orders_address_line1" class="required font-weight-bold" style="color:red">
+                                    @lang('site.email') <span class="required">*</span></label>
+                                <input class="form-control" placeholder="E-mail" required="required" name="email"
+                                    id="Orders_email" value="{{ old('email') }}" type="email">
+                            </div>
+                            <div class="form-group col-md-4 col-sm-12">
+                                <label for="Orders_address_line1" class="required font-weight-bold"
+                                    style="color:red">@lang('site.phone')
+                                    <span class="required">*</span>
+                                </label>
+                                <br>
+                                <input id="phone_code" class="form-control" required="required" name="phone"
+                                    value="{{ old('phone') }}" type="number" maxlength="11">
+                            </div>
+                            <div class="form-group col-md-4 col-sm-12">
+                                <label for="Orders_country_id" class="required font-weight-bold"
+                                    style="color:red">@lang('site.country') <span class="required">*</span></label>
+                                <select style="height: 45px;    ;" class="form-control" name="country_id"
+                                    value="{{ old('country_id') }}" id="Orders_country_id">
+
+                                    @foreach (\App\Country::all() as $country)
+
+                                        <option value="{{ $country->id }}"
+                                            {{ Request::old('country_id') == $country->id ? 'selected' : '' }}>
+                                            @if (Lang::locale() == 'ar')
+                                                {{ $country->name_ar }}
+
+                                            @else
+                                                {{ $country->name_en }}
+
+
+                                            @endif
+
+
+                                        </option>
+
+                                    @endforeach
+
+
+                                </select>
+
+                            </div>
+
+                            <div class="form-group col-md-4 col-sm-12">
+                                <label for="Orders_city_id" class="required font-weight-bold" style="color:red">
+                                    @lang('site.region') <span class="required">*</span></label>
+                                <select style="height: 45px; " class="form-control" name="city_id" id="Orders_city_id">
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4 col-sm-12">
+                                <label for="Orders_address_line1" class="required font-weight-bold" style="color:red">
+                                    @lang('site.block')
+                                    <span class="required">*</span></label>
+                                <input class="form-control" placeholder="{{ \Lang::get('site.block') }}" name="block"
+                                    id="block" value="{{ old('block') }}" type="number">
+                            </div>
+                            <div class="form-group col-md-4 col-sm-12">
+                                <label for="Orders_address_line1" class="required font-weight-bold" style="color:red">
+                                    @lang('site.floor')
+                                    <span class="required">*</span></label>
+                                <input class="form-control" placeholder="{{ \Lang::get('site.floor') }}" name="floor"
+                                    id="floor" value="{{ old('floor') }}" type="number">
+                            </div>
+                            <div class="form-group col-md-4 col-sm-12">
+                                <label for="Orders_address_line1" class="required font-weight-bold" style="color:red">
+                                    @lang('site.street')
+                                    <span class="required">*</span></label>
+                                <input class="form-control" placeholder="{{ \Lang::get('site.street') }}" name="street"
+                                    id="street" value="{{ old('street') }}" type="street">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="Orders_address_line1" class="required font-weight-bold" >
+                                    @lang('site.note')
+                                    </label>
+                                <textarea placeholder="{{\Lang::get('site.additional_orders')}}"
+
+                                class="form-control" name="note"></textarea>
+                            </div>
+
+                        </div>
+
+                        <br><br>
+                        <button type="submit" id="add_cart" class="btn bg-main hv "
+                            style="margin:10px 0px;background-color: #c49b63;">@lang('site.book_now')</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -177,53 +274,45 @@
 
 
 @endsection
+
 @section('script')
     <script>
-        $('.datepicker').datepicker({
-            format: 'mm/dd/yyyy',
-            startDate: '-3d'
-        });
+        // $('#checkout_now').on('click', function() {
+        //     $(this).hide();
+        //     $("#checkout").css("display", "block");
+
+        // });
+    </script>
+
+    <script>
+        $(document).ready(function() {
 
 
-        $(document).ready(function () {
 
 
-            //TODO :: GET #S ->CONTENT
-            $('#add_cart').on('click', function () {
-
-
-                //GET PRODUCT ID
-                //GET QUANTITY
-                //GET SIZE ID
-                //GET HEIGHT ID
-
-
-                let size = $('#size_val').find(":selected").val();
-                let height = 0;
-                let hall = '{{ $hall->id }}';
-                let end_date = $("input[name=end_date]").val();
-                let start_date = $("input[name=end_date]").val();
-
-
-                //TODO :: IF NOT SELECTED HEIGHT OR SIZE ASK TO CHOOSE
-
-
-                if ((basic_type != 1 && size == 0)) {
-                    Swal.fire({
-                        icon: '?',
-                        title: 'يرجي تحديد الخيارات ',
-                        confirmButtonColor: '#d76797',
-                        position: 'bottom-start',
-                        showCloseButton: true,
-                    })
-                } else {
-                    // console.log("ok");
-                    addToCart(product, quantity, height, size);
+            $('#checkout_now').on('click',
+                function() {
+                    console.log('clicked');
+                    checkDate();
                 }
+            )
 
-            });
 
-            function addToCart(productId, quantity, heightId, sizeId) {
+
+            function checkDate() {
+                var date1 = $('#start_date').val().split("-");
+                day1 = date1[2];
+                month1 = date1[1];
+                year1 = date1[0];
+
+                var date2 = $('#end_date').val().split("-");
+                day2 = date2[2];
+                month2 = date2[1];
+                year2 = date2[0];
+
+                var start_date = year1 +"-"+ month1 +"-"+ day1;
+                var end_date = year2 +"-"+ month2 +"-"+ day2;
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -231,42 +320,38 @@
                 });
 
                 $.ajax({
-                    url: "{{ route('add.to.cart') }}",
+                    url: "{{ route('check.date') }}",
                     method: 'post',
                     data: {
                         _token: "{{ csrf_token() }}",
-                        quantity: quantity,
-                        product_id: productId,
-                        product_size_id: sizeId,
-                        product_height_id: heightId,
+                        start_date: start_date,
+                        end_date: end_date
                     },
-                    success: function (result) {
-                        //CHECK SIZE VALUES
-                        //CHECK HEIGHTS VALUE
-                        Swal.fire({
-                            toast: true,
-                            icon: 'success',
-                            title: 'تمت الإضافه الي السله',
-                            animation: false,
-                            position: 'bottom-start',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        });
+                    success: function(result) {
                         // console.log(result);
 
-                        // location.reload();
+                        if (!result.success) {
+                            Swal.fire({
+                                icon: '?',
+                                confirmButtonColor: '#d76797',
+                                position: 'bottom-start',
+                                showCloseButton: true,
+                                title: result.msg,
+                            })
+                        } else {
 
+                            // $('#Orders_city_id').html(result.cities)
+                                 $("#checkout_now").hide();
+                                $("#checkout").css("display", "block");
+
+
+
+
+
+                        }
 
                     },
-                    error: function (error) {
-
-
-                        console.log(error);
+                    error: function(error) {
                         Swal.fire({
                             title: 'لم تكتمل العمليه ',
                             icon: '?',
@@ -274,19 +359,33 @@
                             position: 'bottom-start',
                             showCloseButton: true,
                         })
-                        // Swal.fire({
-                        //         title: 'لم تكتمل العمليه ',
-                        //         icon: '؟',
-                        //         iconHtml: '؟',
-                        //         confirmButtonText: 'ok',
-                        //         showCancelButton: false,
-                        //         showCloseButton: true
-                        //         })
                     }
                 });
+
             }
 
-            function getHeights(sizeId) {
+
+
+
+
+
+
+
+
+
+            getCities();
+
+
+            $('#Orders_country_id').on('change',
+                function() {
+                    getCities();
+                }
+            )
+
+
+            function getCities() {
+                var country = $('#Orders_country_id').val() ? $('#Orders_country_id').val() : 1;
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -294,119 +393,48 @@
                 });
 
                 $.ajax({
-                    url: "{{ route('get.heights') }}",
-                    method: 'get',
+                    url: "{{ route('get.cities') }}",
+                    method: 'post',
                     data: {
-                        size_id: sizeId
+                        _token: "{{ csrf_token() }}",
+                        country: country
                     },
-                    success: function (result) {
-                        //CHECK SIZE VALUES
-                        //CHECK HEIGHTS VALUE
+                    success: function(result) {
                         // console.log(result);
-                        $('#heights').html(result);
-                        $('#heights').show();
+
+                        if (!result.success) {
+                            Swal.fire({
+                                icon: '?',
+                                confirmButtonColor: '#d76797',
+                                position: 'bottom-start',
+                                showCloseButton: true,
+                                title: result.msg,
+                            })
+                        } else {
+
+                            $('#Orders_city_id').html(result.cities)
+
+
+
+
+                        }
+
+                    },
+                    error: function(error) {
+                        Swal.fire({
+                            title: 'لم تكتمل العمليه ',
+                            icon: '?',
+                            confirmButtonColor: '#d76797',
+                            position: 'bottom-start',
+                            showCloseButton: true,
+                        })
                     }
                 });
+
             }
 
-            //TODO :: WHEN CHOOSE SIZE SHOW HEIGHT
-            //TODO :: REFRESH CHECKOUT CART
-            //TODO :: ADD & REMOVE FROM CART
         })
-
-        $(document).on('click', '.addToWishList', function (e) {
-
-            e.preventDefault();
-            @guest()
-            // $('.not-loggedin-modal').css('display','block');
-            // console.log('You are guest'
-
-            {{-- {{\RealRashid\SweetAlert\Facades\Alert::error('error', 'Please Login first!')}} --}}
-            Swal.fire({
-                icon: '?',
-                title: 'Login first!',
-                confirmButtonColor: '#d76797',
-                position: 'bottom-start',
-                showCloseButton: true,
-            })
-            @endguest
-            @auth
-            $.ajax({
-                type: 'get',
-                url: "{{ route('wishlist.store') }}",
-                data: {
-                    'productId': $(this).attr('data-product-id'),
-                },
-                success: function (data) {
-                    if (data.message) {
-                        Swal.fire({
-                            icon: '?',
-                            title: 'Added successfully!',
-                            confirmButtonColor: '#d76797',
-                            position: 'bottom-start',
-                            showCloseButton: true,
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                        $(".heart").click(function () {
-                            $(this).toggleClass("heart-hover");
-
-                        });
-
-                    } else {
-                        // alert('This product already in you wishlist');
-                        Swal.fire({
-                            title: 'This product already in you wishlist',
-                            icon: '?',
-                            confirmButtonColor: '#d76797',
-                            position: 'bottom-start',
-                            showCloseButton: true,
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        $(".heart").click(function () {
-                            $(this).toggleClass("heart-hover");
-
-                        });
-
-
-                    }
-                }
-            });
-            @endauth
-
-
-        });
     </script>
-    <script>
-        $('img[data-enlargeable]').addClass('img-enlargeable').click(function () {
-            var src = $(this).attr('src');
-            var modal;
 
-            function removeModal() {
-                modal.remove();
-                $('body').off('keyup.modal-close');
-            }
 
-            modal = $('<div>').css({
-                background: 'RGBA(0,0,0,.5) url(' + src + ') no-repeat center',
-                backgroundSize: 'contain',
-                width: '100%',
-                height: '100%',
-                position: 'fixed',
-                zIndex: '10000',
-                top: '0',
-                left: '0',
-                cursor: 'zoom-out'
-            }).click(function () {
-                removeModal();
-            }).appendTo('body');
-            //handling ESC
-            $('body').on('keyup.modal-close', function (e) {
-                if (e.key === 'Escape') {
-                    removeModal();
-                }
-            });
-        });
-    </script>
 @endsection

@@ -169,7 +169,7 @@
                                                  style="display: flex;align-items: center;justify-content: center">
                                                 <a rel="nofollow" class="btn btn-default btn-minus1" href="#"
                                                    onclick="">&ndash;</a>
-                                                <input type="number" disabled
+                                                <input type="number" readonly
                                                        style="width: 40px; border: 0;border-radius: 10px ; text-align:center"
                                                        class="count1" value="{{$catering->persons_no}}" name="persons_no">
                                                 <a rel="nofollow" class="btn btn-default btn-plus1" href="#"
@@ -202,7 +202,7 @@
                                                  style="display: flex;align-items: center;justify-content: center">
                                                 <a rel="nofollow" class="btn btn-default btn-minus" href="#"
                                                    onclick="">&ndash;</a>
-                                                <input type="number" disabled
+                                                <input type="number" readonly
                                                        style="width: 40px; border: 0;border-radius: 10px ; text-align:center"
                                                        class="count" value="0" name="ad_hours">
                                                 <a rel="nofollow" class="btn btn-default btn-plus" href="#"
@@ -235,7 +235,7 @@
                                                  style="display: flex;align-items: center;justify-content: center">
                                                 <a rel="nofollow" class="btn btn-default btn-minus" href="#"
                                                    onclick="">&ndash;</a>
-                                                <input type="number" disabled
+                                                <input type="number" readonly
                                                        style="width: 40px; border: 0;border-radius: 10px ; text-align:center"
                                                        class="count" value="0" name="ad_service">
                                                 <a rel="nofollow" class="btn btn-default btn-plus" href="#"
@@ -260,7 +260,7 @@
                         <div class="row text-dir">
                             <div class="col-xs-12 col-sm-8 p-0"><label for="chkFemaleService" class="checkbox-inline p-0"><input
                                         id="chkFemaleService" type="checkbox" class="checkbox-round"
-                                        name="request_female"> <span
+                                        name="request_female" value="1"> <span
                                         class="checkbox-text">@lang('site.lady_service')</span></label>
                                 <!---->
                             </div>
@@ -272,7 +272,7 @@
                     <button type="button" id="checkout_now" class="btn bg-main hv "
                             style="margin:10px 0px;background-color: #c49b63;">@lang('site.checkout_now')</button>
                     <div id="checkout" style="display: none">
-                    <div class="row checkout ">
+                    <div class="row checkout text-dir mt-5">
                     <div class="form-group col-md-6 col-sm-12">
                         <label for="Orders_address_line1" class="required font-weight-bold" style="color:red">
                             @lang('site.full_name')

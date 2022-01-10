@@ -62,7 +62,7 @@
         </div>
 
         <br />
-        <div class="row m-auto">
+        <div class="row m-auto text-dir dir-rtl">
             {{-- <div class="col-lg-12 margin-tb" style="text-align: center"> --}}
             <div class="col-4">
                 <h6 style="font-weight: bold">
@@ -155,24 +155,80 @@
 
             <div class="col-4">
                 <h6 style="font-weight: bold">
-                    Total Price
+                    @lang('site.total_price')
+
                 </h6>
 
                 <p class="text text-primary">
                     {{ $order->total_price }}
                 </p>
             </div>
-
             <div class="col-4">
                 <h6 style="font-weight: bold">
-                    @lang('site.ttl_qut')
+                    @lang('site.persons_no')
 
                 </h6>
 
                 <p class="text text-primary">
-                    {{ $order->total_quantity }}
+                    {{ $order->persons_no }}
                 </p>
             </div>
+            <div class="col-4">
+                <h6 style="font-weight: bold">
+                    @lang('site.add_hours')
+
+                </h6>
+
+                <p class="text text-primary">
+                    {{ $order->ad_hours }}
+                </p>
+            </div>
+            <div class="col-4">
+                <h6 style="font-weight: bold">
+                    @lang('site.ad_hour_price')
+
+                </h6>
+
+                <p class="text text-primary">
+                    {{ $order->ad_hours_price }}
+                </p>
+            </div>
+            <div class="col-4">
+                <h6 style="font-weight: bold">
+                    @lang('site.ad_service')
+
+                </h6>
+
+                <p class="text text-primary">
+                    {{ $order->ad_service }}
+                </p>
+            </div>
+            <div class="col-4">
+                <h6 style="font-weight: bold">
+                    @lang('site.ad_service_price')
+
+                </h6>
+
+                <p class="text text-primary">
+                    {{ $order->ad_service_price }}
+                </p>
+            </div>
+            <div class="col-4">
+                <h6 style="font-weight: bold">
+                    @lang('site.request_female')
+
+                </h6>
+                            <p class="text text-primary">
+                                @if ($order->request_female == 0)
+                                @lang('site.no')
+                                @else
+                                @lang('site.yes')
+                                @endif
+
+                </p>
+            </div>
+
+
             <div class="col-4">
                 <h6 style="font-weight: bold">
                     @lang('site.date_of_order')
@@ -187,11 +243,23 @@
                 <h6 style="font-weight: bold">
 
 
-                    @lang('site.address1')
+                    @lang('site.address')
                 </h6>
 
                 <p class="text text-primary">
-                    {{ $order->address1 }}
+
+                بنايه رقم {{$order->floor}} قطعه رقم {{$order->block}} شارع {{$order->street}}
+                </p>
+            </div>
+            <div class="col-12">
+                <h6 style="font-weight: bold">
+
+
+                    @lang('site.note')
+                </h6>
+
+                <p class="text text-primary">
+                    {{$order->note}}
                 </p>
             </div>
             <hr>
@@ -209,11 +277,11 @@
                     <tr>
                         <th width="5%">No</th>
                         <th width="5%">Id</th>
-                        <th width="10%">@lang('site.product_name')</th>
-                        <th width="10%">@lang('site.cat_name')</th>
-                        <th width="10%">@lang('site.size')</th>
-                        <th width="10%">@lang('site.quantity')</th>
-                        <th width="10%">@lang('site.item_price')</th>
+                        <th width="10%">@lang('site.title_en')</th>
+                        <th width="10%">@lang('site.title_ar')</th>
+                        <th width="10%">@lang('site.price')</th>
+                        <th width="10%">@lang('site.persons_no')</th>
+                        <th width="10%">@lang('site.persons_max')</th>
                         <th width="40%">@lang('site.img')</th>
                         {{-- <th width="20%">Action</th> --}}
                     </tr>
@@ -235,7 +303,7 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('order.items.view', $order->id) }}",
+                ajax: "{{ route('catering_order.items.view', $order->id) }}",
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex'
@@ -245,26 +313,27 @@
                         name: 'id'
                     },
                     {
-                        data: 'product',
-                        name: 'product'
+                        data: 'title_en',
+                        name: 'title_en'
                     },
                     {
-                        data: 'category',
-                        name: 'category'
+                        data: 'title_ar',
+                        name: 'title_ar'
                     },
 
-                    {
-                        data: 'size',
-                        name: 'size'
-                    },
 
-                    {
-                        data: 'quantity',
-                        name: 'quantity'
-                    },
+
                     {
                         data: 'price',
                         name: 'price'
+                    },
+                    {
+                        data: 'persons_no',
+                        name: 'persons_no'
+                    },
+                    {
+                        data: 'persons_max',
+                        name: 'persons_max'
                     },
                     {
                         data: 'image',

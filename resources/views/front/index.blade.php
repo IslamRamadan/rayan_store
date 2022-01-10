@@ -403,7 +403,7 @@
 
     {{-- <div class="col-lg-9 col-md-8 pad-0 "> --}}
     <div class="row text-center dir-rtl">
-        @foreach (App\Product::where('best_selling',1)->get() as $p)
+        @foreach (App\Catering::all() as $p)
 
             <div class="col-6 col-md-4 col-lg-3">
                 <div class=" product relative text-dir mb-5">
@@ -415,21 +415,21 @@
 
                             </div> --}}
 
-                    <a href="{{ route('product', $p->id) }}" class="image-hover ">
+                    <a href="{{ route('catering', $p->id) }}" class="image-hover ">
                         <div style="position: relative">
-                            <img src="{{ asset('/storage/' . $p->img) }}"
+                            <img src="{{ asset('/storage/' . $p->image) }}"
                                 onerror="this.onerror=null;this.src='{{ asset('front/img/3.jpg') }}'" width="100%"
                                 class="show-img image">
                             <div class="middle">
                                 <div class="btn btn-danger">@lang('site.add_to_cart')</div>
                             </div>
                             @if ($img = App\ProdImg::where('product_id', $p->id)->first())
-                                <img src="{{ asset($img->img) }}" width="100%" class="hide-img image">
+                                <img src="{{ asset($img->image) }}" width="100%" class="hide-img image">
                                 <div class="middle">
                                     <div class="btn btn-danger">@lang('site.add_to_cart')</div>
                                 </div>
                             @else
-                                <img src="{{ asset('/storage/' . $p->img) }}" width="100%" class="hide-img image">
+                                <img src="{{ asset('/storage/' . $p->image) }}" width="100%" class="hide-img image">
                                 <div class="middle">
                                     <div class="btn btn-danger">@lang('site.add_to_cart')</div>
                                 </div>
@@ -457,7 +457,7 @@
                                 {{-- {{$p->basic_category->name_ar}}
                                         -
                                         {{$p->category->name_ar}} --}}
-                                <?php $pieces = explode(' ', $p->description_ar);
+                                <?php $pieces = explode(' ', $p->hint_ar);
                                 $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
                                 {{ $first_part }}
                             @else
@@ -465,7 +465,7 @@
                                 {{-- {{$p->basic_category->name_en}}
                                         -
                                         {{$p->category->name_en}} --}}
-                                <?php $pieces = explode(' ', $p->description_en);
+                                <?php $pieces = explode(' ', $p->hint_en);
                                 $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
                                 {{ $first_part }}
                             @endif
@@ -504,11 +504,7 @@
         {{-- @endif --}}
 
     </div>
-    <br>
-    <div class="text-center m-auto gq gr gs dg ck dh di cn gt c1 gu gv cq p cr gw gx gy">
-        <a href="{{ route('new') }}" class="">
-            <div class="text-center text-dark">@lang('site.new_in')</div>
-        </a>
+
     </div>
     <br><br>
 

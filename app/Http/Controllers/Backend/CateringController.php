@@ -124,8 +124,8 @@ class CateringController extends Controller
         if (!Storage::exists($path)) {
             Storage::disk('public')->makeDirectory($path);
         }
-        $img = \Image::make($image)->resize(255 , 200);
-        $img->save(public_path('storage/' . $path . $file_name), 80);
+        $img = \Image::make($image)->resize(480 , 320);
+        $img->save(public_path('storage/' . $path . $file_name), 90);
 
         $inputs = $request->all();
         $inputs['image'] = $path . $file_name;
@@ -135,8 +135,8 @@ class CateringController extends Controller
             if (count($request->img) > 0) {
                 foreach($imgs as $img){
                     $new_name_img = time().uniqid().".".$img->getClientOriginalExtension();
-                    $img1 = \Image::make($img)->resize(255 , 200);
-                    $img1->save(public_path('upload/advertising/'.$new_name_img),80);
+                    $img1 = \Image::make($img)->resize(480,320);
+                    $img1->save(public_path('upload/advertising/'.$new_name_img),90);
                     CateringImage::create([
                         "image"=>  "upload/advertising/".$new_name_img ,
                         "catering_id"=>$catering->id
@@ -230,8 +230,8 @@ class CateringController extends Controller
             if (file_exists(storage_path('app/public/' . $catering->image))) {
                 unlink(storage_path('app/public/' . $catering->image));
             }
-            $img = \Image::make($image)->resize(255,200);
-            $img->save(public_path('storage/' . $path . $file_name), 80);
+            $img = \Image::make($image)->resize(480 , 320);
+            $img->save(public_path('storage/' . $path . $file_name), 90);
             $inputs['image'] = $path . $file_name;
         }
 

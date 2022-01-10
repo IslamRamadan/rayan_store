@@ -23,7 +23,8 @@ class CateringGalaryController extends Controller
             return back();
         }
 
-        $imgs = $request->image ;
+        $imgs = $request->img ;
+        // dd($imgs);
         if(count($imgs) >10 ){
             Alert::success('error ', 'الحد الاقصي للتحميل في المرة الواحدة 10 صور');
             return back();
@@ -48,8 +49,8 @@ class CateringGalaryController extends Controller
         $error = 0 ;
         foreach($imgs as $img){
             $new_name_img = time().uniqid().".".$img->getClientOriginalExtension();
-            $img1 = \Image::make($img)->resize(255 , 200);
-            $img1->save(public_path('upload/advertising/'.$new_name_img),80);
+            $img1 = \Image::make($img)->resize(480,320);
+            $img1->save(public_path('upload/advertising/'.$new_name_img),90);
             $post= CateringImage::create([
                 "image"=>  "upload/advertising/".$new_name_img ,
                 "catering_id"=>$id
