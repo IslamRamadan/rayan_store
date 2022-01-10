@@ -7,7 +7,7 @@
     <!-----start  --->
     <br><br>
 
-    <div class="container">
+    <div class="container mt-sm-5">
         <div class="row dir-rtl justify-content-center">
             <div class="col-md-12 product pad-0">
                 {{-- <div class="  heart "> --}}
@@ -21,7 +21,7 @@
 
 
                 <div id="carouselExampleIndicators" class="carousel slide carousel1 " data-ride="carousel">
-                    <div class="carousel-inner">
+                    <div class="carousel-inner custom">
                         <div class="carousel-item active">
                             {{-- <div class="  zoom "><a href="" data-toggle="modal" data-target="#zoom"><i
                                         class="fas fa-expand-alt"></i></a></div> --}}

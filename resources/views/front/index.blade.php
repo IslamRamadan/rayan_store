@@ -425,14 +425,10 @@
                             </div>
                             @if ($img = App\ProdImg::where('product_id', $p->id)->first())
                                 <img src="{{ asset($img->image) }}" width="100%" class="hide-img image">
-                                <div class="middle">
-                                    <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                                </div>
+
                             @else
                                 <img src="{{ asset('/storage/' . $p->image) }}" width="100%" class="hide-img image">
-                                <div class="middle">
-                                    <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                                </div>
+
                             @endif
                         </div>
                     </a>

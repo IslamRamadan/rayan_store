@@ -7,9 +7,9 @@
     <!-----start  --->
     <br><br>
 
-    <div class="container">
-        <div class="row dir-rtl">
-            <div class="col-md-12 product pad-0">
+    <div class="container mt-sm-5">
+        <div class="row dir-rtl justify-content-center">
+            <div class="col-md-90 product pad-0">
                 {{-- <div class="  heart "> --}}
                 {{-- <i class="far fa-heart "></i></div> --}}
 
@@ -21,16 +21,16 @@
 
 
                 <div id="carouselExampleIndicators" class="carousel slide carousel1 " data-ride="carousel">
-                    <div class="carousel-inner">
+                    <div class="carousel-inner custom">
                         <div class="carousel-item active">
                             {{-- <div class="  zoom "><a href="" data-toggle="modal" data-target="#zoom"><i
                                         class="fas fa-expand-alt"></i></a></div> --}}
 
-                            <img data-enlargeable src="{{ asset('/storage/' . $hall->img) }}" class="d-block w-100 h-img"
+                            <img data-enlargeable src="{{ asset('/storage/' . $hall->img) }}" class="d-block w-100 h1-img"
                                 alt="..." data-toggle="modal" data-target="#staticBackdrop">
                         </div>
                         {{-- <div class="carousel-item"> --}}
-                        {{-- <img src="{{asset('/storage/'.$hall->height_img)}}" class="d-block w-100 h-img" alt="..." data-toggle="modal" data-target="#staticBackdrop"> --}}
+                        {{-- <img src="{{asset('/storage/'.$hall->height_img)}}" class="d-block w-100 h1-img" alt="..." data-toggle="modal" data-target="#staticBackdrop"> --}}
                         {{-- <div class="  zoom "><a href=""  data-toggle="modal" data-target="#zoom2"><i class="fas fa-expand-alt"></i></a></div> --}}
 
                         {{-- </div> --}}
@@ -38,7 +38,7 @@
                         @if ($hall->images->count() > 0)
                             @foreach ($hall->images as $img)
                                 <div class="carousel-item">
-                                    <img data-enlargeable src="{{ asset($img->img) }}" class="d-block w-100 h-img"
+                                    <img data-enlargeable src="{{ asset($img->img) }}" class="d-block w-100 h1-img"
                                         alt="..." data-toggle="modal" data-target="#staticBackdrop">
                                     {{-- <div class="  zoom "><a href="" data-toggle="modal" data-target="#zoom3"><i
                                                 class="fas fa-expand-alt"></i></a></div> --}}
@@ -88,7 +88,7 @@
 
             </div>
 
-            <div class="col-sm-12 ml-auto product-dir"> {{-- <div class="is-divider"></div> --}}
+            <div class="col-sm-9 ml-auto product-dir"> {{-- <div class="is-divider"></div> --}}
                 <br>
                 <h6 class="text-dir  h6-product">
                     @if (Lang::locale() == 'ar')

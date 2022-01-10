@@ -132,8 +132,8 @@ class HallController extends Controller
         if (!Storage::exists($path)) {
             Storage::disk('public')->makeDirectory($path);
         }
-        $img = \Image::make($image)->resize(255 , 200);
-        $img->save(public_path('storage/' . $path . $file_name), 80);
+        $img = \Image::make($image)->resize(480,320);
+        $img->save(public_path('storage/' . $path . $file_name), 90);
 
 
         $hall = Hall::create([
@@ -156,8 +156,8 @@ class HallController extends Controller
                     $new_name_img = time().uniqid().".".$img->getClientOriginalExtension();
 
                     //move img to folder
-                    $img1 = \Image::make($img)->resize(255 , 200);
-                    $img1->save(public_path('upload/advertising/'.$new_name_img),80);
+                    $img1 = \Image::make($img)->resize(480,320);
+                    $img1->save(public_path('upload/advertising/'.$new_name_img),90);
                     // $img->move(public_path("upload/advertising"), $new_name_img);
 
                     $post= HallImg::create([
@@ -254,8 +254,8 @@ class HallController extends Controller
             if (file_exists(storage_path('app/public/' . $hall->img))) {
                 unlink(storage_path('app/public/' . $hall->img));
             }
-            $img = \Image::make($image)->resize(255,200);
-            $img->save(public_path('storage/' . $path . $file_name), 80);
+            $img = \Image::make($image)->resize(480,320);
+            $img->save(public_path('storage/' . $path . $file_name), 90);
 
 
 
