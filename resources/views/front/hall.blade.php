@@ -88,7 +88,7 @@
 
             </div>
 
-            <div class="col-sm-9 ml-auto product-dir"> {{-- <div class="is-divider"></div> --}}
+            <div class="col-sm-9  product-dir"> {{-- <div class="is-divider"></div> --}}
                 <br>
                 <h6 class="text-dir  h6-product">
                     @if (Lang::locale() == 'ar')
