@@ -143,7 +143,7 @@ Route::group(
             Route::resource('orders', 'Backend\OrderController');
             Route::resource('catering_orders', 'Backend\CateringOrderController');
             Route::get('/order/notpaid', 'Backend\OrderController@not_paid')->name('noorders');
-            Route::get('/catering_order/notpaid', 'Backend\CateringOrderController@not_paid')->name('catering_noorders');
+            Route::get('/catering_order/not_paid', 'Backend\CateringOrderController@not_paid')->name('catering_noorders');
             Route::get('orders_today', 'Backend\OrderController@today')->name('orders.today');
             Route::get('catering_orders_today', 'Backend\CateringOrderController@today')->name('catering_orders.today');
 

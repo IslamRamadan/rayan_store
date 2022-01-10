@@ -137,12 +137,12 @@
 
                 <form method="post" action="{{ route('hall.order', $hall->id) }}">
                     @csrf
-                    <div class="input-group date " data-provide="datepicker" style="
+                    <div class="input-group date date_gap" data-provide="datepicker" style="
             border-bottom-width: 5px;
             padding-bottom: 10px;
-            gap:20%
+
         ">
-                        <span>بدايه الحجز</span>
+                        <span>@lang('site.start_date')</span>
                         <div style="
             padding-left: 5px;
             padding-right: 5px;
@@ -156,7 +156,7 @@
             padding-bottom: 10px;
             gap:20%
         ">
-                        <span>نهايه الحجز</span>
+                        <span>@lang('site.end_date')</span>
                         <div style="
             padding-left: 5px;
             padding-right: 5px;

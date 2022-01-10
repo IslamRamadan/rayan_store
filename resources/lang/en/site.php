@@ -384,7 +384,7 @@ return [
     'correct_date'=>'Please choose the date correctly!',
     'wrong_date'=>'Start date must be before End date',
     'catering_orders'=>'Catering orders',
-    // 'content_ar'=>'KWD',
+    'catering_not_paid_orders'=>'Catering not paid orders',
     // 'content_ar'=>'KWD',
     // 'content_ar'=>'KWD',
     // 'content_ar'=>'KWD',

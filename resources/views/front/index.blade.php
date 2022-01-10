@@ -420,9 +420,7 @@
                             <img src="{{ asset('/storage/' . $p->image) }}"
                                 onerror="this.onerror=null;this.src='{{ asset('front/img/3.jpg') }}'" width="100%"
                                 class="show-img image">
-                            <div class="middle">
-                                <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                            </div>
+
                             @if ($img = App\ProdImg::where('product_id', $p->id)->first())
                                 <img src="{{ asset($img->image) }}" width="100%" class="hide-img image">
 

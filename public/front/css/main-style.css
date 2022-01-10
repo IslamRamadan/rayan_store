@@ -1430,3 +1430,11 @@ h3.section-title {
     height: 90vh;
     object-fit: cover;
 }
+
+.date_gap:lang(en) {
+    gap: 19%;
+}
+
+.date_gap:lang(ar) {
+    gap: 22.2%;
+}

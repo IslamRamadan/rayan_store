@@ -32,7 +32,7 @@
           <br>
 
         <div class="row text-center">
-            <h2>  @lang('site.not_paid_orders')  </h2>
+            <h2>  @lang('site.catering_not_paid_orders')  </h2>
         </div>
         <div class="row mt-2 justify-content-center">
             <div class="col-xl-3 col-sm-6  mb-4">
