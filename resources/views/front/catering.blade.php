@@ -9,7 +9,7 @@
 
     <div class="container mt-sm-5">
         <div class="row dir-rtl justify-content-center">
-            <div class="col-md-12 product pad-0">
+            <div class="col-md-9 product pad-0">
                 {{-- <div class="  heart "> --}}
                 {{-- <i class="far fa-heart "></i></div> --}}
 
