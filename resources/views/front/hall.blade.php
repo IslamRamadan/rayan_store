@@ -64,7 +64,7 @@
                 </div>
 
                 <ol class=" position-relative navbar"
-                    style="width:100%;margin-top:10px;z-index: 10;list-style: none;justify-content:center">
+                    style="width:100%;margin-top:10px;list-style: none;justify-content:center">
                     <br>
 
 
@@ -115,20 +115,20 @@
                 {{-- onerror="this.onerror=null;this.src='{{asset('front/img/5.jpg')}}'" --}}
                 {{-- class="w-100">  </a> --}}
                 <h6 class="text-dir h6-product">
-
+                    <span>@lang('site.total_price'): &nbsp;&nbsp;</span>
                     @guest()
                         @if (Cookie::get('name'))
-                            {{ number_format($hall->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
+                            <span id="t_price"> {{ number_format($hall->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}</span>
                             {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
                             @lang('site.kwd')
 
                         @else
-                            {{ $hall->price }}
+                        <span id="t_price"> {{ $hall->price }}</span>
                             @lang('site.kwd')
                         @endif
 
                     @else
-                        {{ Auth::user()->getPrice($hall->price) }}
+                    <span id="t_price"> {{ Auth::user()->getPrice($hall->price) }}</span>
                         {{ Auth::user()->country->currency->code }}
                     @endguest
                 </h6>
@@ -255,6 +255,12 @@
 
                                 class="form-control" name="note"></textarea>
                             </div>
+                            <div class="form-group col-12">
+                                <h4 class="text-center">
+                                    <span>@lang('site.total_price'): &nbsp;&nbsp;</span>
+                                    <span id="t_price1"></span> @lang('site.kwd')
+                                </h6>
+                            </div>
 
                         </div>
 
@@ -292,9 +298,12 @@
 
             $('#checkout_now').on('click',
                 function() {
-                    console.log('clicked');
+                //     console.log('clicked');
                     checkDate();
-                }
+
+
+
+            }
             )
 
 
@@ -312,6 +321,17 @@
 
                 var start_date = year1 +"-"+ month1 +"-"+ day1;
                 var end_date = year2 +"-"+ month2 +"-"+ day2;
+                var hall_price="{{$hall->price}}"
+
+                var startDate = new Date($('#start_date').val());
+                var endDate = new Date($('#end_date').val());
+                var difference =  endDate.getTime()-startDate.getTime();
+                var days = Math.ceil(difference / (1000 * 3600 * 24));
+                var total_price = hall_price*(days+1) ;
+                console.log(days,hall_price,total_price);
+
+
+
 
                 $.ajaxSetup({
                     headers: {
@@ -341,8 +361,14 @@
                         } else {
 
                             // $('#Orders_city_id').html(result.cities)
-                                 $("#checkout_now").hide();
+                                $("#checkout_now").hide();
                                 $("#checkout").css("display", "block");
+                                $('#t_price').html(total_price);
+                                $('#t_price1').html(total_price);
+                                $("#start_date").prop("readonly", true);
+                                $("#end_date").prop("readonly", true);
+
+
 
 
 

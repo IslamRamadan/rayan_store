@@ -5,7 +5,7 @@
             <div class="col-lg-3 col-md-6 mb-6 col-sm-6 mb-lg-0 pr-4 pl-3 text-dir">
                 <div class="footer-head">
 
-                <h5 class="font-weight-bold">@lang('site.customer_services')
+                <h5 class="font-weight-bold m-0">@lang('site.customer_services')
                 </h5>
                 </div>
                 <p class="brdr-btm"> <a href="{{ route('policy') }}"> @lang('site.privacy_policy') </a>
@@ -17,7 +17,7 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-6 col-sm-6 mb-lg-0 pr-4 pl-3 text-dir">
                 <div class="footer-head">
-                <h5 class="font-weight-bold">@lang('site.branches')
+                <h5 class="font-weight-bold m-0">@lang('site.branches')
                 </h5>
                 </div>
                 <p class="brdr-btm"><span class="font-weight-bold">@lang('site.address1') &nbsp;</span> <br> <a href=""> @lang('site.address_one') </a>
@@ -28,7 +28,7 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-6 col-sm-6 mb-lg-0 pr-4 pl-2 text-dir">
                 <div class="footer-head">
-                    <h5 class="font-weight-bold">@lang('site.direct_contact')
+                    <h5 class="font-weight-bold m-0">@lang('site.direct_contact')
                     </h5>
 
                 </div>

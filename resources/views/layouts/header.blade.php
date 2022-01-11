@@ -327,6 +327,59 @@
 
                             </li>
                         @endforeach
+
+
+                        <li class="nav-item relative ul1"><a class="nav-link "
+                            href="#">
+                            @lang('site.halls')
+                        </a>
+
+                        <div class=" ul2  bg-w  text-left ">
+
+
+                            @if (\App\Hall::count() > 0)
+                                @foreach (\App\hall::all() as $c)
+                                    <a class="nav-link " href="{{ route('hall',$c->id) }}">
+                                        @if (app()->getLocale() == 'en')
+                                            {{ $c->title_en }}
+                                        @else
+                                            {{ $c->title_ar }}
+                                        @endif
+                                    </a>
+                                    <hr class="mr-0">
+                                @endforeach
+                            @endif
+
+                        </div>
+
+                    </li>
+                        <li class="nav-item relative ul1"><a class="nav-link "
+                            href="#">
+                            @lang('site.catering')
+                        </a>
+
+                        <div class=" ul2  bg-w  text-left ">
+
+
+                            @if (\App\Catering::count() > 0)
+                                @foreach (\App\Catering::all() as $c)
+                                    <a class="nav-link " href="{{ route('hall',$c->id) }}">
+                                        @if (app()->getLocale() == 'en')
+                                            {{ $c->title_en }}
+                                        @else
+                                            {{ $c->title_ar }}
+                                        @endif
+                                    </a>
+                                    <hr class="mr-0">
+                                @endforeach
+                            @endif
+
+                        </div>
+
+                    </li>
+
+
+
                         <li class="nav-item "><a class="nav-link " href="{{ route('policy') }}">
                                 @lang('site.policy')
 
@@ -359,18 +412,18 @@
                <div class="d-flex">
                 <div class="nav-link p-0">
                     <button class="navbar-toggler  btn bg-none " onclick="history.back()" type="button">
-                        <i class=" fas  fa-arrow-left " style="font-size: 18px;color:#000"></i>
+                        <i class=" fas  fa-arrow-left " style="font-size: 18px;color:rgb(255, 255, 255)"></i>
                     </button>
                 </div>
                 <div class="nav-link p-0">
                     <button class="navbar-toggler  btn bg-none " type="button">
-                        <i class=" fas fa-bars " style="font-size: 18px;color:#000"></i>
+                        <i class=" fas fa-bars " style="font-size: 18px;color:rgb(255, 255, 255)"></i>
                     </button>
                 </div>
             </div>
 
 
-                <div class="sidbar bg-light text-dir dir-rtl" style="overflow: scroll;
+                <div class="sidbar bg-dark text-dir dir-rtl" style="overflow: scroll;
                 max-height: 91vh;">
                     <div class="border-bottom">
                         <br>
@@ -482,6 +535,45 @@
                         </div>
                     @endforeach
 
+
+
+                    <div class="relative ul1">
+
+                        <a class="border-bottom nav-link "
+                            style="display: flex;justify-content: space-between;align-items: center">
+
+                            <span class="p-0">
+                               @lang('site.halls')
+
+                            </span>
+
+
+
+                            <i class="fas fa-chevron-down "></i>
+                        </a>
+                        <div class=" ul2  bg-w  text-dir ">
+
+
+                            @if (\App\Hall::count() > 0)
+                                @foreach (\App\Hall::all() as $c)
+
+                                    <a class="dropdown-item" rel="alternate"
+                                        href="{{ route('hall',  $c->id)}}" style="padding: 10px">
+                                        @if (app()->getLocale() == 'en')
+                                             {{ $c->title_en }}
+                                        @else
+                                            {{ $c->title_ar }}
+                                        @endif
+                                    </a>
+
+                                @endforeach
+                            @endif
+
+                        </div>
+                    </div>
+
+
+
                     <ul class="navbar nav pad-0  border-bottom" style="justify-content: space-evenly ">
 
                         @if (\App\Settings::all()->first()->facebook)
@@ -576,11 +668,11 @@
 
             <div>
                 @auth
-                    <a class="nav-link " href="{{ route('/') }}" style="padding-top: 12px;;margin-left:10px"> <img
+                    <a class="nav-link p-0" href="{{ route('/') }}" style="padding-top: 12px;;margin-left:10px"> <img
                             src="{{ asset('/storage/' . $my_setting->logo) }}" width="60"></a>
                 @endauth
                 @guest
-                    <a class="nav-link " href="{{ route('/') }}" style="padding-top: 12px"> <img
+                    <a class="nav-link p-0" href="{{ route('/') }}" style="padding-top: 12px"> <img
                             src="{{ asset('/storage/' . $my_setting->logo) }}" width="60"></a>
 
                 @endguest

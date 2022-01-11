@@ -316,7 +316,7 @@
                 <div class="text-center text-dark">@lang('site.new_in')</div>
             </a>
         </div>
-        <br><br>
+
 
         {{-- </div> --}}
         <br><br>
@@ -354,10 +354,20 @@
         </div>
     </div>
 
-    <br>
-    <br>
-    <br>
 
+    <br>
+    <div class="container pad-0">
+        <br>
+        <h2 class="text-center  d-flex justify-content-between">
+            <b></b>
+            <span class="">@lang('site.reserve_hall')
+
+            </span>
+            <b></b>
+        </h2>
+        <br>
+        <br>
+    </div>
     <div class="owl-carousel owl-five owl-theme p-3">
         @foreach (App\Post::all() as $post)
         <a href="{{route('cart')}}" target="_blank">
@@ -381,8 +391,7 @@
 
     </div>
 <br>
-<br>
-<br>
+
 
 
 
@@ -500,7 +509,7 @@
     </div>
 
     </div>
-    <br><br>
+
 
     {{-- </div> --}}
     <br><br>

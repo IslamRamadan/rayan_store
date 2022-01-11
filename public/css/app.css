@@ -2008,8 +2008,9 @@ pre code {
 
 .form-control:disabled,
 .form-control[readonly] {
-    background-color: #e9ecef;
+    background-color: #000000;
     opacity: 1;
+    color: white;
 }
 
 input[type=date].form-control,

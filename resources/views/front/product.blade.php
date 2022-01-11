@@ -64,7 +64,7 @@
                 </div>
 
                 <ol class=" position-relative navbar"
-                    style="width:100%;margin-top:10px;z-index: 10;list-style: none;justify-content:center">
+                    style="width:100%;margin-top:10px; 10;list-style: none;justify-content:center">
                     <br>
 
 

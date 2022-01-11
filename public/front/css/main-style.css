@@ -261,7 +261,7 @@ a.bg-main {
 }
 
 .bg-b nav .ul2 {
-    margin-top: 46px;
+    margin-top: 42px;
 }
 
 .ul2 li:hover {
@@ -1250,7 +1250,7 @@ li.nav-item:hover {
 
 .heading-section h2 {
     z-index: -1;
-    font-size: 40px;
+    font-size: 33px;
     font-weight: 700;
     position: relative;
     text-transform: uppercase;

@@ -297,8 +297,9 @@ return [
     'offer'=>'Offers',
     'has_offer'=>'Has offer?',
     'before_price'=>'Price before offer',
-    'address_one'=>'العقيله مجمع ٨٩مول الدور الاول محل 23',
-    'address_two'=>'جنوب السره جمعيه السلام يم النصر الرياضي',
+
+    'address_one'=>'Kuwait',
+      'address_two'=>'Kuwait',
     'customer_services'=>'Customer services',
     'branches'=>'Branches',
     'direct_contact'=>'Direct contact',

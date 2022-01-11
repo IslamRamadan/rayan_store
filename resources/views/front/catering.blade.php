@@ -65,7 +65,7 @@
                 </div>
 
                 <ol class=" position-relative navbar"
-                    style="width:100%;margin-top:10px;z-index: 10;list-style: none;justify-content:center">
+                    style="width:100%;margin-top:10px;list-style: none;justify-content:center">
                     <br>
 
 
@@ -112,7 +112,7 @@
                 <h6 class="text-dir" style="font-size: 17px">{!! $catering['hint_'.app()->getLocale()] !!}</h6>
                 <br>
 
-                <h6 class="text-dir h6-product">{{ $catering->price }} @lang('site.kwd')</h6><br><br>
+                <h6 class="text-dir h6-product" > <span id="price"></span> @lang('site.kwd')</h6><br><br>
                 @if (Lang::locale() == 'ar')
                     <br>
                 @endif
@@ -200,12 +200,12 @@
                                         <div class="col-xs-5">
                                             <div class="form-group"
                                                  style="display: flex;align-items: center;justify-content: center">
-                                                <a rel="nofollow" class="btn btn-default btn-minus" href="#"
+                                                <a rel="nofollow" class="btn btn-default btn-minus2" href="#"
                                                    onclick="">&ndash;</a>
                                                 <input type="number" readonly
                                                        style="width: 40px; border: 0;border-radius: 10px ; text-align:center"
                                                        class="count" value="0" name="ad_hours">
-                                                <a rel="nofollow" class="btn btn-default btn-plus" href="#"
+                                                <a rel="nofollow" class="btn btn-default btn-plus2" href="#"
                                                    onclick="">+</a>
                                             </div>
 
@@ -233,12 +233,12 @@
                                         <div class="col-xs-5">
                                             <div class="form-group"
                                                  style="display: flex;align-items: center;justify-content: center">
-                                                <a rel="nofollow" class="btn btn-default btn-minus" href="#"
+                                                <a rel="nofollow" class="btn btn-default btn-minus3" href="#"
                                                    onclick="">&ndash;</a>
                                                 <input type="number" readonly
                                                        style="width: 40px; border: 0;border-radius: 10px ; text-align:center"
                                                        class="count" value="0" name="ad_service">
-                                                <a rel="nofollow" class="btn btn-default btn-plus" href="#"
+                                                <a rel="nofollow" class="btn btn-default btn-plus3" href="#"
                                                    onclick="">+</a>
                                             </div>
                                         </div>
@@ -353,6 +353,12 @@
                         <input class="form-control" placeholder="{{\Lang::get('site.street')}}" name="street" id="street"
                             value="{{ old('street') }}" type="street">
                     </div>
+                    <div class="form-group col-12">
+                        <h4 class="text-center">
+                            <span>@lang('site.total_price'): &nbsp;&nbsp;</span>
+                            <span id="price1"></span> @lang('site.kwd')
+                        </h6>
+                    </div>
 
                 </div>
 
@@ -374,12 +380,29 @@
 <script>
             var person = "{{$catering->persons_no}}"
             var person_max = "{{$catering->persons_max}}"
+            var ad_person_price = "{{$catering->ad_person_price}}"
+            var ad_hour_price = "{{$catering->ad_hour_price}}"
+            var ad_service_price = "{{$catering->ad_service_price}}"
+            var price = "{{$catering->price}}"
+
+
+            $("#price").html(price);
+            $("#price").val(price);
+            $("#price1").html(price);
+            $("#price1").val(price);
+            console.log($("#price").val());
             $('.btn-plus1').on('click', function() {
                     var $count = $(this).parent().find('.count1');
 
                     var val = parseInt($count.val(), 10);
                     if($count.val() < person_max){
                         $count.val(val + 1);
+                        $("#price").html(parseInt( $("#price").val()) + parseInt( ad_person_price) ) ;
+                        $("#price").val(parseInt( $("#price").val()) + parseInt( ad_person_price) ) ;
+                        $("#price1").html(parseInt( $("#price1").val()) + parseInt( ad_person_price) ) ;
+                        $("#price1").val(parseInt( $("#price1").val()) + parseInt( ad_person_price) ) ;
+                        console.log($("#price").val());
+
                     }
                     return false;
                 });
@@ -390,10 +413,78 @@
 
                     if(val > 0 && $count.val() > person){
                         $count.val(val -1);
+                        $("#price").html(parseInt( $("#price").val()) - parseInt( ad_person_price) ) ;
+                        $("#price").val(parseInt( $("#price").val()) - parseInt( ad_person_price) ) ;
+                        $("#price1").html(parseInt( $("#price1").val()) - parseInt( ad_person_price) ) ;
+                        $("#price1").val(parseInt( $("#price1").val()) - parseInt( ad_person_price) ) ;
                     }
                     return false;
                 });
+
+                $('.btn-plus2').on('click', function() {
+                    var $count = $(this).parent().find('.count');
+
+                    var val = parseInt($count.val(), 10);
+                        $count.val(val + 1);
+                        $("#price").html(parseInt( $("#price").val()) + parseInt( ad_hour_price) ) ;
+                        $("#price").val(parseInt( $("#price").val()) + parseInt( ad_hour_price) ) ;
+                        $("#price1").html(parseInt( $("#price1").val()) + parseInt( ad_hour_price) ) ;
+                        $("#price1").val(parseInt( $("#price1").val()) + parseInt( ad_hour_price) ) ;
+                        console.log($("#price").val());
+                    return false;
+                });
+
+                $('.btn-minus2').on('click', function() {
+
+                var $count = $(this).parent().find('.count');
+                var val = parseInt($count.val(), 10);
+
+                if (val > 0){
+                    $count.val(val - 1);
+                    $("#price").html(parseInt( $("#price").val()) - parseInt( ad_hour_price) ) ;
+                    $("#price").val(parseInt( $("#price").val()) - parseInt( ad_hour_price) ) ;
+                    $("#price1").html(parseInt( $("#price1").val()) - parseInt( ad_hour_price) ) ;
+                    $("#price1").val(parseInt( $("#price1").val()) - parseInt( ad_hour_price) ) ;
+
+                }
+
+
+                return false;
+                });
+                $('.btn-plus3').on('click', function() {
+                    var $count = $(this).parent().find('.count');
+
+                    var val = parseInt($count.val(), 10);
+                        $count.val(val + 1);
+                        $("#price").html(parseInt( $("#price").val()) + parseInt( ad_service_price) ) ;
+                        $("#price").val(parseInt( $("#price").val()) + parseInt( ad_service_price) ) ;
+                        $("#price1").html(parseInt( $("#price1").val()) + parseInt( ad_service_price) ) ;
+                        $("#price1").val(parseInt( $("#price1").val()) + parseInt( ad_service_price) ) ;
+                        console.log($("#price").val());
+                    return false;
+                });
+
+                $('.btn-minus3').on('click', function() {
+
+                var $count = $(this).parent().find('.count');
+                var val = parseInt($count.val(), 10);
+
+                if (val > 0){
+                    $count.val(val - 1);
+                    $("#price").html(parseInt( $("#price").val()) - parseInt( ad_service_price) ) ;
+                    $("#price").val(parseInt( $("#price").val()) - parseInt( ad_service_price) ) ;
+                    $("#price1").html(parseInt( $("#price1").val()) - parseInt( ad_service_price) ) ;
+                    $("#price1").val(parseInt( $("#price1").val()) - parseInt( ad_service_price) ) ;
+
+                }
+
+
+                return false;
+                });
+
+
                 $('#checkout_now').on('click', function() {
+
                     $(this).hide();
                     $("#checkout").css("display", "block");
 
