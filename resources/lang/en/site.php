@@ -350,7 +350,7 @@ return [
     'order_cost'=>'Order cost',
     'visitors'=>'Visitors',
     'reserve_hall'=>'Reserve a hall',
-    'hall'=>'Reserve a hall reserve a hall',
+    'hall'=>'Reserve a hall ',
 
 
     'halls'=>'Halls',
